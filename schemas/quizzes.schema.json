@@ -1,0 +1,252 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "quizzes.schema.json",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "pattern_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "misconception": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "content_ids": {
+            "$ref": "common.schema.json#/definitions/ids"
+          },
+          "type": {
+            "const": "choice"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "id",
+                "text"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 2,
+            "uniqueItems": true
+          },
+          "answer_option_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "required": [
+          "id",
+          "pattern_ids",
+          "prompt",
+          "explanation",
+          "misconception",
+          "content_ids",
+          "type",
+          "options",
+          "answer_option_id"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "pattern_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "misconception": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "content_ids": {
+            "$ref": "common.schema.json#/definitions/ids"
+          },
+          "type": {
+            "const": "text-fill"
+          },
+          "accepted_answers": {
+            "$ref": "common.schema.json#/definitions/texts"
+          },
+          "normalization": {
+            "type": "object",
+            "properties": {
+              "trim": {
+                "type": "boolean"
+              },
+              "collapse_whitespace": {
+                "type": "boolean"
+              },
+              "case_sensitive": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "trim",
+              "collapse_whitespace",
+              "case_sensitive"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "pattern_ids",
+          "prompt",
+          "explanation",
+          "misconception",
+          "content_ids",
+          "type",
+          "accepted_answers",
+          "normalization"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "pattern_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "misconception": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "content_ids": {
+            "$ref": "common.schema.json#/definitions/ids"
+          },
+          "type": {
+            "const": "code-fill"
+          },
+          "accepted_answers": {
+            "$ref": "common.schema.json#/definitions/texts"
+          },
+          "normalization": {
+            "type": "object",
+            "properties": {
+              "trim": {
+                "type": "boolean"
+              },
+              "collapse_whitespace": {
+                "type": "boolean"
+              },
+              "case_sensitive": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "trim",
+              "collapse_whitespace",
+              "case_sensitive"
+            ],
+            "additionalProperties": false
+          },
+          "language": {
+            "enum": [
+              "python",
+              "java",
+              "cpp"
+            ]
+          },
+          "code_with_blank": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "id",
+          "pattern_ids",
+          "prompt",
+          "explanation",
+          "misconception",
+          "content_ids",
+          "type",
+          "accepted_answers",
+          "normalization",
+          "language",
+          "code_with_blank"
+        ],
+        "additionalProperties": false
+      }
+    ]
+  },
+  "minItems": 0,
+  "uniqueItems": true
+}

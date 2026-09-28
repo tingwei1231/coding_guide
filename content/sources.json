@@ -1,0 +1,29 @@
+[
+  {
+    "id": "leetcode-643-source",
+    "title": "Maximum Average Subarray I",
+    "url": "https://leetcode.com/problems/maximum-average-subarray-i/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-28",
+    "notes": "已核對題號 643、Easy、固定長度 k 與題目網址。"
+  },
+  {
+    "id": "blind-75",
+    "title": "Blind 75 作者的題單說明",
+    "url": "https://www.techinterviewhandbook.org/best-practice-questions/",
+    "kind": "collection",
+    "status": "pending",
+    "checked_on": "2026-09-28",
+    "notes": "已定位作者來源；尚未逐題核對本專案的歸屬，不得直接套用 Grind 75 成員。"
+  },
+  {
+    "id": "top-interview-150",
+    "title": "LeetCode Top Interview 150",
+    "url": "https://leetcode.com/studyplan/top-interview-150/",
+    "kind": "collection",
+    "status": "pending",
+    "checked_on": "2026-09-28",
+    "notes": "已定位官方題單；尚未逐題核對。LC150 在本專案專指此題單。"
+  }
+]

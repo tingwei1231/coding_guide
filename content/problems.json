@@ -1,0 +1,15 @@
+[
+  {
+    "id": "leetcode-643",
+    "platform": "leetcode",
+    "number": 643,
+    "name": "Maximum Average Subarray I",
+    "difficulty": "easy",
+    "url": "https://leetcode.com/problems/maximum-average-subarray-i/",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "source_id": "leetcode-643-source",
+    "collection_source_ids": []
+  }
+]

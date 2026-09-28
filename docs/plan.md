@@ -38,6 +38,8 @@
 
 ### 1. 定稿資料契約與內容清單
 
+狀態：已完成（2026-09-28）。交付 spec v4、`schemas/`、`content/` 範例與逐頁 catalog、`docs/data-contracts.md`、`docs/content-inventory.md`、內容驗證程式與 17 個測試。驗證指令：`npm run validate:content`、`npm test`。此狀態只代表第一步完成，首版教材與網站尚未完成。
+
 建立 patterns、problems、quizzes 等 JSON Schema；定義三語言鍵、解說、高亮行號、keywords、前提、反例及內容參照。另建立逐頁內容清單與題單來源記錄。
 
 驗收：Sliding Window 的一個標準模板與一個變形能通過驗證；缺欄位、重複 ID、錯誤題目引用、越界行號均可被攔截。

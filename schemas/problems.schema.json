@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "problems.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "platform": {
+        "const": "leetcode"
+      },
+      "number": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "difficulty": {
+        "enum": [
+          "easy",
+          "medium",
+          "hard"
+        ]
+      },
+      "url": {
+        "type": "string",
+        "pattern": "^https://leetcode\\.com/problems/[a-z0-9-]+/$"
+      },
+      "pattern_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "source_id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "collection_source_ids": {
+        "$ref": "common.schema.json#/definitions/ids"
+      }
+    },
+    "required": [
+      "id",
+      "platform",
+      "number",
+      "name",
+      "difficulty",
+      "url",
+      "pattern_ids",
+      "source_id",
+      "collection_source_ids"
+    ],
+    "additionalProperties": false
+  },
+  "minItems": 0,
+  "uniqueItems": true
+}

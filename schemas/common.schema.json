@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "common.schema.json",
+  "definitions": {
+    "str": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "texts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "code": {
+      "type": "object",
+      "properties": {
+        "python": {
+          "type": "object",
+          "properties": {
+            "lines": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "lines"
+          ],
+          "additionalProperties": false
+        },
+        "java": {
+          "type": "object",
+          "properties": {
+            "lines": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "lines"
+          ],
+          "additionalProperties": false
+        },
+        "cpp": {
+          "type": "object",
+          "properties": {
+            "lines": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "lines"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "python",
+        "java",
+        "cpp"
+      ],
+      "additionalProperties": false
+    },
+    "lesson": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "trigger_signal": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "keywords": {
+          "$ref": "common.schema.json#/definitions/texts"
+        },
+        "prerequisites": {
+          "$ref": "common.schema.json#/definitions/texts"
+        },
+        "counterexamples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scenario": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "scenario",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "complexity": {
+          "type": "object",
+          "properties": {
+            "time": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "space": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "time",
+            "space",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "code": {
+          "$ref": "common.schema.json#/definitions/code"
+        },
+        "problem_ids": {
+          "$ref": "common.schema.json#/definitions/ids"
+        },
+        "content_ids": {
+          "$ref": "common.schema.json#/definitions/ids"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "trigger_signal",
+        "keywords",
+        "prerequisites",
+        "counterexamples",
+        "explanation",
+        "complexity",
+        "code",
+        "problem_ids",
+        "content_ids"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

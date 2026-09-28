@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "sources.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "url": {
+        "type": "string",
+        "pattern": "^https://\\S+$"
+      },
+      "kind": {
+        "enum": [
+          "problem",
+          "collection",
+          "technical"
+        ]
+      },
+      "status": {
+        "enum": [
+          "verified",
+          "pending"
+        ]
+      },
+      "checked_on": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      },
+      "notes": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "required": [
+      "id",
+      "title",
+      "url",
+      "kind",
+      "status",
+      "checked_on",
+      "notes"
+    ],
+    "additionalProperties": false
+  },
+  "minItems": 0,
+  "uniqueItems": true
+}

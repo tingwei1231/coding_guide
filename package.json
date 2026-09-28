@@ -1,0 +1,12 @@
+{
+  "name": "coding-guide",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:content": "node scripts/validate-content.mjs",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

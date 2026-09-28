@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "content.schema.json",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "route": {
+        "type": "string",
+        "pattern": "^/[a-z0-9/-]*$"
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "status": {
+        "enum": [
+          "planned",
+          "ready"
+        ]
+      },
+      "markdown_path": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "pattern": "^content/articles/[a-z0-9/-]+\\.md$"
+      },
+      "pattern_ids": {
+        "$ref": "common.schema.json#/definitions/ids"
+      },
+      "problem_ids": {
+        "$ref": "common.schema.json#/definitions/ids"
+      },
+      "sections": {
+        "$ref": "common.schema.json#/definitions/texts"
+      }
+    },
+    "required": [
+      "id",
+      "route",
+      "title",
+      "status",
+      "markdown_path",
+      "pattern_ids",
+      "problem_ids",
+      "sections"
+    ],
+    "additionalProperties": false
+  },
+  "minItems": 0,
+  "uniqueItems": true
+}

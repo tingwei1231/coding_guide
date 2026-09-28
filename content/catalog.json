@@ -1,0 +1,532 @@
+[
+  {
+    "id": "home",
+    "route": "/",
+    "title": "首頁",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定位",
+      "學習入口"
+    ]
+  },
+  {
+    "id": "data-structures",
+    "route": "/data-structures",
+    "title": "資料結構索引",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "十種資料結構"
+    ]
+  },
+  {
+    "id": "ds-array",
+    "route": "/data-structures/array",
+    "title": "array",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-string",
+    "route": "/data-structures/string",
+    "title": "string",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-hashmap-set",
+    "route": "/data-structures/hashmap-set",
+    "title": "hashmap-set",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-linked-list",
+    "route": "/data-structures/linked-list",
+    "title": "linked-list",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-stack",
+    "route": "/data-structures/stack",
+    "title": "stack",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-queue",
+    "route": "/data-structures/queue",
+    "title": "queue",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-heap",
+    "route": "/data-structures/heap",
+    "title": "heap",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-tree",
+    "route": "/data-structures/tree",
+    "title": "tree",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-graph",
+    "route": "/data-structures/graph",
+    "title": "graph",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "ds-union-find",
+    "route": "/data-structures/union-find",
+    "title": "union-find",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "定義",
+      "複雜度",
+      "適用情境",
+      "誤區",
+      "圖解"
+    ]
+  },
+  {
+    "id": "languages",
+    "route": "/languages",
+    "title": "語言對照",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "陣列",
+      "字串",
+      "雜湊表",
+      "集合",
+      "堆疊",
+      "佇列",
+      "優先佇列",
+      "排序"
+    ]
+  },
+  {
+    "id": "templates",
+    "route": "/templates",
+    "title": "模板索引",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "搜尋",
+      "六種模式"
+    ]
+  },
+  {
+    "id": "template-sliding-window",
+    "route": "/templates/sliding-window",
+    "title": "sliding-window",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "前提",
+      "反例",
+      "三語言標準模板",
+      "複雜度",
+      "題目索引"
+    ]
+  },
+  {
+    "id": "template-binary-search",
+    "route": "/templates/binary-search",
+    "title": "binary-search",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "前提",
+      "反例",
+      "三語言標準模板",
+      "複雜度",
+      "題目索引"
+    ]
+  },
+  {
+    "id": "template-two-pointers",
+    "route": "/templates/two-pointers",
+    "title": "two-pointers",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "前提",
+      "反例",
+      "三語言標準模板",
+      "複雜度",
+      "題目索引"
+    ]
+  },
+  {
+    "id": "template-bfs-dfs",
+    "route": "/templates/bfs-dfs",
+    "title": "bfs-dfs",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "前提",
+      "反例",
+      "三語言標準模板",
+      "複雜度",
+      "題目索引"
+    ]
+  },
+  {
+    "id": "template-backtracking",
+    "route": "/templates/backtracking",
+    "title": "backtracking",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "前提",
+      "反例",
+      "三語言標準模板",
+      "複雜度",
+      "題目索引"
+    ]
+  },
+  {
+    "id": "template-dp",
+    "route": "/templates/dp",
+    "title": "dp",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "dp"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "前提",
+      "反例",
+      "三語言標準模板",
+      "複雜度",
+      "題目索引"
+    ]
+  },
+  {
+    "id": "guided-learning",
+    "route": "/guided-learning",
+    "title": "引導教學索引",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "六篇教學"
+    ]
+  },
+  {
+    "id": "guide-sliding-window",
+    "route": "/guided-learning/sliding-window",
+    "title": "sliding-window 代表題",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "暴力解",
+      "關鍵觀察",
+      "虛擬碼與三語言",
+      "複雜度與延伸"
+    ]
+  },
+  {
+    "id": "guide-binary-search",
+    "route": "/guided-learning/binary-search",
+    "title": "binary-search 代表題",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "暴力解",
+      "關鍵觀察",
+      "虛擬碼與三語言",
+      "複雜度與延伸"
+    ]
+  },
+  {
+    "id": "guide-two-pointers",
+    "route": "/guided-learning/two-pointers",
+    "title": "two-pointers 代表題",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "暴力解",
+      "關鍵觀察",
+      "虛擬碼與三語言",
+      "複雜度與延伸"
+    ]
+  },
+  {
+    "id": "guide-bfs-dfs",
+    "route": "/guided-learning/bfs-dfs",
+    "title": "bfs-dfs 代表題",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "暴力解",
+      "關鍵觀察",
+      "虛擬碼與三語言",
+      "複雜度與延伸"
+    ]
+  },
+  {
+    "id": "guide-backtracking",
+    "route": "/guided-learning/backtracking",
+    "title": "backtracking 代表題",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "暴力解",
+      "關鍵觀察",
+      "虛擬碼與三語言",
+      "複雜度與延伸"
+    ]
+  },
+  {
+    "id": "guide-dp",
+    "route": "/guided-learning/dp",
+    "title": "dp 代表題",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [
+      "dp"
+    ],
+    "problem_ids": [],
+    "sections": [
+      "辨識",
+      "暴力解",
+      "關鍵觀察",
+      "虛擬碼與三語言",
+      "複雜度與延伸"
+    ]
+  },
+  {
+    "id": "roadmap",
+    "route": "/roadmap",
+    "title": "學習路徑",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "雙指針",
+      "Sliding Window",
+      "Binary Search",
+      "BFS/DFS",
+      "Backtracking",
+      "DP"
+    ]
+  },
+  {
+    "id": "quiz",
+    "route": "/quiz",
+    "title": "概念測驗",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "六種模式各四題",
+      "選擇",
+      "文字填空",
+      "程式碼填空"
+    ]
+  },
+  {
+    "id": "mock-interview",
+    "route": "/mock-interview",
+    "title": "模擬面試",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "三個技術練習",
+      "五個行為題",
+      "STAR 範例",
+      "溝通指南"
+    ]
+  },
+  {
+    "id": "career-prep",
+    "route": "/career-prep",
+    "title": "求職準備",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "履歷",
+      "作品集",
+      "前一週 checklist",
+      "前一天 checklist"
+    ]
+  },
+  {
+    "id": "big-o",
+    "route": "/big-o",
+    "title": "Big O",
+    "status": "planned",
+    "markdown_path": null,
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "O(1)",
+      "O(log n)",
+      "O(n)",
+      "O(n log n)",
+      "O(n²)",
+      "遞迴時間與空間"
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "explanation": "固定窗口每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
+    "misconception": "固定窗口不要求所有元素非負。",
+    "content_ids": [
+      "template-sliding-window"
+    ],
+    "id": "fixed-window-choice",
+    "type": "choice",
+    "prompt": "長度固定 k 的窗口向右移動時要做什麼？",
+    "options": [
+      {
+        "id": "both",
+        "text": "加入右端並移除離開的左端"
+      },
+      {
+        "id": "right-only",
+        "text": "只加入右端"
+      }
+    ],
+    "answer_option_id": "both"
+  },
+  {
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "explanation": "固定窗口每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
+    "misconception": "固定窗口不要求所有元素非負。",
+    "content_ids": [
+      "template-sliding-window"
+    ],
+    "id": "fixed-window-text",
+    "type": "text-fill",
+    "prompt": "長度恰好 k 的連續區間優先考慮哪種窗口？",
+    "accepted_answers": [
+      "固定窗口",
+      "fixed window"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": false
+    }
+  },
+  {
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "explanation": "固定窗口每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
+    "misconception": "固定窗口不要求所有元素非負。",
+    "content_ids": [
+      "template-sliding-window"
+    ],
+    "id": "fixed-window-code",
+    "type": "code-fill",
+    "prompt": "填入離開窗口的索引。",
+    "language": "python",
+    "code_with_blank": "total += nums[right] - nums[___]",
+    "accepted_answers": [
+      "right - k",
+      "right-k"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": true
+    }
+  }
+]

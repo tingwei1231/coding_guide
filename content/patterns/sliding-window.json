@@ -1,0 +1,209 @@
+{
+  "id": "sliding-window",
+  "name": "Sliding Window",
+  "keywords": [
+    "連續",
+    "子陣列",
+    "子字串",
+    "窗口",
+    "sliding window"
+  ],
+  "standard_templates": [
+    {
+      "id": "longest-valid",
+      "name": "可變窗口：非負數總和不超過上限",
+      "trigger_signal": "找總和不超過 budget 的最長連續子陣列，且元素非負。",
+      "keywords": [
+        "最長",
+        "非負數",
+        "上限"
+      ],
+      "prerequisites": [
+        "nums 的元素皆為非負整數，budget >= 0。",
+        "總和需在 Java/C++ 的 64 位有號整數範圍內。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "nums=[2,-1], budget=1",
+          "reason": "若先移除 2，便錯過長度 2 的合法窗口；負數破壞擴張不減、收縮不增的性質。"
+        }
+      ],
+      "explanation": "右端逐步擴張，超過預算才移動左端；非負性保證被淘汰的左端不會因後續擴張重新成為更長的合法答案。空陣列回傳 0。",
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(1)",
+        "reason": "左右端各最多走 n 次，只保存索引、總和與答案。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def longest_within_budget(nums, budget):",
+            "    left = total = best = 0  # 非負數，budget >= 0",
+            "    for right, value in enumerate(nums):",
+            "        total += value  # 擴張右端",
+            "        while total > budget:  # 不合法才收縮",
+            "            total -= nums[left]",
+            "            left += 1",
+            "        best = max(best, right - left + 1)  # 合法後更新",
+            "    return best"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    static int longestWithinBudget(int[] nums, long budget) {",
+            "        int left = 0, best = 0; // nums 非負，budget >= 0",
+            "        long total = 0;",
+            "        for (int right = 0; right < nums.length; right++) {",
+            "            total += nums[right]; // 擴張",
+            "            while (total > budget) { // 恢復合法窗口",
+            "                total -= nums[left++];",
+            "            }",
+            "            best = Math.max(best, right - left + 1);",
+            "        }",
+            "        return best;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <algorithm>",
+            "int longestWithinBudget(const std::vector<int>& nums, long long budget) {",
+            "    int left = 0, best = 0; // nums 非負，budget >= 0",
+            "    long long total = 0;",
+            "    for (int right = 0; right < static_cast<int>(nums.size()); ++right) {",
+            "        total += nums[right]; // 擴張",
+            "        while (total > budget) { // 恢復合法窗口",
+            "            total -= nums[left++];",
+            "        }",
+            "        best = std::max(best, right - left + 1);",
+            "    }",
+            "    return best;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [],
+      "content_ids": [
+        "template-sliding-window"
+      ]
+    }
+  ],
+  "variations": [
+    {
+      "id": "fixed-size",
+      "name": "固定窗口：最大平均",
+      "base_template_id": "longest-valid",
+      "trigger_signal": "明確指定長度 k，找連續 k 個元素的最大平均。",
+      "keywords": [
+        "長度 k",
+        "固定窗口",
+        "最大平均"
+      ],
+      "prerequisites": [
+        "1 <= k <= nums.length；元素可為負數。",
+        "總和及差值需在 Java/C++ 的 64 位有號整數範圍內。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "要求長度至少 k，而非恰好 k。",
+          "reason": "只枚舉固定長度會漏掉更長候選，不能直接沿用此模板。"
+        }
+      ],
+      "explanation": "先算首個完整窗口，再每次加入右端、移除 right-k。以首個窗口總和初始化答案以支援全負數。",
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(1)（Python 此寫法 O(k)）",
+        "reason": "窗口增量更新；Python nums[:k] 會建立長度 k 的暫存切片，Java/C++ 只用常數額外空間。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def find_max_average(nums, k):",
+            "    total = sum(nums[:k])  # 先建立第一個完整窗口",
+            "    best = total  # 支援全負數，不能設成 0",
+            "    for right in range(k, len(nums)):",
+            "        total += nums[right] - nums[right - k]  # 加右、移左",
+            "        best = max(best, total)",
+            "    return best / k  # 固定長度，最大總和等價於最大平均"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public double findMaxAverage(int[] nums, int k) {",
+            "        long total = 0; // 1 <= k <= nums.length",
+            "        for (int i = 0; i < k; i++) total += nums[i];",
+            "        long best = total; // 支援全負數",
+            "        for (int right = k; right < nums.length; right++) {",
+            "            total += (long) nums[right] - nums[right - k];",
+            "            best = Math.max(best, total);",
+            "        }",
+            "        return (double) best / k; // 避免整數除法",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <algorithm>",
+            "double findMaxAverage(const std::vector<int>& nums, int k) {",
+            "    long long total = 0; // 1 <= k <= nums.size()",
+            "    for (int i = 0; i < k; ++i) total += nums[i];",
+            "    long long best = total; // 支援全負數",
+            "    for (int right = k; right < static_cast<int>(nums.size()); ++right) {",
+            "        total += static_cast<long long>(nums[right]) - nums[right - k];",
+            "        best = std::max(best, total);",
+            "    }",
+            "    return static_cast<double>(best) / k;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-643"
+      ],
+      "content_ids": [
+        "template-sliding-window"
+      ],
+      "diff_from_standard": "改用固定長度約束；不再使用總和超限的 while。先建立 k 個元素的窗口，答案由最長長度改為最大總和除以 k。",
+      "removed_code_notes": [
+        "移除 budget 參數、left 狀態及 while 超限收縮；固定窗口允許負數。"
+      ],
+      "highlight_lines": {
+        "python": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "java": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10
+        ],
+        "cpp": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11
+        ]
+      }
+    }
+  ]
+}

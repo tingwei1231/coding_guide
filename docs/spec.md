@@ -1,4 +1,4 @@
-# LeetCode 新手引導手冊 — 網站規格文件 (spec.md)
+# LeetCode 新手引導手冊 — 網站規格文件 v4
 
 ## 0. 專案定位
 
@@ -29,7 +29,7 @@
 
 ### 1.2 多語言對照 (`/languages`)
 
-- 每個模板 / 範例講解均提供 **C++ / Python / Java** 三語言並排對照
+- 模板與教學提供 **C++ / Python / Java** 三語言 tab；本語言對照頁採並排比較，手機版堆疊呈現。
 - 「語言差異對照表」：如 Python `heapq` vs Java `PriorityQueue` vs C++ `priority_queue`
 - 明確聲明：**此區只用於「讀懂寫法」，不內建線上編譯執行器**
 
@@ -47,7 +47,7 @@
 
 ### 1.4 資料結構 / 模式模板庫 (`/templates`)
 
-標準模板清單：Binary Search、BFS/DFS、雙指針、Sliding Window、Backtracking、DP (top-down / bottom-up)
+首版標準模板：Binary Search、BFS/DFS、雙指針、Sliding Window、Backtracking、DP。BFS 與 DFS 分開呈現，DP 包含 top-down 與 bottom-up；每種模式可有多個 standard_templates。首版完整變形只交付 Sliding Window 5 種、Binary Search 4 種、Two Pointers 4 種；其餘變形留待後續，不呈現空卡片。
 
 每個模板包含：
 - 三語言版本 + 逐行註解
@@ -99,7 +99,7 @@
 
 | 變形 | 辨識訊號 | 跟標準模板差在哪 | 對應題目 |
 |---|---|---|---|
-| 對撞指針 | 已排序陣列，找兩數關係 | 左右指針從兩端往中間逼近 | Two Sum II、Container With Most Water |
+| 對撞指針 | 排序陣列找兩數關係；或可證明兩端淘汰規則 | Two Sum II 利用排序；Container With Most Water 利用短邊限制，並不要求排序 | Two Sum II、Container With Most Water |
 | 快慢指針 | 鏈結串列、找環、找中點 | 兩指針同起點不同速度 | Linked List Cycle、Middle of Linked List |
 | 三指針/多指針 | 「三數之和」類題目 | 固定外層指針 + 內層對撞指針 | 3Sum |
 | 原地分割 | 「移除元素」、「移動零」 | 一個指針負責寫入位置，一個指針負責掃描 | Move Zeroes、Remove Duplicates |
@@ -128,59 +128,27 @@
 |---|---|---|---|
 | 一維 DP | 「第 n 步/個的最佳值」 | dp[i] 只依賴前面幾個狀態 | Climbing Stairs、House Robber |
 | 二維 DP（雙序列） | 兩個字串/陣列的比較關係 | dp[i][j] 表示兩序列前 i, j 個的關係 | Longest Common Subsequence |
-| 背包型 DP | 「容量限制下的最佳組合」 | dp[i][w] 是否選第 i 個物品 | 0/1 Knapsack、Coin Change |
+| 背包型 DP | 「容量限制下的最佳組合」 | 0/1 背包每物品最多一次；Coin Change 允許重複取用，轉移與迭代方向須分開說明 | 0/1 Knapsack、Coin Change |
 | 區間 DP | 「一段區間的最佳切法/合併方式」 | dp[i][j] 表示區間 i~j 的最佳解 | Burst Balloons |
 
-### 2.3 資料模型（JSON Schema）
+### 2.3 資料契約與正式 JSON Schema
 
-每個 pattern 一個 JSON 檔，新增變形時只需加入陣列元素，不需改動渲染邏輯：
+以 [資料契約](data-contracts.md) 與 `../schemas/*.schema.json` 為準；舊版內嵌 JSON 範例已移除。
 
-```json
-{
-  "pattern": "sliding-window",
-  "name": "Sliding Window",
-  "standard_template": {
-    "trigger": "連續子陣列/子字串，且需滿足某個條件",
-    "code": {
-      "python": "...",
-      "java": "...",
-      "cpp": "..."
-    }
-  },
-  "variations": [
-    {
-      "id": "fixed-size",
-      "name": "固定窗口大小",
-      "trigger_signal": "題目明確給出視窗長度 k",
-      "diff_from_standard": "窗口大小恆定，每次移動同時前進左右指針",
-      "code_diff_highlight": ["移除的地方永遠是 left", "不需要 while 收縮條件"],
-      "related_problems": [
-        { "name": "Maximum Average Subarray I", "leetcode_url": "https://leetcode.com/problems/maximum-average-subarray-i/" }
-      ]
-    },
-    {
-      "id": "shrink-to-min",
-      "name": "可變窗口找最短",
-      "trigger_signal": "問『最短/最小』且有一個滿足條件",
-      "diff_from_standard": "條件滿足後才開始收縮，收縮過程持續更新最小值",
-      "code_diff_highlight": ["加入 while 收縮迴圈", "更新 min_len 的時機在收縮前"],
-      "related_problems": [
-        { "name": "Minimum Size Subarray Sum", "leetcode_url": "https://leetcode.com/problems/minimum-size-subarray-sum/" }
-      ]
-    }
-  ],
-  "symptom_lookup_keywords": ["子陣列", "子字串", "連續", "視窗", "最長", "最短"]
-}
-```
+- 每種模式一份 JSON，包含多個標準模板、變形、三語言程式碼、前提、反例、複雜度及解說。
+- 每個變形指定同模式內的基礎模板 ID，提供完整程式碼與各語言從 1 起算的高亮行號；刪除內容以文字補充。
+- 題目、來源、教材與測驗均有穩定 ID。題目索引包含題號、難度、模式及已核對的題單歸屬；各頁引用 ID。
+- JSON Schema 驗證型別與必填欄位；驗證程式檢查重複 ID、跨檔引用、高亮行號範圍及教材檔案。
+- 辨識訊號只是線索，教學必須證明適用前提：滑動窗口的增減性與負數反例；二分答案的搜尋範圍及可行性單調性；雙指針的淘汰依據；DP 是否可重複選取。
 
 ### 2.4 頁面呈現規則
 
 - 頁面上方：標準模板（語言 tab 切換：C++ / Python / Java）
 - 下方：變形卡片，以手風琴（accordion）方式展開，展開內容包含：
   - 辨識訊號（關鍵字以醒目顏色標示）
-  - Code diff 呈現：僅高亮「新增/修改」的行數，而非整段重貼，讓使用者一眼看出差異點
+  - Code diff 呈現：預設顯示新增／修改行與必要上下文，可切換完整程式碼；刪除內容另以文字說明。結構差異大時允許解說整體變化，不假設所有變形只改少數行。
   - 對應題目清單（外部連結至 LeetCode，不站內收題）
-- 頁面最上方：「症狀 → 處方」快速查詢框，使用者輸入題目關鍵字，即時比對 `symptom_lookup_keywords` 顯示可能對應的 pattern/變形（純前端字串比對，無需後端）
+- 頁面最上方提供跨模式／變形搜尋，兩層各設 keywords；trim、英文字母轉小寫、空白分詞，多詞 OR 子字串比對。完整關鍵字匹配優先，再以變形匹配優先，同順位依 ID 排序。空輸入顯示分類，無結果提供建議詞；結果附匹配理由、前提，並可直接展開變形。
 
 ---
 
@@ -243,12 +211,12 @@
 
 | 項目 | 建議方案 |
 |---|---|
-| 前端框架 | React 或 Vue（純靜態網站，無需 SSR） |
+| 前端框架 | React + TypeScript + Vite + React Router，純靜態網站 |
 | 內容管理 | Markdown（教學文章）+ JSON（模板、變形資料、測驗題庫） |
-| 程式碼顯示 | Prism.js / Shiki（僅語法高亮顯示，不執行程式碼） |
+| 程式碼顯示 | Shiki，只顯示程式碼 |
 | 動畫呈現 | 純前端 SVG / Canvas，或輕量函式庫（如 Framer Motion） |
 | 測驗功能 | 純前端 JS 邏輯，狀態存於 React state / Vue reactive，無資料庫 |
-| 部署 | 靜態網站託管：GitHub Pages / Vercel / Netlify |
+| 部署 | 首選 Vercel 靜態託管，設定子路由 fallback；直接開啟及重新整理須正常 |
 
 **明確排除**：使用者登入系統、資料庫、線上編譯執行器（如 Judge0）、進度追蹤後端、社群討論區、公司標籤系統。
 
@@ -260,12 +228,23 @@
 |---|---|
 | v1 | 初版大綱，含刷題平台功能（線上執行器、進度追蹤、社群） |
 | v2 | 改為「引導手冊」定位：移除社群、公司標籤、登入系統；每日/週挑戰改為無狀態的填空/選擇題測驗 |
-| v3（本版） | 新增「模式變形系統」：Sliding Window、Binary Search、Two Pointers 三個 pattern 完整收錄變形對照表，BFS/DFS、Backtracking、DP 列為擴充方向；補充 JSON 資料模型與頁面呈現規則 |
+| v3 | 新增「模式變形系統」：Sliding Window、Binary Search、Two Pointers 三個 pattern 完整收錄變形對照表，BFS/DFS、Backtracking、DP 列為擴充方向；補充 JSON 資料模型與頁面呈現規則 |
+| v4（本版） | 統一三語言呈現與首版範圍，建立正式資料契約及驗證；補齊變形程式碼、搜尋與題目索引，定義教學前提、內容數量及操作驗收 |
 
 ---
 
-## 7. 後續可執行的下一步
+## 7. 後續實作順序
 
-1. 依本 spec 的 JSON Schema，先完成 Sliding Window 的完整資料檔（含 5 種變形）
-2. 製作 Sliding Window 頁面原型（HTML/React），驗證「標準模板 + 變形 accordion + code diff 高亮 + 症狀查詢」的實際呈現效果
-3. 以此原型為模板，複製擴充至 Binary Search、Two Pointers、BFS/DFS、Backtracking、DP
+1. 資料契約與範例已完成，依 plan 第 2 步建立 React 靜態網站骨架。
+2. 依第 3 步補齊 Sliding Window 5 種變形並製作頁面原型，驗證標準模板、accordion 與 code diff。
+3. 依第 4 步完成跨模式搜尋、其餘首版標準模板與指定變形，再按第 5～8 步完成教材及整合驗收。
+
+## 8. v4 完成標準與驗收
+
+v4 整合模式範圍、三語言呈現、正式 Schema、變形程式碼、搜尋資料、題目索引及教學前提修正。內容最低數量依 [plan.md 的首版內容完成標準](plan.md#首版內容完成標準)；逐頁工作項目與狀態以 [內容清單](content-inventory.md) 及 `../content/catalog.json` 為準。
+
+- 題單中的 LC150 明確指 LeetCode Top Interview 150；不承諾首版完整收錄兩份題單，歸屬需逐題核實。
+- 測驗包含選擇、文字填空、程式碼填空；以可接受答案清單比對，不執行程式；每題提供解說與誤解，狀態只存在記憶體。
+- 手機版程式碼不造成整頁橫向溢出；tab、accordion 與測驗支援鍵盤操作與清楚的焦點樣式。
+- 靜態部署須支援子路由直接開啟、重新整理與應用程式 404。
+- 第一階段驗收是資料契約與有效範例，不代表所有教材已完成；實作順序依 plan.md。

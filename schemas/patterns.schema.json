@@ -1,0 +1,205 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "patterns.schema.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "keywords": {
+      "$ref": "common.schema.json#/definitions/texts"
+    },
+    "standard_templates": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/definitions/lesson"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "variations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "trigger_signal": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "keywords": {
+            "$ref": "common.schema.json#/definitions/texts"
+          },
+          "prerequisites": {
+            "$ref": "common.schema.json#/definitions/texts"
+          },
+          "counterexamples": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "scenario": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              },
+              "required": [
+                "scenario",
+                "reason"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "explanation": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "complexity": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "space": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "time",
+              "space",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "code": {
+            "$ref": "common.schema.json#/definitions/code"
+          },
+          "problem_ids": {
+            "$ref": "common.schema.json#/definitions/ids"
+          },
+          "content_ids": {
+            "$ref": "common.schema.json#/definitions/ids"
+          },
+          "base_template_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "diff_from_standard": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "removed_code_notes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "highlight_lines": {
+            "type": "object",
+            "properties": {
+              "python": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "java": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "cpp": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "python",
+              "java",
+              "cpp"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "trigger_signal",
+          "keywords",
+          "prerequisites",
+          "counterexamples",
+          "explanation",
+          "complexity",
+          "code",
+          "problem_ids",
+          "content_ids",
+          "base_template_id",
+          "diff_from_standard",
+          "removed_code_notes",
+          "highlight_lines"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "keywords",
+    "standard_templates",
+    "variations"
+  ],
+  "additionalProperties": false
+}
