@@ -1,0 +1,271 @@
+# LeetCode 新手引導手冊 — 網站規格文件 (spec.md)
+
+## 0. 專案定位
+
+**這是一本「上場前的教練手冊」，不是「訓練場」。**
+
+- 目標使用者：應屆畢業生、轉職者、準備技術面試的新手
+- 核心價值：在打開 LeetCode / HackerRank 之前，先建立「看到題目 → 辨識模式 → 套用模板 → 判斷變形」的完整思考框架
+- 明確邊界：
+  - ❌ 不做站內線上判題（no online judge / code execution）
+  - ❌ 不做使用者登入與帳號系統
+  - ❌ 不做進度追蹤資料庫
+  - ❌ 不做社群討論區
+  - ❌ 不收錄公司標籤
+  - ✅ 只做「讀懂 + 辨識 + 模板 + 概念測驗」，實際刷題導向外部 LeetCode 連結
+- 架構型態：純靜態網站，無後端伺服器，內容全部以本地 JSON / Markdown 管理
+
+---
+
+## 1. 必要功能模組
+
+### 1.1 資料結構講解 (`/data-structures`)
+
+| 項目 | 內容 |
+|---|---|
+| 涵蓋範圍 | Array、String、HashMap/Set、LinkedList、Stack、Queue、Heap、Tree (BST/Trie)、Graph、Union-Find |
+| 每頁內容 | 定義、時間/空間複雜度表、適用場景、常見誤區、靜態圖解或簡易動畫 |
+| 技術需求 | 純前端 SVG/Canvas 動畫（如 Heap sift-up/down、LinkedList 反轉），無需後端 |
+
+### 1.2 多語言對照 (`/languages`)
+
+- 每個模板 / 範例講解均提供 **C++ / Python / Java** 三語言並排對照
+- 「語言差異對照表」：如 Python `heapq` vs Java `PriorityQueue` vs C++ `priority_queue`
+- 明確聲明：**此區只用於「讀懂寫法」，不內建線上編譯執行器**
+
+### 1.3 引導式教學 (`/guided-learning`)
+
+每個代表題的教學流程（取代直接提供答案）：
+
+1. 這題屬於哪個解題模式？如何從題目關鍵字辨識？
+2. 暴力解法思路 + 為什麼不夠好
+3. 最佳解法的關鍵觀察（Aha moment）
+4. 虛擬碼（pseudocode）+ 三語言參考實作
+5. 複雜度分析 + 這個模式還能用在哪些題目
+
+結尾固定附「前往 LeetCode 練這題」外部連結，不在站內提供解題框。
+
+### 1.4 資料結構 / 模式模板庫 (`/templates`)
+
+標準模板清單：Binary Search、BFS/DFS、雙指針、Sliding Window、Backtracking、DP (top-down / bottom-up)
+
+每個模板包含：
+- 三語言版本 + 逐行註解
+- 「看到題目長怎樣該想到這個模板」辨識說明
+- 對應 Blind 75 / LC150 題號清單（純文字 + 外部連結，不收錄題目內容）
+- **見第 2 節：模式變形系統**（本次新增的核心功能）
+
+---
+
+## 2. 模式變形系統（Pattern Variation System）★核心新增功能
+
+### 2.1 設計邏輯
+
+新手最大的痛點不是「不會背模板」，而是「拿到新題目時看不出它跟哪個模板是同一家人、只是變形」。因此每個 Pattern 頁面採用三層結構：
+
+```
+標準模板 (Standard Template)
+   └─ 變形觸發條件 (Trigger Signal) ── 題目長怎樣時要考慮這個變形
+        └─ 變形手法 (Diff from Standard) ── 從標準模板改哪裡
+             └─ 對應題目 (Related Problems) ── 外部連結，不站內收題
+```
+
+頁面最上方另設「症狀 → 處方」快速對照表（Symptom-to-Pattern Quick Lookup），供使用者用題目關鍵字反查可能的 pattern + 變形。
+
+### 2.2 各 Pattern 的變形對照內容
+
+#### A. Sliding Window
+
+| 變形 | 辨識訊號 | 跟標準模板差在哪 | 對應題目 |
+|---|---|---|---|
+| 固定窗口 | 「長度為 k 的子陣列」 | 窗口大小固定，滑動時同時加入右邊、移除左邊 | Maximum Average Subarray I |
+| 可變窗口（找最長） | 「最長且滿足某條件的子字串」 | 右指針持續擴張，條件破壞才收縮左指針 | Longest Substring Without Repeating Characters |
+| 可變窗口（找最短） | 「最短且滿足某條件的子陣列」 | 條件一滿足就開始收縮左指針，過程中取最小值 | Minimum Size Subarray Sum |
+| 窗口+頻率計數 | 「包含所有字元/異位詞」 | 額外維護 HashMap 記錄窗口內元素頻率 | Minimum Window Substring、Permutation in String |
+| 窗口+單調隊列 | 「窗口內最大/最小值」 | 用 Deque 維護遞減/遞增序列，避免重新掃描窗口 | Sliding Window Maximum |
+
+#### B. Binary Search
+
+| 變形 | 辨識訊號 | 跟標準模板差在哪 | 對應題目 |
+|---|---|---|---|
+| 找確切值 | 陣列已排序，找 target | 標準三段式 l, r, mid | Binary Search（基本題） |
+| 找左/右邊界 | 「找第一個/最後一個滿足條件的位置」 | 找到後不馬上 return，繼續往同側收縮 | Find First and Last Position |
+| 旋轉陣列 | 「旋轉排序陣列」 | 每次先判斷哪一半有序，再決定 target 落在哪一側 | Search in Rotated Sorted Array |
+| 二分答案 | 題目問「最小的最大值」、「最少天數」等最佳化問題，陣列本身不一定排序 | 二分對象是「答案的可能範圍」，配合 check(mid) 判斷可行性 | Koko Eating Bananas、Capacity To Ship Packages |
+
+> 備註：二分答案是新手最常卡住的變形，因為表面看不出跟 Binary Search 有關，是引導內容需重點著墨處。
+
+#### C. Two Pointers
+
+| 變形 | 辨識訊號 | 跟標準模板差在哪 | 對應題目 |
+|---|---|---|---|
+| 對撞指針 | 已排序陣列，找兩數關係 | 左右指針從兩端往中間逼近 | Two Sum II、Container With Most Water |
+| 快慢指針 | 鏈結串列、找環、找中點 | 兩指針同起點不同速度 | Linked List Cycle、Middle of Linked List |
+| 三指針/多指針 | 「三數之和」類題目 | 固定外層指針 + 內層對撞指針 | 3Sum |
+| 原地分割 | 「移除元素」、「移動零」 | 一個指針負責寫入位置，一個指針負責掃描 | Move Zeroes、Remove Duplicates |
+
+#### D. BFS / DFS（未來可擴充，建議收錄方向）
+
+| 變形 | 辨識訊號 | 差異 | 對應題目 |
+|---|---|---|---|
+| 樹的層序遍歷 | 「按層輸出」、「每層平均/最大值」 | BFS + 記錄每層節點數量 | Binary Tree Level Order Traversal |
+| 圖的連通分量 | 「島嶼數量」、「群組數量」 | DFS/BFS + visited 標記，計算觸發次數 | Number of Islands |
+| 拓撲排序 | 「先修課程」、「依賴順序」 | BFS + 入度計算（Kahn's Algorithm） | Course Schedule |
+| 雙向 BFS | 「最短轉換序列」且狀態空間大 | 從起點與終點同時展開，減少搜尋空間 | Word Ladder |
+
+#### E. Backtracking（未來可擴充，建議收錄方向）
+
+| 變形 | 辨識訊號 | 差異 | 對應題目 |
+|---|---|---|---|
+| 排列 (Permutation) | 「所有排列方式」，順序有差 | 每層選未用過的元素，用 used[] 陣列 | Permutations |
+| 組合 (Combination) | 「所有組合方式」，順序無差 | 每層只往後選，避免重複組合 | Combinations、Subsets |
+| 含重複元素剪枝 | 「元素可能重複，但結果不可重複」 | 先排序，同層跳過重複值 | Subsets II、Permutations II |
+| 條件式剪枝 | 「總和等於 target」類限制 | 提前終止不可能的分支 | Combination Sum |
+
+#### F. Dynamic Programming（未來可擴充，建議收錄方向）
+
+| 變形 | 辨識訊號 | 差異 | 對應題目 |
+|---|---|---|---|
+| 一維 DP | 「第 n 步/個的最佳值」 | dp[i] 只依賴前面幾個狀態 | Climbing Stairs、House Robber |
+| 二維 DP（雙序列） | 兩個字串/陣列的比較關係 | dp[i][j] 表示兩序列前 i, j 個的關係 | Longest Common Subsequence |
+| 背包型 DP | 「容量限制下的最佳組合」 | dp[i][w] 是否選第 i 個物品 | 0/1 Knapsack、Coin Change |
+| 區間 DP | 「一段區間的最佳切法/合併方式」 | dp[i][j] 表示區間 i~j 的最佳解 | Burst Balloons |
+
+### 2.3 資料模型（JSON Schema）
+
+每個 pattern 一個 JSON 檔，新增變形時只需加入陣列元素，不需改動渲染邏輯：
+
+```json
+{
+  "pattern": "sliding-window",
+  "name": "Sliding Window",
+  "standard_template": {
+    "trigger": "連續子陣列/子字串，且需滿足某個條件",
+    "code": {
+      "python": "...",
+      "java": "...",
+      "cpp": "..."
+    }
+  },
+  "variations": [
+    {
+      "id": "fixed-size",
+      "name": "固定窗口大小",
+      "trigger_signal": "題目明確給出視窗長度 k",
+      "diff_from_standard": "窗口大小恆定，每次移動同時前進左右指針",
+      "code_diff_highlight": ["移除的地方永遠是 left", "不需要 while 收縮條件"],
+      "related_problems": [
+        { "name": "Maximum Average Subarray I", "leetcode_url": "https://leetcode.com/problems/maximum-average-subarray-i/" }
+      ]
+    },
+    {
+      "id": "shrink-to-min",
+      "name": "可變窗口找最短",
+      "trigger_signal": "問『最短/最小』且有一個滿足條件",
+      "diff_from_standard": "條件滿足後才開始收縮，收縮過程持續更新最小值",
+      "code_diff_highlight": ["加入 while 收縮迴圈", "更新 min_len 的時機在收縮前"],
+      "related_problems": [
+        { "name": "Minimum Size Subarray Sum", "leetcode_url": "https://leetcode.com/problems/minimum-size-subarray-sum/" }
+      ]
+    }
+  ],
+  "symptom_lookup_keywords": ["子陣列", "子字串", "連續", "視窗", "最長", "最短"]
+}
+```
+
+### 2.4 頁面呈現規則
+
+- 頁面上方：標準模板（語言 tab 切換：C++ / Python / Java）
+- 下方：變形卡片，以手風琴（accordion）方式展開，展開內容包含：
+  - 辨識訊號（關鍵字以醒目顏色標示）
+  - Code diff 呈現：僅高亮「新增/修改」的行數，而非整段重貼，讓使用者一眼看出差異點
+  - 對應題目清單（外部連結至 LeetCode，不站內收題）
+- 頁面最上方：「症狀 → 處方」快速查詢框，使用者輸入題目關鍵字，即時比對 `symptom_lookup_keywords` 顯示可能對應的 pattern/變形（純前端字串比對，無需後端）
+
+---
+
+## 3. 其他銜接內容模組
+
+### 3.1 學習路徑地圖 (`/roadmap`)
+- 純內容導覽，無帳號/進度追蹤
+- 依主題分類呈現建議學習順序（Array/雙指針 → Sliding Window → BFS/DFS → Backtracking → DP...）
+- 每分類列出 Blind 75 / LC150 對應題目「清單」（題名 + 難度 + 所屬 pattern + 外部連結）
+
+### 3.2 概念驗證測驗 (`/quiz`)（取代原每日/每週挑戰）
+- 形式：填空題 + 選擇題，測「概念理解」而非「解題能力」
+- 範例：
+  - 填空：「排序陣列中找兩數之和 target，優先考慮 ___ 模式」→ 雙指針
+  - 選擇：「以下哪個時間複雜度最適合描述 Binary Search？」
+  - 挖空模板：給一段 BFS 模板程式碼，挖空關鍵行讓使用者填入
+- 技術需求：純前端 JS 邏輯，題庫存於本地 JSON，作答狀態存在記憶體（reload 即重置），**不儲存作答紀錄**
+- 題庫可隨機抽題組合，模擬「每日一練」體感但無需後端
+
+### 3.3 模擬面試「思路」練習 (`/mock-interview`)
+- 白板口頭表達模式：給情境題，引導使用者練習「先講思路、再講複雜度」，不要求真的寫程式送出
+- 常見行為面試題（Behavioral Questions）+ STAR 法則說明與範例
+- 技術面試流程說明：面試官想看什麼、如何溝通卡關、如何主動提出 trade-off
+
+### 3.4 履歷與求職銜接資源 (`/career-prep`)
+- 技術履歷撰寫指南（新鮮人常見錯誤）
+- GitHub / Portfolio 專案建議清單
+- 面試前一週 / 前一天準備 checklist
+
+### 3.5 Big O 複雜度分析教學 (`/big-o`)
+- 教學重點：如何在面試中口頭推導、表達時間/空間複雜度
+- 用範例題目示範分析過程（非站內解題）
+
+---
+
+## 4. 網站資訊架構 (Sitemap)
+
+```
+/                        首頁：定位說明 + 快速導覽
+/data-structures         資料結構講解
+/languages                三語言差異對照
+/templates                模式模板庫（含變形系統）
+  /templates/sliding-window
+  /templates/binary-search
+  /templates/two-pointers
+  /templates/bfs-dfs
+  /templates/backtracking
+  /templates/dp
+/guided-learning          引導式教學（代表題拆解）
+/roadmap                  學習路徑地圖
+/quiz                     概念驗證測驗
+/mock-interview           模擬面試思路練習
+/career-prep              履歷與求職準備
+/big-o                    複雜度分析教學
+```
+
+---
+
+## 5. 技術架構
+
+| 項目 | 建議方案 |
+|---|---|
+| 前端框架 | React 或 Vue（純靜態網站，無需 SSR） |
+| 內容管理 | Markdown（教學文章）+ JSON（模板、變形資料、測驗題庫） |
+| 程式碼顯示 | Prism.js / Shiki（僅語法高亮顯示，不執行程式碼） |
+| 動畫呈現 | 純前端 SVG / Canvas，或輕量函式庫（如 Framer Motion） |
+| 測驗功能 | 純前端 JS 邏輯，狀態存於 React state / Vue reactive，無資料庫 |
+| 部署 | 靜態網站託管：GitHub Pages / Vercel / Netlify |
+
+**明確排除**：使用者登入系統、資料庫、線上編譯執行器（如 Judge0）、進度追蹤後端、社群討論區、公司標籤系統。
+
+---
+
+## 6. 需求異動紀錄
+
+| 版本 | 異動內容 |
+|---|---|
+| v1 | 初版大綱，含刷題平台功能（線上執行器、進度追蹤、社群） |
+| v2 | 改為「引導手冊」定位：移除社群、公司標籤、登入系統；每日/週挑戰改為無狀態的填空/選擇題測驗 |
+| v3（本版） | 新增「模式變形系統」：Sliding Window、Binary Search、Two Pointers 三個 pattern 完整收錄變形對照表，BFS/DFS、Backtracking、DP 列為擴充方向；補充 JSON 資料模型與頁面呈現規則 |
+
+---
+
+## 7. 後續可執行的下一步
+
+1. 依本 spec 的 JSON Schema，先完成 Sliding Window 的完整資料檔（含 5 種變形）
+2. 製作 Sliding Window 頁面原型（HTML/React），驗證「標準模板 + 變形 accordion + code diff 高亮 + 症狀查詢」的實際呈現效果
+3. 以此原型為模板，複製擴充至 Binary Search、Two Pointers、BFS/DFS、Backtracking、DP
