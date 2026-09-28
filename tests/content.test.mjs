@@ -21,7 +21,7 @@ const cases = [
   ['missing fill answer', d => d.quizzes[1].accepted_answers = [], /must NOT have fewer than 1/],
   ['missing code blank', d => d.quizzes[2].code_with_blank = 'no blank', /exactly one/],
   ['unverified collection', d => d.problems[0].collection_source_ids.push('blind-75'), /not verified/],
-  ['ready page missing article', d => d.content[0].status = 'ready', /requires markdown_path/],
+  ['ready page missing article', d => { d.content[0].status = 'ready'; d.content[0].markdown_path = null; }, /requires markdown_path/],
   ['missing article file', d => d.content[0].markdown_path = 'content/articles/missing.md', /missing markdown/],
 ];
 for (const [name, mutate, expected] of cases) test(`rejects ${name}`, async () => {

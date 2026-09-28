@@ -4,7 +4,7 @@
     "route": "/",
     "title": "首頁",
     "status": "planned",
-    "markdown_path": null,
+    "markdown_path": "content/articles/home.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
