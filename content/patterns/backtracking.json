@@ -1,0 +1,103 @@
+{
+  "id": "backtracking",
+  "name": "Backtracking",
+  "keywords": [
+    "回溯",
+    "backtracking",
+    "枚舉",
+    "所有組合",
+    "子集合"
+  ],
+  "standard_templates": [
+    {
+      "id": "subsets",
+      "name": "回溯：枚舉所有子集合",
+      "trigger_signal": "列出所有選擇組合，順序無關，元素不可重複使用。",
+      "keywords": [
+        "回溯",
+        "所有組合",
+        "子集合",
+        "backtracking"
+      ],
+      "prerequisites": [
+        "nums 的值互不相同；空陣列的答案包含一個空集合。",
+        "输出大小呈指數成長，只適用小 n；本範例建議 n<=20，實際仍受記憶體限制。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "nums=[1,1] 直接套用此模板。",
+          "reason": "會產生重複的值集合；含重複值需先排序並加入同層跳過規則。"
+        }
+      ],
+      "explanation": "每次遞迴先保存目前路徑的複本，再枚舉 start 之後的元素。加入一個選擇、遞迴 i+1、撤銷選擇；i+1 確保同一路徑不重用元素。保存複本避免所有答案都指向同一個可變陣列。",
+      "complexity": {
+        "time": "O(n·2^n)",
+        "space": "O(n)，另計輸出 O(n·2^n)",
+        "reason": "共 2^n 個子集合，複製輸出總量為 O(n·2^n)；路徑與遞迴堆疊深度 O(n)。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def subsets(nums):",
+            "    result, path = [], []",
+            "    def search(start):",
+            "        result.append(path.copy())  # 保存複本，也包含空集合",
+            "        for i in range(start, len(nums)):",
+            "            path.append(nums[i])  # 選擇",
+            "            search(i + 1)  # 下層只往後選",
+            "            path.pop()  # 撤銷",
+            "    search(0)",
+            "    return result"
+          ]
+        },
+        "java": {
+          "lines": [
+            "import java.util.*;",
+            "class Solution {",
+            "    private void search(int[] nums, int start, List<Integer> path, List<List<Integer>> result) {",
+            "        result.add(new ArrayList<>(path)); // 保存複本",
+            "        for (int i = start; i < nums.length; i++) {",
+            "            path.add(nums[i]);",
+            "            search(nums, i + 1, path, result);",
+            "            path.remove(path.size() - 1); // 撤銷",
+            "        }",
+            "    }",
+            "    public List<List<Integer>> subsets(int[] nums) {",
+            "        List<List<Integer>> result = new ArrayList<>();",
+            "        search(nums, 0, new ArrayList<>(), result);",
+            "        return result;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <functional>",
+            "std::vector<std::vector<int>> subsets(const std::vector<int>& nums) {",
+            "    std::vector<std::vector<int>> result;",
+            "    std::vector<int> path;",
+            "    std::function<void(int)> search = [&](int start) {",
+            "        result.push_back(path); // 複製當前路徑",
+            "        for (int i = start; i < static_cast<int>(nums.size()); ++i) {",
+            "            path.push_back(nums[i]);",
+            "            search(i + 1);",
+            "            path.pop_back(); // 撤銷",
+            "        }",
+            "    };",
+            "    search(0);",
+            "    return result;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-78"
+      ],
+      "content_ids": [
+        "template-backtracking"
+      ]
+    }
+  ],
+  "variations": []
+}

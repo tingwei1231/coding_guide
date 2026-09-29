@@ -11,5 +11,252 @@
     ],
     "source_id": "leetcode-643-source",
     "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-3",
+    "platform": "leetcode",
+    "number": 3,
+    "name": "Longest Substring Without Repeating Characters",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "source_id": "leetcode-3-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-209",
+    "platform": "leetcode",
+    "number": 209,
+    "name": "Minimum Size Subarray Sum",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "source_id": "leetcode-209-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-76",
+    "platform": "leetcode",
+    "number": 76,
+    "name": "Minimum Window Substring",
+    "difficulty": "hard",
+    "url": "https://leetcode.com/problems/minimum-window-substring/",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "source_id": "leetcode-76-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-567",
+    "platform": "leetcode",
+    "number": 567,
+    "name": "Permutation in String",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/permutation-in-string/",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "source_id": "leetcode-567-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-239",
+    "platform": "leetcode",
+    "number": 239,
+    "name": "Sliding Window Maximum",
+    "difficulty": "hard",
+    "url": "https://leetcode.com/problems/sliding-window-maximum/",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "source_id": "leetcode-239-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-704",
+    "platform": "leetcode",
+    "number": 704,
+    "name": "Binary Search",
+    "difficulty": "easy",
+    "url": "https://leetcode.com/problems/binary-search/",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "source_id": "leetcode-704-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-34",
+    "platform": "leetcode",
+    "number": 34,
+    "name": "Find First and Last Position of Element in Sorted Array",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "source_id": "leetcode-34-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-33",
+    "platform": "leetcode",
+    "number": 33,
+    "name": "Search in Rotated Sorted Array",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "source_id": "leetcode-33-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-875",
+    "platform": "leetcode",
+    "number": 875,
+    "name": "Koko Eating Bananas",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/koko-eating-bananas/",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "source_id": "leetcode-875-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-1011",
+    "platform": "leetcode",
+    "number": 1011,
+    "name": "Capacity To Ship Packages Within D Days",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "source_id": "leetcode-1011-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-167",
+    "platform": "leetcode",
+    "number": 167,
+    "name": "Two Sum II - Input Array Is Sorted",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-167-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-11",
+    "platform": "leetcode",
+    "number": 11,
+    "name": "Container With Most Water",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/container-with-most-water/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-11-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-141",
+    "platform": "leetcode",
+    "number": 141,
+    "name": "Linked List Cycle",
+    "difficulty": "easy",
+    "url": "https://leetcode.com/problems/linked-list-cycle/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-141-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-876",
+    "platform": "leetcode",
+    "number": 876,
+    "name": "Middle of the Linked List",
+    "difficulty": "easy",
+    "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-876-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-15",
+    "platform": "leetcode",
+    "number": 15,
+    "name": "3Sum",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/3sum/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-15-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-283",
+    "platform": "leetcode",
+    "number": 283,
+    "name": "Move Zeroes",
+    "difficulty": "easy",
+    "url": "https://leetcode.com/problems/move-zeroes/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-283-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-26",
+    "platform": "leetcode",
+    "number": 26,
+    "name": "Remove Duplicates from Sorted Array",
+    "difficulty": "easy",
+    "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "source_id": "leetcode-26-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-78",
+    "platform": "leetcode",
+    "number": 78,
+    "name": "Subsets",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/subsets/",
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "source_id": "leetcode-78-source",
+    "collection_source_ids": []
+  },
+  {
+    "id": "leetcode-198",
+    "platform": "leetcode",
+    "number": 198,
+    "name": "House Robber",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/house-robber/",
+    "pattern_ids": [
+      "dp"
+    ],
+    "source_id": "leetcode-198-source",
+    "collection_source_ids": []
   }
 ]

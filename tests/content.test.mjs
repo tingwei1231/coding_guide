@@ -3,10 +3,13 @@ import assert from 'node:assert/strict';
 import { loadContent, validateContent } from '../scripts/validate-content.mjs';
 
 const fixture = await loadContent();
+// Keep the known Sliding Window fixture first as more pattern files are added.
+fixture.patterns.sort((a, b) => Number(b.id === 'sliding-window') - Number(a.id === 'sliding-window'));
 test('Sliding Window sample and all three quiz types satisfy contracts', async () => {
   assert.deepEqual(await validateContent(fixture), []);
 });
 const cases = [
+  ['corrupted explanation', d => d.patterns[0].variations[0].complexity.reason = '????', /encoding corruption/],
   ['missing prerequisite', d => delete d.patterns[0].standard_templates[0].prerequisites, /required.*prerequisites/],
   ['missing language', d => delete d.patterns[0].variations[0].code.java, /required.*java/],
   ['duplicate pattern ID', d => d.patterns.push(structuredClone(d.patterns[0])), /duplicate id sliding-window/],

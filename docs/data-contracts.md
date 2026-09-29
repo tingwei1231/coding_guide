@@ -56,6 +56,10 @@ normalization 明定 trim、collapse_whitespace、case_sensitive。先依設定�
 
 ## 驗證方式與限制
 
+搜尋由 `src/search.ts` 共用實作：先 trim、英文轉小寫並合併空白；保留完整查詢及分詞，採 OR。關鍵字與查詢詞做雙向子字串比對，支援中文不分詞輸入。完整關鍵字匹配優先，再以變形優先，最後按穩定 ID 排序；空查詢顯示六種分類。查詢保留在 URL 的 q 參數，點選變形結果附上對應 hash。
+
+內容驗證也會攔截 Unicode replacement character 及連續三個以上問號，以偵測編碼損壞。編輯中文資料應使用 UTF-8 檔案或直接 patch，避免經由 Windows PowerShell 的預設編碼管線傳送。
+
 執行 `npm run validate:content` 與 `npm test`。Schema 處理型別、必填、範圍、未知欄位與題型；程式補充跨檔引用、唯一性、高亮上界與檔案存在性。JSON 語法、缺檔或驗證失敗皆回傳非零退出碼。
 
 驗證器不執行教學程式、不連網核對題單，也不取代人工演算法審查。測試使用獨立複本注入壞資料，不修改實際內容。

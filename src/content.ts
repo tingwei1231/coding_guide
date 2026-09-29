@@ -10,8 +10,15 @@ export interface Lesson {
   explanation: string; code: Record<'python' | 'java' | 'cpp', { lines: string[] }>;
   complexity: { time: string; space: string; reason: string };
   problem_ids: string[];
+  keywords: string[];
+  counterexamples: { scenario: string; reason: string }[];
 }
-interface Pattern { id: string; name: string; standard_templates: Lesson[]; variations: Lesson[] }
+export type Language = 'python' | 'java' | 'cpp';
+export interface Variation extends Lesson {
+  base_template_id: string; diff_from_standard: string; removed_code_notes: string[];
+  highlight_lines: Record<Language, number[]>;
+}
+export interface Pattern { id: string; name: string; keywords: string[]; standard_templates: Lesson[]; variations: Variation[] }
 export const pages: Page[] = catalog;
 export const problemIndex = problems;
 const patterns = import.meta.glob<Pattern>('../content/patterns/*.json', { eager: true, import: 'default' });

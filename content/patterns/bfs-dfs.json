@@ -1,0 +1,205 @@
+{
+  "id": "bfs-dfs",
+  "name": "BFS / DFS",
+  "keywords": [
+    "bfs",
+    "dfs",
+    "圖",
+    "樹",
+    "遍歷",
+    "層序",
+    "可達"
+  ],
+  "standard_templates": [
+    {
+      "id": "bfs",
+      "name": "BFS：以佇列逐層走訪",
+      "trigger_signal": "無權圖的層級、最少邊數、由近到遠探索。",
+      "keywords": [
+        "bfs",
+        "廣度優先",
+        "最少步數",
+        "層序"
+      ],
+      "prerequisites": [
+        "graph 為鄰接表，所有節點編號在 [0,n)；start 為有效節點。",
+        "只走訪 start 可達的節點；鄰居依輸入順序處理，有向／無向皆可。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "邊的成本不同，卻把第一次到達當成最低成本。",
+          "reason": "BFS 保證的是最少邊數；帶權最短路徑需其他方法。"
+        }
+      ],
+      "explanation": "起點入隊就標记 visited；每次取出隊首，依序加入未訪鄰居。標記時機在入隊而非出隊，避免同一節點被不同父節點重複加入。此範例回傳走訪順序，不包含距離陣列。",
+      "complexity": {
+        "time": "O(V+E)",
+        "space": "O(V)",
+        "reason": "V、E 為整張圖的節點與邊數。visited 初始化 O(V)，可達邊各查看一次，佇列與輸出至多 O(V)。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "from collections import deque",
+            "def bfs(graph, start):",
+            "    visited = [False] * len(graph)",
+            "    queue = deque([start])",
+            "    visited[start] = True  # 入隊時就標記",
+            "    order = []",
+            "    while queue:",
+            "        node = queue.popleft()",
+            "        order.append(node)",
+            "        for neighbor in graph[node]:",
+            "            if not visited[neighbor]:",
+            "                visited[neighbor] = True",
+            "                queue.append(neighbor)",
+            "    return order"
+          ]
+        },
+        "java": {
+          "lines": [
+            "import java.util.*;",
+            "class Solution {",
+            "    public List<Integer> bfs(List<List<Integer>> graph, int start) {",
+            "        boolean[] visited = new boolean[graph.size()];",
+            "        ArrayDeque<Integer> queue = new ArrayDeque<>();",
+            "        List<Integer> order = new ArrayList<>();",
+            "        queue.addLast(start);",
+            "        visited[start] = true; // 入隊就標記",
+            "        while (!queue.isEmpty()) {",
+            "            int node = queue.removeFirst();",
+            "            order.add(node);",
+            "            for (int neighbor : graph.get(node)) {",
+            "                if (!visited[neighbor]) {",
+            "                    visited[neighbor] = true;",
+            "                    queue.addLast(neighbor);",
+            "                }",
+            "            }",
+            "        }",
+            "        return order;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <queue>",
+            "std::vector<int> bfs(const std::vector<std::vector<int>>& graph, int start) {",
+            "    std::vector<bool> visited(graph.size(), false);",
+            "    std::queue<int> queue;",
+            "    std::vector<int> order;",
+            "    queue.push(start);",
+            "    visited[start] = true; // 入隊就標記",
+            "    while (!queue.empty()) {",
+            "        int node = queue.front();",
+            "        queue.pop();",
+            "        order.push_back(node);",
+            "        for (int neighbor : graph[node]) {",
+            "            if (!visited[neighbor]) {",
+            "                visited[neighbor] = true;",
+            "                queue.push(neighbor);",
+            "            }",
+            "        }",
+            "    }",
+            "    return order;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [],
+      "content_ids": [
+        "template-bfs-dfs"
+      ]
+    },
+    {
+      "id": "dfs",
+      "name": "DFS：遞迴深入走訪",
+      "trigger_signal": "探索可達性、連通區域或一路深入的路徑。",
+      "keywords": [
+        "dfs",
+        "深度優先",
+        "可達",
+        "連通"
+      ],
+      "prerequisites": [
+        "graph 為鄰接表，所有節點編號在 [0,n)；start 為有效節點。",
+        "只走訪 start 可達的節點；鄰居依輸入順序處理，有向／無向皆可。",
+        "遞迴深度受語言執行環境限制；長鏈圖應改用顯式堆疊，本教學採小圖。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "含環圖只檢查父節點，卻未記錄完整 visited。",
+          "reason": "一般圖可能從別的路徑繞回舊節點，需在進入節點時標記，否則可能無限遞迴。"
+        }
+      ],
+      "explanation": "進入節點立刻標記並記錄，依序遞迴每個未訪鄰居。visited 表示整次走訪已看過的節點，與回溯法中需要撤銷的路徑狀態不同；DFS 第一次到達不保證最短路徑。",
+      "complexity": {
+        "time": "O(V+E)",
+        "space": "O(V)",
+        "reason": "visited、輸出與最深遞迴鏈至多 O(V)，每條可達邊只檢查一次。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def dfs(graph, start):",
+            "    visited = [False] * len(graph)",
+            "    order = []",
+            "    def visit(node):",
+            "        visited[node] = True  # 進入即標記",
+            "        order.append(node)",
+            "        for neighbor in graph[node]:",
+            "            if not visited[neighbor]:",
+            "                visit(neighbor)",
+            "    visit(start)",
+            "    return order"
+          ]
+        },
+        "java": {
+          "lines": [
+            "import java.util.*;",
+            "class Solution {",
+            "    private void visit(List<List<Integer>> graph, int node, boolean[] visited, List<Integer> order) {",
+            "        visited[node] = true; // 在遞迴鄰居前標記",
+            "        order.add(node);",
+            "        for (int neighbor : graph.get(node)) {",
+            "            if (!visited[neighbor]) visit(graph, neighbor, visited, order);",
+            "        }",
+            "    }",
+            "    public List<Integer> dfs(List<List<Integer>> graph, int start) {",
+            "        boolean[] visited = new boolean[graph.size()];",
+            "        List<Integer> order = new ArrayList<>();",
+            "        visit(graph, start, visited, order);",
+            "        return order;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <functional>",
+            "std::vector<int> dfs(const std::vector<std::vector<int>>& graph, int start) {",
+            "    std::vector<bool> visited(graph.size(), false);",
+            "    std::vector<int> order;",
+            "    std::function<void(int)> visit = [&](int node) {",
+            "        visited[node] = true;",
+            "        order.push_back(node);",
+            "        for (int neighbor : graph[node]) {",
+            "            if (!visited[neighbor]) visit(neighbor);",
+            "        }",
+            "    };",
+            "    visit(start);",
+            "    return order;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [],
+      "content_ids": [
+        "template-bfs-dfs"
+      ]
+    }
+  ],
+  "variations": []
+}

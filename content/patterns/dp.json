@@ -1,0 +1,172 @@
+{
+  "id": "dp",
+  "name": "Dynamic Programming",
+  "keywords": [
+    "dp",
+    "動態規劃",
+    "最佳值",
+    "記憶化",
+    "背包"
+  ],
+  "standard_templates": [
+    {
+      "id": "top-down",
+      "name": "DP top-down：記憶化選或不選",
+      "trigger_signal": "最佳值問題存在重疊子問題，可由位置 i 定義剩餘最佳值。",
+      "keywords": [
+        "dp",
+        "記憶化",
+        "top-down",
+        "重疊子問題"
+      ],
+      "prerequisites": [
+        "nums 為非負整數，選取的兩個位置不可相鄰；每個位置至多取一次。",
+        "空陣列回傳 0；Java/C++ 的最大總和需在 64 位有號整數範圍內。",
+        "本遞迴示範採 n<=100，較長輸入使用 bottom-up 避免堆疊限制。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "每次都重新求解 i+1 與 i+2，未快取。",
+          "reason": "重疊子問題導致指數級重算；記憶化後每個狀態只計算一次。"
+        }
+      ],
+      "explanation": "solve(i) 表示從 i 開始可取得的最大總額；跳過 i 得 solve(i+1)，選 i 得 nums[i]+solve(i+2)。越界為 0，快取兩種選擇的最大值。狀態表示不可相鄰選取，不是一般背包容量狀態。",
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(n)",
+        "reason": "n 個狀態各常數次轉移，記憶表與遞迴堆疊皆為 O(n)。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "from functools import lru_cache",
+            "def rob_top_down(nums):",
+            "    @lru_cache(None)",
+            "    def solve(i):",
+            "        if i >= len(nums):",
+            "            return 0  # 空後綴",
+            "        return max(solve(i + 1), nums[i] + solve(i + 2))",
+            "    return solve(0)"
+          ]
+        },
+        "java": {
+          "lines": [
+            "import java.util.Arrays;",
+            "class Solution {",
+            "    private long solve(int[] nums, int i, long[] memo) {",
+            "        if (i >= nums.length) return 0;",
+            "        if (memo[i] != -1) return memo[i]; // 已計算",
+            "        memo[i] = Math.max(solve(nums, i + 1, memo), nums[i] + solve(nums, i + 2, memo));",
+            "        return memo[i];",
+            "    }",
+            "    public long robTopDown(int[] nums) {",
+            "        long[] memo = new long[nums.length];",
+            "        Arrays.fill(memo, -1); // 非負答案，-1 可作哨兵",
+            "        return solve(nums, 0, memo);",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <functional>",
+            "#include <algorithm>",
+            "long long robTopDown(const std::vector<int>& nums) {",
+            "    std::vector<long long> memo(nums.size(), -1);",
+            "    std::function<long long(int)> solve = [&](int i) -> long long {",
+            "        if (i >= static_cast<int>(nums.size())) return 0;",
+            "        if (memo[i] != -1) return memo[i];",
+            "        memo[i] = std::max(solve(i + 1), nums[i] + solve(i + 2));",
+            "        return memo[i];",
+            "    };",
+            "    return solve(0);",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-198"
+      ],
+      "content_ids": [
+        "template-dp"
+      ]
+    },
+    {
+      "id": "bottom-up",
+      "name": "DP bottom-up：從小狀態推進",
+      "trigger_signal": "相同選或不選轉移，可依序累積前綴最佳值。",
+      "keywords": [
+        "dp",
+        "bottom-up",
+        "最佳值",
+        "狀態壓縮"
+      ],
+      "prerequisites": [
+        "nums 為非負整數，選取的兩個位置不可相鄰；每個位置至多取一次。",
+        "空陣列回傳 0；Java/C++ 的最大總和需在 64 位有號整數範圍內。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "先把 prev2 設成 prev1，再用它計算選取目前元素。",
+          "reason": "會把相鄰位置一起選入；應先以舊狀態計算 current，再同步推進。"
+        }
+      ],
+      "explanation": "prev1 是已處理前綴的最佳值，prev2 是再少一個位置的最佳值。current=max(prev1,prev2+value)，算完後才推進。與 top-down 的後綴視角不同，但都避免相鄰選取。背包題需另外定義容量：0/1 每物品至多一次，壓縮容量通常倒序；可重複取用的完全背包通常正序。兩者不能只因關鍵字相似就照搬本模板。",
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(1)",
+        "reason": "每個元素處理一次，只保留兩個前綴狀態。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def rob_bottom_up(nums):",
+            "    prev2 = prev1 = 0  # 空前綴",
+            "    for value in nums:",
+            "        current = max(prev1, prev2 + value)  # 使用舊狀態",
+            "        prev2, prev1 = prev1, current",
+            "    return prev1"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public long robBottomUp(int[] nums) {",
+            "        long prev2 = 0, prev1 = 0;",
+            "        for (int value : nums) {",
+            "            long current = Math.max(prev1, prev2 + value);",
+            "            prev2 = prev1; // current 已算好才能推進",
+            "            prev1 = current;",
+            "        }",
+            "        return prev1;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <algorithm>",
+            "long long robBottomUp(const std::vector<int>& nums) {",
+            "    long long prev2 = 0, prev1 = 0;",
+            "    for (int value : nums) {",
+            "        long long current = std::max(prev1, prev2 + value);",
+            "        prev2 = prev1; // 先以舊狀態算 current",
+            "        prev1 = current;",
+            "    }",
+            "    return prev1;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-198"
+      ],
+      "content_ids": [
+        "template-dp"
+      ]
+    }
+  ],
+  "variations": []
+}

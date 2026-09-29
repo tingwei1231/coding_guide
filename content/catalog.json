@@ -220,12 +220,19 @@
     "id": "template-sliding-window",
     "route": "/templates/sliding-window",
     "title": "sliding-window",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/sliding-window.md",
     "pattern_ids": [
       "sliding-window"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-643",
+      "leetcode-3",
+      "leetcode-209",
+      "leetcode-76",
+      "leetcode-567",
+      "leetcode-239"
+    ],
     "sections": [
       "辨識",
       "前提",
@@ -239,12 +246,18 @@
     "id": "template-binary-search",
     "route": "/templates/binary-search",
     "title": "binary-search",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/binary-search.md",
     "pattern_ids": [
       "binary-search"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-704",
+      "leetcode-34",
+      "leetcode-33",
+      "leetcode-875",
+      "leetcode-1011"
+    ],
     "sections": [
       "辨識",
       "前提",
@@ -258,12 +271,20 @@
     "id": "template-two-pointers",
     "route": "/templates/two-pointers",
     "title": "two-pointers",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/two-pointers.md",
     "pattern_ids": [
       "two-pointers"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-167",
+      "leetcode-11",
+      "leetcode-141",
+      "leetcode-876",
+      "leetcode-15",
+      "leetcode-283",
+      "leetcode-26"
+    ],
     "sections": [
       "辨識",
       "前提",
@@ -277,8 +298,8 @@
     "id": "template-bfs-dfs",
     "route": "/templates/bfs-dfs",
     "title": "bfs-dfs",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/bfs-dfs.md",
     "pattern_ids": [
       "bfs-dfs"
     ],
@@ -296,12 +317,14 @@
     "id": "template-backtracking",
     "route": "/templates/backtracking",
     "title": "backtracking",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/backtracking.md",
     "pattern_ids": [
       "backtracking"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-78"
+    ],
     "sections": [
       "辨識",
       "前提",
@@ -315,12 +338,14 @@
     "id": "template-dp",
     "route": "/templates/dp",
     "title": "dp",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/dp.md",
     "pattern_ids": [
       "dp"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-198"
+    ],
     "sections": [
       "辨識",
       "前提",

@@ -115,14 +115,14 @@
       "explanation": "先算首個完整窗口，再每次加入右端、移除 right-k。以首個窗口總和初始化答案以支援全負數。",
       "complexity": {
         "time": "O(n)",
-        "space": "O(1)（Python 此寫法 O(k)）",
-        "reason": "窗口增量更新；Python nums[:k] 會建立長度 k 的暫存切片，Java/C++ 只用常數額外空間。"
+        "space": "O(1)",
+        "reason": "先建立首個長度 k 的窗口，再增量更新；Python 使用生成器而非切片，因此三語言皆只需 O(1) 額外空間，總時間為 O(k + n - k) = O(n)。"
       },
       "code": {
         "python": {
           "lines": [
             "def find_max_average(nums, k):",
-            "    total = sum(nums[:k])  # 先建立第一個完整窗口",
+            "    total = sum(nums[i] for i in range(k))  # 使用生成器，不複製切片",
             "    best = total  # 支援全負數，不能設成 0",
             "    for right in range(k, len(nums)):",
             "        total += nums[right] - nums[right - k]  # 加右、移左",
@@ -185,25 +185,549 @@
         ],
         "java": [
           2,
-          3,
           4,
           5,
-          6,
           7,
           8,
           10
         ],
         "cpp": [
           3,
-          4,
           5,
           6,
-          7,
           8,
           9,
           11
         ]
       }
+    },
+    {
+      "id": "longest-unique",
+      "name": "可變窗口：找最長不重複子字串",
+      "keywords": [
+        "最長",
+        "不重複",
+        "子字串"
+      ],
+      "trigger_signal": "最長且不含重複字元的連續子字串。",
+      "prerequisites": [
+        "三語言對照以 ASCII 字元為範圍；Unicode 字素需額外分詞。",
+        "移除左端可恢復不重複性；空字串回傳 0。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "子序列可以跳過中間字元。",
+          "reason": "窗口只能表示連續區間，不能直接求最長不重複子序列。"
+        }
+      ],
+      "explanation": "維護目前窗口字元集合。新字元重複時，先移除左端直到不重複，再加入新字元並更新最長長度。例 abba 在第二個 b 時需移除 a、b，答案仍是 2。",
+      "complexity": {
+        "time": "O(n)（雜湊操作平均 O(1)）",
+        "space": "O(min(n, Σ))",
+        "reason": "兩端各走至多 n 次，集合只保留窗口內相異字元；Σ 為字元集大小。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def length_of_longest_substring(s):",
+            "    seen = set()  # 保存目前窗口字元",
+            "    left = best = 0",
+            "    for right, char in enumerate(s):",
+            "        while char in seen:  # 重複才收縮",
+            "            seen.remove(s[left])",
+            "            left += 1",
+            "        seen.add(char)  # 收縮後才加入新字元",
+            "        best = max(best, right - left + 1)  # 合法後更新",
+            "    return best"
+          ]
+        },
+        "java": {
+          "lines": [
+            "import java.util.HashSet;",
+            "class Solution {",
+            "    public int lengthOfLongestSubstring(String s) {",
+            "        HashSet<Character> seen = new HashSet<>(); // 窗口內字元",
+            "        int left = 0, best = 0;",
+            "        for (int right = 0; right < s.length(); right++) {",
+            "            char ch = s.charAt(right);",
+            "            while (seen.contains(ch)) { // 先移除重複",
+            "                seen.remove(s.charAt(left++));",
+            "            }",
+            "            seen.add(ch);",
+            "            best = Math.max(best, right - left + 1); // 合法後更新",
+            "        }",
+            "        return best;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <string>",
+            "#include <unordered_set>",
+            "#include <algorithm>",
+            "int lengthOfLongestSubstring(const std::string& s) {",
+            "    std::unordered_set<char> seen; // 窗口內字元",
+            "    int left = 0, best = 0;",
+            "    for (int right = 0; right < static_cast<int>(s.size()); ++right) {",
+            "        char ch = s[right];",
+            "        while (seen.count(ch)) { // 先移除重複",
+            "            seen.erase(s[left++]);",
+            "        }",
+            "        seen.insert(ch);",
+            "        best = std::max(best, right - left + 1); // 合法後更新",
+            "    }",
+            "    return best;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-3"
+      ],
+      "diff_from_standard": "總和狀態換為集合；以新字元是否重複判斷收縮，仍在窗口恢復合法後更新最長答案。",
+      "removed_code_notes": [
+        "移除 budget 與 total。"
+      ],
+      "highlight_lines": {
+        "python": [
+          2,
+          5,
+          6,
+          8
+        ],
+        "java": [
+          1,
+          4,
+          7,
+          8,
+          9,
+          11
+        ],
+        "cpp": [
+          2,
+          5,
+          8,
+          9,
+          10,
+          12
+        ]
+      },
+      "base_template_id": "longest-valid",
+      "content_ids": [
+        "template-sliding-window"
+      ]
+    },
+    {
+      "id": "shrink-to-min",
+      "name": "可變窗口：找最短總和達標子陣列",
+      "keywords": [
+        "最短",
+        "總和至少",
+        "正整數"
+      ],
+      "trigger_signal": "正整數陣列，求總和至少 target 的最短連續子陣列。",
+      "prerequisites": [
+        "nums 為正整數，target > 0；總和不超過 64 位有號整數。",
+        "無解回傳 0；空陣列也回傳 0。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "nums=[1,-1,5], target=5",
+          "reason": "簡單窗口會得到長度 3，漏掉 [5]；負數令移除左端後總和可能增加。"
+        }
+      ],
+      "explanation": "每次加入右端後，只要總和達標，就先記錄長度再移除左端。與找最長相反：合法時主動收縮，直到不合法才重新擴張。例 target=7、[2,3,1,2,4,3] 得到 [4,3]，長度 2。",
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(1)",
+        "reason": "兩端各前進最多 n 次，while 不會造成 O(n²)。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def min_sub_array_len(target, nums):",
+            "    left = total = 0",
+            "    best = len(nums) + 1  # 尚未找到答案",
+            "    for right, value in enumerate(nums):",
+            "        total += value  # 先擴張",
+            "        while total >= target:  # 滿足條件才收縮",
+            "            best = min(best, right - left + 1)  # 移除前記錄合法答案",
+            "            total -= nums[left]",
+            "            left += 1",
+            "    return 0 if best == len(nums) + 1 else best"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public int minSubArrayLen(int target, int[] nums) {",
+            "        int left = 0, best = nums.length + 1; // 未找到的哨兵",
+            "        long total = 0;",
+            "        for (int right = 0; right < nums.length; right++) {",
+            "            total += nums[right];",
+            "            while (total >= target) { // 合法時繼續嘗試縮短",
+            "                best = Math.min(best, right - left + 1); // 先記答案",
+            "                total -= nums[left++];",
+            "            }",
+            "        }",
+            "        return best == nums.length + 1 ? 0 : best;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <algorithm>",
+            "int minSubArrayLen(int target, const std::vector<int>& nums) {",
+            "    int left = 0, best = static_cast<int>(nums.size()) + 1;",
+            "    long long total = 0; // 避免 int 總和溢位",
+            "    for (int right = 0; right < static_cast<int>(nums.size()); ++right) {",
+            "        total += nums[right];",
+            "        while (total >= target) { // 合法時繼續嘗試縮短",
+            "            best = std::min(best, right - left + 1); // 移除前記答案",
+            "            total -= nums[left++];",
+            "        }",
+            "    }",
+            "    return best == static_cast<int>(nums.size()) + 1 ? 0 : best;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-209"
+      ],
+      "diff_from_standard": "while 由超過上限改為達到下限；答案使用 min，且必須在移除左端之前更新。",
+      "removed_code_notes": [
+        "移除合法化之後才更新 max 的步驟。"
+      ],
+      "highlight_lines": {
+        "python": [
+          3,
+          6,
+          7,
+          10
+        ],
+        "java": [
+          3,
+          7,
+          8,
+          12
+        ],
+        "cpp": [
+          4,
+          8,
+          9,
+          13
+        ]
+      },
+      "base_template_id": "longest-valid",
+      "content_ids": [
+        "template-sliding-window"
+      ]
+    },
+    {
+      "id": "frequency-count",
+      "name": "窗口＋頻率計數：最小覆蓋子字串",
+      "keywords": [
+        "包含所有字元",
+        "頻率",
+        "異位詞"
+      ],
+      "trigger_signal": "包含目標所有字元且重複次數足夠，找最短窗口；異位詞則再限制長度。",
+      "prerequisites": [
+        "三語言以 ASCII 為字元範圍；字元計數包含重複次數。",
+        "t 為空或無解時回傳空字串。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "t=AAB，窗口 AB",
+          "reason": "集合包含 A、B 仍不足，必須計算 A 的兩次需求；不能只比較相異字元種類。"
+        }
+      ],
+      "explanation": "need 保存剩餘需求，可為負數；missing 是尚缺字元的總次數。補上原本缺少的字元才減少 missing；missing=0 時記答案並收縮。移除必要字元令需求變正時才增加 missing。Permutation in String 可改成固定長度 len(t)，並在長度吻合且 missing=0 時回傳 true；此處實作的是 Minimum Window Substring。",
+      "complexity": {
+        "time": "O(n+m)",
+        "space": "O(Σ)，另計輸出 O(L)",
+        "reason": "n、m 為 s、t 長度。每字元至多進出一次；字典或固定 ASCII 陣列存頻率，回傳長度 L 的子字串。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "from collections import Counter",
+            "def min_window(s, t):",
+            "    if not t:",
+            "        return \"\"  # 空目標直接回傳",
+            "    need = Counter(t)  # 正數表示尚缺的字元數",
+            "    missing = len(t)",
+            "    left = start = 0",
+            "    best = len(s) + 1",
+            "    for right, char in enumerate(s):",
+            "        if need[char] > 0:",
+            "            missing -= 1  # 只有補上缺口才減少 missing",
+            "        need[char] -= 1  # 多餘字元可使計數成為負數",
+            "        while missing == 0:",
+            "            if right - left + 1 < best:",
+            "                start, best = left, right - left + 1",
+            "            need[s[left]] += 1  # 先恢復即將離開的字元",
+            "            if need[s[left]] > 0:",
+            "                missing += 1  # 移除必要字元後失效",
+            "            left += 1",
+            "    return \"\" if best == len(s) + 1 else s[start:start + best]"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public String minWindow(String s, String t) {",
+            "        if (t.isEmpty()) return \"\"; // 空目標",
+            "        int[] need = new int[128]; // 本範例限 ASCII",
+            "        for (int i = 0; i < t.length(); i++) need[t.charAt(i)]++;",
+            "        int missing = t.length(), left = 0, start = 0, best = s.length() + 1;",
+            "        for (int right = 0; right < s.length(); right++) {",
+            "            char ch = s.charAt(right);",
+            "            if (need[ch] > 0) missing--; // 補上缺口",
+            "            need[ch]--; // 多餘字元可為負數",
+            "            while (missing == 0) {",
+            "                if (right - left + 1 < best) {",
+            "                    start = left;",
+            "                    best = right - left + 1;",
+            "                }",
+            "                char removed = s.charAt(left++);",
+            "                if (++need[removed] > 0) missing++; // 移除必要字元",
+            "            }",
+            "        }",
+            "        return best == s.length() + 1 ? \"\" : s.substring(start, start + best);",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <string>",
+            "#include <array>",
+            "std::string minWindow(const std::string& s, const std::string& t) {",
+            "    if (t.empty()) return \"\"; // 空目標",
+            "    std::array<int, 128> need{}; // 本範例限 ASCII",
+            "    for (unsigned char ch : t) ++need[ch];",
+            "    int missing = static_cast<int>(t.size()), left = 0, start = 0;",
+            "    int best = static_cast<int>(s.size()) + 1;",
+            "    for (int right = 0; right < static_cast<int>(s.size()); ++right) {",
+            "        unsigned char ch = s[right];",
+            "        if (need[ch] > 0) --missing; // 補上缺口",
+            "        --need[ch];",
+            "        while (missing == 0) {",
+            "            if (right - left + 1 < best) {",
+            "                start = left;",
+            "                best = right - left + 1;",
+            "            }",
+            "            unsigned char removed = s[left++];",
+            "            if (++need[removed] > 0) ++missing; // 移除必要字元",
+            "        }",
+            "    }",
+            "    return best == static_cast<int>(s.size()) + 1 ? \"\" : s.substr(start, best);",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-76",
+        "leetcode-567"
+      ],
+      "diff_from_standard": "將單一總和改為字元需求表與 missing；採用找最短的合法即收縮規則，答案是子字串位置。",
+      "removed_code_notes": [
+        "移除 total 與數字上限；改用字元需求是否補齊。"
+      ],
+      "highlight_lines": {
+        "python": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          20
+        ],
+        "java": [
+          3,
+          4,
+          5,
+          6,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          17,
+          20
+        ],
+        "cpp": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          18,
+          19,
+          22
+        ]
+      },
+      "base_template_id": "longest-valid",
+      "content_ids": [
+        "template-sliding-window"
+      ]
+    },
+    {
+      "id": "monotonic-deque",
+      "name": "窗口＋單調隊列：每個窗口的最大值",
+      "keywords": [
+        "窗口最大值",
+        "窗口最小值",
+        "單調隊列"
+      ],
+      "trigger_signal": "固定長度 k，需取得每個連續窗口的最大值或最小值。",
+      "prerequisites": [
+        "1 <= k <= nums.length；可包含負數或重複值。",
+        "隊列保存索引以判斷過期；此程式求最大值。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "只保存目前最大值，但它滑出窗口。",
+          "reason": "無法知道下一個最大值；單調隊列保留仍可能成為答案的候選。求中位數也不能只用此隊列。"
+        }
+      ],
+      "explanation": "先移除隊首過期索引，再由隊尾移除不大於新值的候選，新值至少一樣大且更晚過期，因此它們不可能再成為必需答案。加入新索引後，完整窗口的最大值在隊首。相等時保留較新的索引。求最小值時反轉隊尾比較方向。",
+      "complexity": {
+        "time": "O(n)",
+        "space": "O(k)，另計輸出 O(n-k+1)",
+        "reason": "每索引只入隊一次、出隊至多一次；兩個 while 是攤銷線性而非逐窗口重掃。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "from collections import deque",
+            "def max_sliding_window(nums, k):",
+            "    candidates = deque()  # 保存索引，值由大到小",
+            "    result = []",
+            "    for right, value in enumerate(nums):",
+            "        while candidates and candidates[0] <= right - k:",
+            "            candidates.popleft()  # 移除已過期索引",
+            "        while candidates and nums[candidates[-1]] <= value:",
+            "            candidates.pop()  # 新值更大且更晚過期，舊值不再有用",
+            "        candidates.append(right)",
+            "        if right >= k - 1:  # 窗口完整後才輸出",
+            "            result.append(nums[candidates[0]])",
+            "    return result"
+          ]
+        },
+        "java": {
+          "lines": [
+            "import java.util.ArrayDeque;",
+            "class Solution {",
+            "    public int[] maxSlidingWindow(int[] nums, int k) {",
+            "        ArrayDeque<Integer> candidates = new ArrayDeque<>(); // 索引",
+            "        int[] result = new int[nums.length - k + 1];",
+            "        for (int right = 0; right < nums.length; right++) {",
+            "            while (!candidates.isEmpty() && candidates.peekFirst() <= right - k) {",
+            "                candidates.removeFirst(); // 過期",
+            "            }",
+            "            while (!candidates.isEmpty() && nums[candidates.peekLast()] <= nums[right]) {",
+            "                candidates.removeLast(); // 被新值支配",
+            "            }",
+            "            candidates.addLast(right);",
+            "            if (right >= k - 1) result[right - k + 1] = nums[candidates.peekFirst()];",
+            "        }",
+            "        return result;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <deque>",
+            "std::vector<int> maxSlidingWindow(const std::vector<int>& nums, int k) {",
+            "    std::deque<int> candidates; // 值遞減的索引隊列",
+            "    std::vector<int> result;",
+            "    for (int right = 0; right < static_cast<int>(nums.size()); ++right) {",
+            "        while (!candidates.empty() && candidates.front() <= right - k) {",
+            "            candidates.pop_front(); // 過期",
+            "        }",
+            "        while (!candidates.empty() && nums[candidates.back()] <= nums[right]) {",
+            "            candidates.pop_back(); // 新值更大且更晚過期",
+            "        }",
+            "        candidates.push_back(right);",
+            "        if (right >= k - 1) result.push_back(nums[candidates.front()]);",
+            "    }",
+            "    return result;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-239"
+      ],
+      "diff_from_standard": "窗口長度固定；不維護總和，改維護索引候選隊列。過期檢查與隊尾淘汰是不同用途的 while。",
+      "removed_code_notes": [
+        "移除 total、budget 與最長長度答案，改輸出每個完整窗口的極值。"
+      ],
+      "highlight_lines": {
+        "python": [
+          1,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "java": [
+          1,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14
+        ],
+        "cpp": [
+          2,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14
+        ]
+      },
+      "base_template_id": "longest-valid",
+      "content_ids": [
+        "template-sliding-window"
+      ]
     }
   ]
 }

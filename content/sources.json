@@ -25,5 +25,176 @@
     "status": "pending",
     "checked_on": "2026-09-28",
     "notes": "已定位官方題單；尚未逐題核對。LC150 在本專案專指此題單。"
+  },
+  {
+    "id": "leetcode-3-source",
+    "title": "Longest Substring Without Repeating Characters",
+    "url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與辨識條件；未聲明題單歸屬。"
+  },
+  {
+    "id": "leetcode-209-source",
+    "title": "Minimum Size Subarray Sum",
+    "url": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與辨識條件；未聲明題單歸屬。"
+  },
+  {
+    "id": "leetcode-76-source",
+    "title": "Minimum Window Substring",
+    "url": "https://leetcode.com/problems/minimum-window-substring/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與辨識條件；未聲明題單歸屬。"
+  },
+  {
+    "id": "leetcode-567-source",
+    "title": "Permutation in String",
+    "url": "https://leetcode.com/problems/permutation-in-string/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與辨識條件；未聲明題單歸屬。"
+  },
+  {
+    "id": "leetcode-239-source",
+    "title": "Sliding Window Maximum",
+    "url": "https://leetcode.com/problems/sliding-window-maximum/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與辨識條件；未聲明題單歸屬。"
+  },
+  {
+    "id": "leetcode-704-source",
+    "title": "Binary Search",
+    "url": "https://leetcode.com/problems/binary-search/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-34-source",
+    "title": "Find First and Last Position of Element in Sorted Array",
+    "url": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-33-source",
+    "title": "Search in Rotated Sorted Array",
+    "url": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-875-source",
+    "title": "Koko Eating Bananas",
+    "url": "https://leetcode.com/problems/koko-eating-bananas/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-1011-source",
+    "title": "Capacity To Ship Packages Within D Days",
+    "url": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-167-source",
+    "title": "Two Sum II - Input Array Is Sorted",
+    "url": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-11-source",
+    "title": "Container With Most Water",
+    "url": "https://leetcode.com/problems/container-with-most-water/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-141-source",
+    "title": "Linked List Cycle",
+    "url": "https://leetcode.com/problems/linked-list-cycle/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-876-source",
+    "title": "Middle of the Linked List",
+    "url": "https://leetcode.com/problems/middle-of-the-linked-list/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-15-source",
+    "title": "3Sum",
+    "url": "https://leetcode.com/problems/3sum/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-283-source",
+    "title": "Move Zeroes",
+    "url": "https://leetcode.com/problems/move-zeroes/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-26-source",
+    "title": "Remove Duplicates from Sorted Array",
+    "url": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-78-source",
+    "title": "Subsets",
+    "url": "https://leetcode.com/problems/subsets/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-198-source",
+    "title": "House Robber",
+    "url": "https://leetcode.com/problems/house-robber/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
   }
 ]

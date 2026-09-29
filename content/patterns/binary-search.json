@@ -1,0 +1,577 @@
+{
+  "id": "binary-search",
+  "name": "Binary Search",
+  "keywords": [
+    "二分",
+    "binary search",
+    "排序",
+    "單調性"
+  ],
+  "standard_templates": [
+    {
+      "id": "lower-bound",
+      "name": "標準模板：第一個不小於 target 的位置",
+      "trigger_signal": "已排序陣列，判斷 nums[i] >= target 由 false 轉為 true。",
+      "keywords": [
+        "已排序",
+        "第一個",
+        "lower bound",
+        "二分"
+      ],
+      "prerequisites": [
+        "nums 以非遞減順序排列，空陣列可回傳 0。",
+        "回傳索引可能等於 n，代表不存在符合條件的元素。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "nums=[3,1,2], target=2",
+          "reason": "未排序時判斷結果不是單調序列，不能保證淘汰半邊仍保留答案。"
+        }
+      ],
+      "explanation": "維護左閉右開區間 [left,right)。mid 符合條件時保留它作為候選，因此 right=mid；不符合時 left=mid+1。迴圈結束的 left 是第一個符合位置或 n。不要把回傳 n 誤當有效索引。",
+      "complexity": {
+        "time": "O(log n)",
+        "space": "O(1)",
+        "reason": "每回合至少縮小一半區間，只保留三個索引。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def lower_bound(nums, target):",
+            "    left, right = 0, len(nums)  # 左閉右開",
+            "    while left < right:",
+            "        mid = left + (right - left) // 2",
+            "        if nums[mid] >= target:  # mid 仍可能是第一個",
+            "            right = mid",
+            "        else:",
+            "            left = mid + 1  # mid 與左側都太小",
+            "    return left  # 可能等於 len(nums)"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public int lowerBound(int[] nums, int target) {",
+            "        int left = 0, right = nums.length; // 左閉右開",
+            "        while (left < right) {",
+            "            int mid = left + (right - left) / 2; // 避免 left+right 溢位",
+            "            if (nums[mid] >= target) right = mid; // 保留候選",
+            "            else left = mid + 1;",
+            "        }",
+            "        return left; // 可能等於 n",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "int lowerBound(const std::vector<int>& nums, int target) {",
+            "    int left = 0, right = static_cast<int>(nums.size()); // 左閉右開",
+            "    while (left < right) {",
+            "        int mid = left + (right - left) / 2;",
+            "        if (nums[mid] >= target) right = mid; // 保留候選",
+            "        else left = mid + 1;",
+            "    }",
+            "    return left; // 可能等於 n",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [],
+      "content_ids": [
+        "template-binary-search"
+      ]
+    }
+  ],
+  "variations": [
+    {
+      "id": "exact-match",
+      "name": "找確切值",
+      "trigger_signal": "排序陣列中找 target 的索引，不存在回傳 -1。",
+      "keywords": [
+        "確切值",
+        "target",
+        "索引"
+      ],
+      "prerequisites": [
+        "陣列非遞減排序；若有重複，回傳任一命中位置。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "要求第一個 target，遇到相等便回傳。",
+          "reason": "mid 可能位於重複區段中間，這不能保證最左邊界。"
+        }
+      ],
+      "explanation": "改用閉區間 [left,right]，相等直接回傳；過小或過大時都排除 mid。空陣列的 right=-1，迴圈不執行。",
+      "complexity": {
+        "time": "O(log n)",
+        "space": "O(1)",
+        "reason": "每次排除至少一半候選。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def binary_search(nums, target):",
+            "    left, right = 0, len(nums) - 1  # 閉區間",
+            "    while left <= right:",
+            "        mid = left + (right - left) // 2",
+            "        if nums[mid] == target:",
+            "            return mid  # 相等即結束",
+            "        if nums[mid] < target:",
+            "            left = mid + 1",
+            "        else:",
+            "            right = mid - 1  # 排除 mid",
+            "    return -1"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public int binarySearch(int[] nums, int target) {",
+            "        int left = 0, right = nums.length - 1; // 閉區間",
+            "        while (left <= right) {",
+            "            int mid = left + (right - left) / 2;",
+            "            if (nums[mid] == target) return mid;",
+            "            if (nums[mid] < target) left = mid + 1;",
+            "            else right = mid - 1;",
+            "        }",
+            "        return -1;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "int binarySearch(const std::vector<int>& nums, int target) {",
+            "    int left = 0, right = static_cast<int>(nums.size()) - 1;",
+            "    while (left <= right) {",
+            "        int mid = left + (right - left) / 2;",
+            "        if (nums[mid] == target) return mid;",
+            "        if (nums[mid] < target) left = mid + 1;",
+            "        else right = mid - 1;",
+            "    }",
+            "    return -1;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-704"
+      ],
+      "content_ids": [
+        "template-binary-search"
+      ],
+      "base_template_id": "lower-bound",
+      "diff_from_standard": "由尋找單調邊界改為命中即回傳；右端改成閉區間，while 與 right 更新必須一起改。",
+      "removed_code_notes": [
+        "不再以 n 作為不存在的回傳值。"
+      ],
+      "highlight_lines": {
+        "python": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          10,
+          11
+        ],
+        "java": [
+          3,
+          4,
+          6,
+          7,
+          8,
+          10
+        ],
+        "cpp": [
+          3,
+          4,
+          6,
+          7,
+          8,
+          10
+        ]
+      }
+    },
+    {
+      "id": "boundaries",
+      "name": "找左／右邊界",
+      "trigger_signal": "找第一個與最後一個 target 的位置，允許重複。",
+      "keywords": [
+        "第一個",
+        "最後一個",
+        "邊界",
+        "重複"
+      ],
+      "prerequisites": [
+        "nums 非遞減排序；target 可為任意 int。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "用 lower_bound(target+1) 取得右邊界，target 已是最大整數。",
+          "reason": "target+1 可能溢位，應直接二分第一個 > target 的位置。"
+        }
+      ],
+      "explanation": "先找 >= target 的第一個位置，再找 > target 的第一個位置。若左邊界越界或不是 target，回傳 [-1,-1]；否則右端答案是第二次搜尋結果減一。",
+      "complexity": {
+        "time": "O(log n)",
+        "space": "O(1)",
+        "reason": "兩次二分仍為 O(log n)，不逐一掃描重複區段。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def search_range(nums, target):",
+            "    def bound(strict):",
+            "        left, right = 0, len(nums)",
+            "        while left < right:",
+            "            mid = left + (right - left) // 2",
+            "            if nums[mid] > target or (not strict and nums[mid] == target):",
+            "                right = mid  # strict=False 找 >=，True 找 >",
+            "            else:",
+            "                left = mid + 1",
+            "        return left",
+            "    first = bound(False)",
+            "    if first == len(nums) or nums[first] != target:",
+            "        return [-1, -1]  # 不存在",
+            "    return [first, bound(True) - 1]"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    private int bound(int[] nums, int target, boolean strict) {",
+            "        int left = 0, right = nums.length;",
+            "        while (left < right) {",
+            "            int mid = left + (right - left) / 2;",
+            "            if (nums[mid] > target || (!strict && nums[mid] == target)) right = mid;",
+            "            else left = mid + 1;",
+            "        }",
+            "        return left;",
+            "    }",
+            "    public int[] searchRange(int[] nums, int target) {",
+            "        int first = bound(nums, target, false); // 第一個 >=",
+            "        if (first == nums.length || nums[first] != target) return new int[]{-1, -1};",
+            "        return new int[]{first, bound(nums, target, true) - 1}; // 第一個 > 減一",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "std::vector<int> searchRange(const std::vector<int>& nums, int target) {",
+            "    auto bound = [&](bool strict) {",
+            "        int left = 0, right = static_cast<int>(nums.size());",
+            "        while (left < right) {",
+            "            int mid = left + (right - left) / 2;",
+            "            if (nums[mid] > target || (!strict && nums[mid] == target)) right = mid;",
+            "            else left = mid + 1;",
+            "        }",
+            "        return left;",
+            "    };",
+            "    int first = bound(false); // 第一個 >=",
+            "    if (first == static_cast<int>(nums.size()) || nums[first] != target) return {-1, -1};",
+            "    return {first, bound(true) - 1}; // 第一個 > 減一",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-34"
+      ],
+      "content_ids": [
+        "template-binary-search"
+      ],
+      "base_template_id": "lower-bound",
+      "diff_from_standard": "重用左閉右開模板兩次，第二次改成嚴格大於；先驗證左邊界是否命中。",
+      "removed_code_notes": [],
+      "highlight_lines": {
+        "python": [
+          2,
+          6,
+          7,
+          11,
+          12,
+          13,
+          14
+        ],
+        "java": [
+          2,
+          6,
+          11,
+          12,
+          13,
+          14
+        ],
+        "cpp": [
+          3,
+          7,
+          12,
+          13,
+          14
+        ]
+      }
+    },
+    {
+      "id": "rotated-array",
+      "name": "旋轉排序陣列",
+      "trigger_signal": "嚴格遞增陣列旋轉後，仍要以對數時間找 target。",
+      "keywords": [
+        "旋轉",
+        "旋轉排序陣列"
+      ],
+      "prerequisites": [
+        "元素互不相同；原陣列嚴格遞增，可旋轉零次。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "nums=[1,0,1,1,1]",
+          "reason": "重複值使左右端相等時難以判斷有序側；本寫法可能漏掉 0。允許重複需另處理，最差可能退化成 O(n)。"
+        }
+      ],
+      "explanation": "先判斷左半部是否有序，再檢查 target 是否落在該段值域；否則保留另一側。右半部有序時做對稱判斷。每輪仍淘汰半邊，不能直接假設整個陣列有序。",
+      "complexity": {
+        "time": "O(log n)",
+        "space": "O(1)",
+        "reason": "無重複值時可確定一側有序，因此每輪縮小一半。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def search_rotated(nums, target):",
+            "    left, right = 0, len(nums) - 1",
+            "    while left <= right:",
+            "        mid = left + (right - left) // 2",
+            "        if nums[mid] == target:",
+            "            return mid",
+            "        if nums[left] <= nums[mid]:  # 左半部有序",
+            "            if nums[left] <= target < nums[mid]:",
+            "                right = mid - 1",
+            "            else:",
+            "                left = mid + 1",
+            "        else:  # 右半部有序",
+            "            if nums[mid] < target <= nums[right]:",
+            "                left = mid + 1",
+            "            else:",
+            "                right = mid - 1",
+            "    return -1"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public int searchRotated(int[] nums, int target) {",
+            "        int left = 0, right = nums.length - 1;",
+            "        while (left <= right) {",
+            "            int mid = left + (right - left) / 2;",
+            "            if (nums[mid] == target) return mid;",
+            "            if (nums[left] <= nums[mid]) { // 左半部有序",
+            "                if (nums[left] <= target && target < nums[mid]) right = mid - 1;",
+            "                else left = mid + 1;",
+            "            } else { // 右半部有序",
+            "                if (nums[mid] < target && target <= nums[right]) left = mid + 1;",
+            "                else right = mid - 1;",
+            "            }",
+            "        }",
+            "        return -1;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "int searchRotated(const std::vector<int>& nums, int target) {",
+            "    int left = 0, right = static_cast<int>(nums.size()) - 1;",
+            "    while (left <= right) {",
+            "        int mid = left + (right - left) / 2;",
+            "        if (nums[mid] == target) return mid;",
+            "        if (nums[left] <= nums[mid]) { // 左半部有序",
+            "            if (nums[left] <= target && target < nums[mid]) right = mid - 1;",
+            "            else left = mid + 1;",
+            "        } else { // 右半部有序",
+            "            if (nums[mid] < target && target <= nums[right]) left = mid + 1;",
+            "            else right = mid - 1;",
+            "        }",
+            "    }",
+            "    return -1;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-33"
+      ],
+      "content_ids": [
+        "template-binary-search"
+      ],
+      "base_template_id": "lower-bound",
+      "diff_from_standard": "閉區間中先辨識有序半部，再依 target 值域選擇一側；相等時直接回傳。",
+      "removed_code_notes": [
+        "移除整段 nums[mid]>=target 的單調假設。"
+      ],
+      "highlight_lines": {
+        "python": [
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "java": [
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "cpp": [
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "id": "answer-space",
+      "name": "二分答案：最小可行速度",
+      "trigger_signal": "找能在 h 小時內完成工作的最小速度，而非找陣列元素。",
+      "keywords": [
+        "二分答案",
+        "最少天數",
+        "最小速度",
+        "可行性",
+        "最小的最大值"
+      ],
+      "prerequisites": [
+        "piles 非空、每堆為正整數，h >= piles.length，保證存在可行速度。",
+        "每小時只處理一堆；速度 k 增加時所需時間不會增加。",
+        "堆大小 <= 10^9、堆數 <= 10^4，Java/C++ 累加使用 64 位整數。"
+      ],
+      "counterexamples": [
+        {
+          "scenario": "可行性隨答案變化是 false、true、false。",
+          "reason": "沒有單調性就不能因一次可行或不可行排除整側；『最少』關鍵字本身不足以使用二分。"
+        }
+      ],
+      "explanation": "答案範圍 [1,max(piles)]。check(k) 判斷 sum(ceil(p/k)) <= h：速度越大，所需時間越少，所以是 false→true。可行時保留 mid 並向左尋找，不可行時 left=mid+1。例 [3,6,7,11], h=8，答案 4。延伸的運貨題需用容量範圍 [max(weights),sum(weights)]，並維持原順序貪心計算天數；不是把此處的時間公式直接照搬。",
+      "complexity": {
+        "time": "O(n log M)",
+        "space": "O(1)",
+        "reason": "M=max(piles)，每次可行性檢查 O(n)，搜尋速度共 O(log M) 次。"
+      },
+      "code": {
+        "python": {
+          "lines": [
+            "def min_eating_speed(piles, h):",
+            "    def feasible(speed):",
+            "        return sum((p + speed - 1) // speed for p in piles) <= h",
+            "    left, right = 1, max(piles)  # 已知右端可行",
+            "    while left < right:",
+            "        mid = left + (right - left) // 2",
+            "        if feasible(mid):  # 找第一個 true",
+            "            right = mid",
+            "        else:",
+            "            left = mid + 1",
+            "    return left"
+          ]
+        },
+        "java": {
+          "lines": [
+            "class Solution {",
+            "    public int minEatingSpeed(int[] piles, int h) {",
+            "        int left = 1, right = 1;",
+            "        for (int p : piles) right = Math.max(right, p); // 可行上界",
+            "        while (left < right) {",
+            "            int mid = left + (right - left) / 2;",
+            "            long hours = 0;",
+            "            for (int p : piles) hours += (p + (long) mid - 1) / mid; // 向上取整",
+            "            if (hours <= h) right = mid; // 可行，仍保留 mid",
+            "            else left = mid + 1;",
+            "        }",
+            "        return left;",
+            "    }",
+            "}"
+          ]
+        },
+        "cpp": {
+          "lines": [
+            "#include <vector>",
+            "#include <algorithm>",
+            "int minEatingSpeed(const std::vector<int>& piles, int h) {",
+            "    int left = 1, right = *std::max_element(piles.begin(), piles.end());",
+            "    while (left < right) {",
+            "        int mid = left + (right - left) / 2;",
+            "        long long hours = 0;",
+            "        for (int p : piles) hours += (p + static_cast<long long>(mid) - 1) / mid;",
+            "        if (hours <= h) right = mid; // 可行，搜尋更小速度",
+            "        else left = mid + 1;",
+            "    }",
+            "    return left;",
+            "}"
+          ]
+        }
+      },
+      "problem_ids": [
+        "leetcode-875",
+        "leetcode-1011"
+      ],
+      "content_ids": [
+        "template-binary-search"
+      ],
+      "base_template_id": "lower-bound",
+      "diff_from_standard": "二分的是答案值域；用可行性計算取代 nums[mid]>=target，保留第一個 true 的收縮規則。",
+      "removed_code_notes": [
+        "不再讀取 nums[mid] 或回傳陣列索引。"
+      ],
+      "highlight_lines": {
+        "python": [
+          1,
+          2,
+          3,
+          4,
+          7
+        ],
+        "java": [
+          2,
+          3,
+          4,
+          7,
+          8,
+          9
+        ],
+        "cpp": [
+          2,
+          3,
+          4,
+          7,
+          8,
+          9
+        ]
+      }
+    }
+  ]
+}

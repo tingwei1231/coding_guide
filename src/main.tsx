@@ -2,8 +2,10 @@ import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import Markdown from 'react-markdown';
-import { articleFor, pages, patternIndex, problemIndex, titleFor, type Page, type Lesson } from './content';
+import { articleFor, pages, patternIndex, titleFor, type Page } from './content';
 import './styles.css';
+import { PatternPage } from './PatternPage';
+import { PatternSearch } from './PatternSearch';
 
 const sections = [
   { name: '建立基礎', ids: ['roadmap', 'data-structures', 'big-o', 'languages'] },
@@ -16,18 +18,6 @@ function Cards({ items }: { items: Page[] }) {
     <h3>{titleFor(p)}</h3><p>{p.sections.slice(0, 3).join(' · ')}</p><span className="card-arrow" aria-hidden="true">↗</span>
   </Link>)}</div>;
 }
-function CodeSample({ lesson }: { lesson: Lesson }) {
-  const [language, setLanguage] = useState<'python' | 'java' | 'cpp'>('python');
-  return <section className="sample"><h2>{lesson.name}</h2><p>{lesson.trigger_signal}</p>
-    <ul>{lesson.prerequisites.map(p => <li key={p}>{p}</li>)}</ul>
-    <label className="language">程式語言 <select value={language} onChange={e => setLanguage(e.target.value as typeof language)}>
-      <option value="python">Python</option><option value="java">Java</option><option value="cpp">C++</option>
-    </select></label>
-    <pre tabIndex={0} aria-label={`${language} 程式碼`}><code>{lesson.code[language].lines.join('\n')}</code></pre>
-    <p>{lesson.explanation}</p><p className="complexity">時間 {lesson.complexity.time} ／ 額外空間 {lesson.complexity.space}</p>
-    {lesson.problem_ids.map(id => { const p = problemIndex.find(p => p.id === id); return p && <a key={id} href={p.url} target="_blank" rel="noreferrer">前往 LeetCode：{p.name} ↗</a>; })}
-  </section>;
-}
 function ContentPage({ page }: { page: Page }) {
   const article = articleFor(page);
   const children = pages.filter(p => p.route.startsWith(`${page.route}/`) && p.route !== page.route);
@@ -36,15 +26,14 @@ function ContentPage({ page }: { page: Page }) {
     <header className="page-heading"><p className="eyebrow">CODING GUIDE / LEARN</p><h1>{titleFor(page)}</h1>
       <p className="lead">{page.id === 'home' ? '從讀懂題目開始，辨識模式、理解模板，再帶著思路練習。' : '把概念拆開理解，為下一次練習建立清楚的思路。'}</p>
     </header>
+    {(page.id === 'templates' || pattern) && <PatternSearch />}
     {article && <article className="prose"><Markdown components={{ a: ({ href, children }) => href?.startsWith('/') ? <Link to={href}>{children}</Link> : <a href={href}>{children}</a> }}>{article}</Markdown></article>}
     {page.id === 'home' && <><div className="hero-path"><span>01 理解基礎</span><b aria-hidden="true">→</b><span>02 辨識模式</span><b aria-hidden="true">→</b><span>03 動手練習</span></div>
       <div className="section-heading"><h2>找到你的起點</h2><span>循序前進，自主探索</span></div>
       <Cards items={['roadmap', 'data-structures', 'templates', 'guided-learning'].map(id => pages.find(p => p.id === id)!)} /></>}
-    {children.length > 0 && <Cards items={children} />}
-    {pattern && <><p className="notice">內容預覽：目前提供一個標準模板與固定窗口範例，完整變形教學陸續補齊。</p>
-      {pattern.standard_templates.map(lesson => <CodeSample lesson={lesson} key={lesson.id} />)}
-      {pattern.variations.map(lesson => <CodeSample lesson={lesson} key={lesson.id} />)}</>}
-    {!article && !pattern && <section className="outline"><span className="badge">教材準備中</span><h2>這個章節將帶你理解</h2>
+    {children.length > 0 && page.id !== 'templates' && <Cards items={children} />}
+    {pattern && <PatternPage key={pattern.id} pattern={pattern} />}
+    {!article && !pattern && page.id !== 'templates' && <section className="outline"><span className="badge">教材準備中</span><h2>這個章節將帶你理解</h2>
       <ul>{page.sections.map(s => <li key={s}>{s}</li>)}</ul><p>完整內容尚未開放，可以先閱讀 <Link to="/templates/sliding-window">Sliding Window 範例</Link>。</p></section>}
   </>;
 }

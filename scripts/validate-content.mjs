@@ -25,6 +25,11 @@ export async function loadContent(base = root) {
 
 export async function validateContent(data, base = root) {
   const errors = [];
+  const checkEncoding = (value, location) => {
+    if (typeof value === 'string' && /\uFFFD|\?{3,}/.test(value)) errors.push(`${location}: possible encoding corruption`);
+    else if (value && typeof value === 'object') for (const [key, child] of Object.entries(value)) checkEncoding(child, `${location}/${key}`);
+  };
+  checkEncoding(data, 'content');
   const checkSchema = (name, value, location) => {
     const validate = ajv.getSchema(`${name}.schema.json`);
     if (!validate(value)) for (const e of validate.errors) errors.push(`${location}${e.instancePath}: ${e.message} ${JSON.stringify(e.params)}`);
@@ -107,6 +112,6 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     const data = await loadContent();
     const errors = await validateContent(data);
     if (errors.length) { console.error(errors.join('\n')); process.exitCode = 1; }
-    else console.log(`Content valid: ${data.patterns.length} pattern, ${data.problems.length} problem, ${data.quizzes.length} quizzes, ${data.content.length} planned pages. This checks contracts, not release completeness.`);
+    else console.log(`Content valid: ${data.patterns.length} patterns, ${data.problems.length} problems, ${data.quizzes.length} quizzes, ${data.content.filter(p => p.status === 'ready').length}/${data.content.length} ready pages. This checks contracts, not release completeness.`);
   } catch (error) { console.error(`Content validation failed: ${error.message}`); process.exitCode = 1; }
 }

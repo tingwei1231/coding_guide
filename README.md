@@ -2,6 +2,10 @@
 
 LeetCode 新手引導手冊，純靜態 React 網站。目前包含資料契約與網站骨架：32 個頁面路由、響應式導覽、Markdown 文章及 JSON 模板預覽。完整教材與互動教學仍依 plan 後續階段製作。
 
+已完成 Sliding Window 互動頁面：五種變形、三語言 tab、差異片段與完整程式碼、適用前提、反例及 LeetCode 連結。可直接開啟 `/templates/sliding-window#variation-shrink-to-min`。
+
+第 4 步已完成六模式模板庫（8 個標準模板、13 種變形）及跨模式搜尋。從 `/templates` 輸入「二分答案」「找環」等線索，即可查看匹配理由、前提並進入對應變形。其他完整教材依後續計畫交付。
+
 ## 文件
 
 - [規格 v4](docs/spec.md)
@@ -11,7 +15,7 @@ LeetCode 新手引導手冊，純靜態 React 網站。目前包含資料契約�
 
 ## 本機驗證
 
-需要 Node.js 22.12 以上與 npm（本機使用 Node.js 24）。首次安裝可使用 `npm ci`；Windows PowerShell 如阻擋 npm.ps1，將 npm 改為 npm.cmd。
+本專案以 Node.js 24 與 npm 驗證，搜尋單元測試直接載入 TypeScript，請使用 Node.js 24 以上。首次安裝可使用 `npm ci`；Windows PowerShell 如阻擋 npm.ps1，將 npm 改為 npm.cmd。
 
 ```sh
 npm ci
@@ -32,6 +36,12 @@ npm run preview
 ```
 
 開發網址預設為 http://127.0.0.1:5173，預覽為 http://127.0.0.1:4173。build 依序驗證內容、TypeScript 型別及產生 dist/，無後端服務。JSON 與 Markdown 在建置時納入，瀏覽網站不需連接內容 API。
+
+`dev` 與 `build` 會先執行 `generate:code`，用 [Shiki](https://shiki.style/guide/install) 在本機產生三語言語法 token，輸出到忽略版控的 `src/generated/`。修改 JSON 後請重新啟動 dev 或重跑 `npm run generate:code`，以同步高亮。瀏覽器不執行範例程式。
+
+教學程式的離線驗證：`python tests/verify_snippets.py`。需要 Python 3.9+、支援 `--release 8` 的 javac、Java 8+、g++（C++17）；會編譯實際 JSON 中的 Java/C++ 程式，並與 Python 實作及暴力解比對，每語言 371 組案例。暫存產物位於 `.snippet-check/`，不加入版控。此檢查僅供內容維護，不提供站內執行器。
+
+其餘五模式使用 `python tests/verify_more_snippets.py`，涵蓋新增 15 個教學範例，每語言 601 組案例，包含整數邊界、重複值、空輸入、循環串列及不連通圖。
 
 瀏覽器測試使用本機已安裝的 Microsoft Edge，會自動啟動 preview；其他環境可調整 playwright.config.ts 的 channel，並先安裝相應瀏覽器。測試涵蓋所有路由直接載入、深層路由重新整理、Markdown 連結、404、手機鍵盤導覽與程式碼溢出。
 

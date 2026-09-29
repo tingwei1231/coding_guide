@@ -22,7 +22,7 @@ test('Markdown links navigate, deep routes survive reload, and unknown routes sh
   await expect(page).toHaveURL(/templates\/sliding-window$/);
   await page.reload();
   await expect(page.locator('pre').first()).toContainText('def longest_within_budget');
-  await page.getByLabel('程式語言').first().selectOption('java');
+  await page.getByRole('tab', { name: 'Java', exact: true }).click();
   await expect(page.locator('pre').first()).toContainText('class Solution');
   await page.goto('/not-a-page');
   await expect(page).toHaveTitle('找不到頁面｜Coding Guide');
