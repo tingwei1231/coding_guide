@@ -1,0 +1,19 @@
+.quiz { max-width: 900px; }
+.quiz-controls, .quiz-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.quiz button, .quiz select, .quiz input[type=text] { font: inherit; border: 1px solid #719579; border-radius: 6px; padding: 10px 14px; background: #fffef9; color: #244d3e; }
+.quiz button { cursor: pointer; background: #244d3e; color: white; }
+.quiz select { max-width: 100%; }
+.quiz-question { border: 1px solid #ccd6ca; border-radius: 10px; padding: 22px; margin: 20px 0; min-width: 0; overflow-wrap: anywhere; }
+.quiz fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.quiz legend { font-weight: 700; padding: 0; margin-bottom: 16px; }
+.quiz-option { display: flex; align-items: baseline; gap: 10px; padding: 10px 0; cursor: pointer; }
+.quiz-option input { flex-shrink: 0; }
+.quiz input[type=text] { display: block; width: 100%; margin-top: 8px; }
+.quiz input:disabled { opacity: 1; }
+.quiz-kind, .quiz-rules { font-size: .875rem; color: #53665b; }
+.quiz pre { overflow-x: auto; max-width: 100%; padding: 16px; background: #182b25; color: #f1f5ec; border-radius: 6px; }
+.quiz-feedback { border-top: 2px solid #9b6639; margin-top: 20px; padding-top: 12px; }
+.quiz-feedback.correct { border-color: #407850; }
+.quiz-feedback h3 { margin: 0; }
+.quiz-summary { padding: 18px; background: #e8f0e3; border-radius: 8px; }
+@media (max-width: 600px) { .quiz-question { padding: 16px; } }

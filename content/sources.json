@@ -10,12 +10,12 @@
   },
   {
     "id": "blind-75",
-    "title": "Blind 75 作者的題單說明",
-    "url": "https://www.techinterviewhandbook.org/best-practice-questions/",
+    "title": "Blind 75 作者連結的原始轉載題單",
+    "url": "https://leetcode.com/discuss/post/460599/blind-75-leetcode-questions-by-krishnade-9xev/",
     "kind": "collection",
-    "status": "pending",
-    "checked_on": "2026-09-28",
-    "notes": "已定位作者來源；尚未逐題核對本專案的歸屬，不得直接套用 Grind 75 成員。"
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "經作者 https://www.techinterviewhandbook.org/best-practice-questions/ 連至此原始題單，核對本專案的正向歸屬：leetcode-3、76、33、11、141、15、198、200、39；不是 Grind 75 或作者五週精簡題單。"
   },
   {
     "id": "top-interview-150",
@@ -23,8 +23,8 @@
     "url": "https://leetcode.com/studyplan/top-interview-150/",
     "kind": "collection",
     "status": "pending",
-    "checked_on": "2026-09-28",
-    "notes": "已定位官方題單；尚未逐題核對。LC150 在本專案專指此題單。"
+    "checked_on": "2026-09-29",
+    "notes": "已比對使用者提供的 leetcodetop150.md：149 筆不重複主題號，51 另註或 52，尚非明確完整清單。本庫出現在清單的 13 題（3、209、76、34、33、167、11、141、15、26、198、200、39）名稱與難度一致；此為本機清單比對，非獨立官方歸屬驗證。官方頁仍只取得摘要，保留 pending，不新增 collection_source_ids。詳見 docs/top150-audit.md。"
   },
   {
     "id": "leetcode-3-source",
@@ -196,5 +196,23 @@
     "status": "verified",
     "checked_on": "2026-09-29",
     "notes": "已核對官方題目頁的題號、名稱、難度與條件；題單歸屬尚未逐題核對。"
+  },
+  {
+    "id": "leetcode-200-source",
+    "title": "Number of Islands",
+    "url": "https://leetcode.com/problems/number-of-islands/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、難度與輸入條件。"
+  },
+  {
+    "id": "leetcode-39-source",
+    "title": "Combination Sum",
+    "url": "https://leetcode.com/problems/combination-sum/",
+    "kind": "problem",
+    "status": "verified",
+    "checked_on": "2026-09-29",
+    "notes": "已核對官方題目頁的題號、難度與輸入條件。"
   }
 ]

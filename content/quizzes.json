@@ -49,14 +49,14 @@
     "pattern_ids": [
       "sliding-window"
     ],
-    "explanation": "固定窗口每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
-    "misconception": "固定窗口不要求所有元素非負。",
+    "explanation": "右端 right 進入長度 k 的窗口時，舊左端 right - k 必須移除，使總和仍只包含 k 個元素。",
+    "misconception": "right - k + 1 是新窗口的左端，移除它會刪錯元素。",
     "content_ids": [
       "template-sliding-window"
     ],
     "id": "fixed-window-code",
     "type": "code-fill",
-    "prompt": "填入離開窗口的索引。",
+    "prompt": "已初始化前 k 個元素總和，right ≥ k 時填入離開固定窗口的索引。",
     "language": "python",
     "code_with_blank": "total += nums[right] - nums[___]",
     "accepted_answers": [
@@ -68,5 +68,544 @@
       "collapse_whitespace": true,
       "case_sensitive": true
     }
+  },
+  {
+    "id": "window-negative",
+    "type": "choice",
+    "pattern_ids": [
+      "sliding-window"
+    ],
+    "content_ids": [
+      "template-sliding-window"
+    ],
+    "prompt": "用總和超過上限就收縮的窗口時，為何通常要求元素非負？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "擴張與收縮才有可用的總和單調性"
+      },
+      {
+        "id": "option-1",
+        "text": "負數不能相加"
+      },
+      {
+        "id": "option-2",
+        "text": "所有固定窗口都不允許負數"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "非負數使擴張不減少總和、收縮不增加總和，才能判斷哪些左端可以捨棄。",
+    "misconception": "固定長度窗口可包含負數；限制取決於維護條件。"
+  },
+  {
+    "id": "binary-cost",
+    "type": "choice",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "content_ids": [
+      "template-binary-search"
+    ],
+    "prompt": "對長度 n 的排序陣列做二分搜尋，最壞比較次數的量級是？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "O(log n)"
+      },
+      {
+        "id": "option-1",
+        "text": "O(n)"
+      },
+      {
+        "id": "option-2",
+        "text": "O(1)"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "每輪將候選區間縮小約一半，直到區間為空或找到答案。",
+    "misconception": "先排序仍需額外成本，不能算進 O(log n) 搜尋後就忽略。"
+  },
+  {
+    "id": "binary-monotone",
+    "type": "text-fill",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "content_ids": [
+      "template-binary-search"
+    ],
+    "prompt": "二分答案時，可行性判斷沿候選答案必須具備哪個性質？",
+    "accepted_answers": [
+      "單調性",
+      "monotonicity",
+      "monotone"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": false
+    },
+    "explanation": "判斷需呈現一段不可行、一段可行（或相反），才能安全捨棄半邊。",
+    "misconception": "答案是數字不代表一定可以二分。"
+  },
+  {
+    "id": "binary-mid",
+    "type": "code-fill",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "content_ids": [
+      "template-binary-search"
+    ],
+    "prompt": "填入避免直接相加左右界的中點運算式。",
+    "accepted_answers": [
+      "left + (right - left) // 2",
+      "left+(right-left)//2"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": true
+    },
+    "explanation": "先取左右差的一半再加回 left；閉區間更新時仍需排除已檢查的 mid。",
+    "misconception": "整數除法與浮點除法不同，不能以 / 取代 //。",
+    "language": "python",
+    "code_with_blank": "mid = ___"
+  },
+  {
+    "id": "binary-lower-bound",
+    "type": "choice",
+    "pattern_ids": [
+      "binary-search"
+    ],
+    "content_ids": [
+      "template-binary-search"
+    ],
+    "prompt": "lower_bound 找第一個大於等於 target 的位置；若所有元素都小於 target，應回傳？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "n（尾後位置）"
+      },
+      {
+        "id": "option-1",
+        "text": "最後一個元素的位置"
+      },
+      {
+        "id": "option-2",
+        "text": "一定是 0"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "尾後位置 n 表示不存在大於等於 target 的元素，讀值前需檢查界限。",
+    "misconception": "插入位置可以合法等於 n，但 nums[n] 不是合法元素。"
+  },
+  {
+    "id": "two-sorted",
+    "type": "choice",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "content_ids": [
+      "template-two-pointers"
+    ],
+    "prompt": "已升序排序的陣列中，左右兩數和小於 target，下一步應？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "左指針右移"
+      },
+      {
+        "id": "option-1",
+        "text": "右指針左移"
+      },
+      {
+        "id": "option-2",
+        "text": "兩指針同時外移"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "固定左端時，右端已是剩餘最大值；和仍太小，這個左端無法搭配出答案。",
+    "misconception": "未排序資料不能直接套用這個移動證明。"
+  },
+  {
+    "id": "two-cycle",
+    "type": "text-fill",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "content_ids": [
+      "template-two-pointers"
+    ],
+    "prompt": "鏈結串列判斷是否有環，常用哪種指針技巧？",
+    "accepted_answers": [
+      "快慢指針",
+      "快慢指標",
+      "fast and slow pointers"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": false
+    },
+    "explanation": "慢指針一次一步、快指針一次兩步，有環時相對距離會循環並相遇。",
+    "misconception": "相遇應比較節點身分，不能只比較節點值。"
+  },
+  {
+    "id": "two-write",
+    "type": "code-fill",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "content_ids": [
+      "template-two-pointers"
+    ],
+    "prompt": "有序陣列去重：write 是下一個寫入位置，當前值不同於最後保留值時填入哪個索引？",
+    "accepted_answers": [
+      "write"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": true
+    },
+    "explanation": "將新值寫到 write，再遞增 write；read 仍負責掃描原始資料。",
+    "misconception": "覆寫前要先判斷是否需要保留，不能單純按讀取位置寫入。",
+    "language": "python",
+    "code_with_blank": "if nums[read] != nums[write - 1]:\n    nums[___] = nums[read]\n    write += 1"
+  },
+  {
+    "id": "two-water",
+    "type": "choice",
+    "pattern_ids": [
+      "two-pointers"
+    ],
+    "content_ids": [
+      "template-two-pointers"
+    ],
+    "prompt": "盛最多水的容器問題中，為什麼移動較短的一側？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "固定短邊且縮小寬度不可能改善面積"
+      },
+      {
+        "id": "option-1",
+        "text": "較長的一側永遠不在最佳解"
+      },
+      {
+        "id": "option-2",
+        "text": "高度必須先排序"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "固定短邊時高度上限不會變大，而寬度變小，因此可排除這個短邊。",
+    "misconception": "排序會改變原本的距離，不能先排序高度。"
+  },
+  {
+    "id": "bfs-shortest",
+    "type": "choice",
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "content_ids": [
+      "template-bfs-dfs"
+    ],
+    "prompt": "無權圖上，哪個方法能依距離層次找最少邊數路徑？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "BFS"
+      },
+      {
+        "id": "option-1",
+        "text": "任意 DFS"
+      },
+      {
+        "id": "option-2",
+        "text": "只看節點編號"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "FIFO 佇列使距離較小的節點先展開，首次到達即為最少邊數。",
+    "misconception": "一般帶權圖的最小權重路徑不能直接套用普通 BFS。"
+  },
+  {
+    "id": "bfs-queue",
+    "type": "text-fill",
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "content_ids": [
+      "template-bfs-dfs"
+    ],
+    "prompt": "BFS 維護待探索節點時，使用哪種先進先出的資料結構？",
+    "accepted_answers": [
+      "佇列",
+      "隊列",
+      "queue"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": false
+    },
+    "explanation": "佇列從尾端加入、前端取出，維持逐層探索次序。",
+    "misconception": "堆疊後進先出，對應的探索順序更接近 DFS。"
+  },
+  {
+    "id": "bfs-visited",
+    "type": "code-fill",
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "content_ids": [
+      "template-bfs-dfs"
+    ],
+    "prompt": "為防止同一節點重複入隊，填入 Python 的布林值。",
+    "accepted_answers": [
+      "True"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": true
+    },
+    "explanation": "發現新節點時立即標記，再加入佇列，避免其他父節點重複加入。",
+    "misconception": "等到取出時才標記可能使佇列包含大量重複節點。",
+    "language": "python",
+    "code_with_blank": "if not visited[v]:\n    visited[v] = ___\n    queue.append(v)"
+  },
+  {
+    "id": "dfs-space",
+    "type": "choice",
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "content_ids": [
+      "template-bfs-dfs"
+    ],
+    "prompt": "DFS 在一條 n 個節點的鏈狀圖上，遞迴呼叫堆疊最壞空間是？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "O(n)"
+      },
+      {
+        "id": "option-1",
+        "text": "O(log n)"
+      },
+      {
+        "id": "option-2",
+        "text": "O(1)"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "一路深入到底前，最多同時保留 n 層呼叫。",
+    "misconception": "只有樹高受限等特定條件才可用 O(log n) 描述深度。"
+  },
+  {
+    "id": "backtrack-copy",
+    "type": "choice",
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "content_ids": [
+      "template-backtracking"
+    ],
+    "prompt": "列舉子集時，為何保存結果常用 path.copy()？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "保留當下快照，避免之後修改影響結果"
+      },
+      {
+        "id": "option-1",
+        "text": "可以自動去掉重複值"
+      },
+      {
+        "id": "option-2",
+        "text": "讓枚舉變成 O(n)"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "path 在遞迴中持續增刪；保存副本才能留下當時的選擇。",
+    "misconception": "複製路徑需成本，結果數量仍可能是指數級。"
+  },
+  {
+    "id": "backtrack-undo",
+    "type": "text-fill",
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "content_ids": [
+      "template-backtracking"
+    ],
+    "prompt": "做完選擇並遞迴返回後，為繼續探索其他分支要做什麼？",
+    "accepted_answers": [
+      "撤銷選擇",
+      "還原狀態",
+      "undo",
+      "backtrack"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": false
+    },
+    "explanation": "回到分支前的狀態，使下一個分支不受上一個分支影響。",
+    "misconception": "共用可變路徑不會在函式返回後自動復原。"
+  },
+  {
+    "id": "backtrack-pop",
+    "type": "code-fill",
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "content_ids": [
+      "template-backtracking"
+    ],
+    "prompt": "填入撤銷剛剛加入元素的方法名稱（不含括號）。",
+    "accepted_answers": [
+      "pop"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": true
+    },
+    "explanation": "Python list.pop() 移除最後一個元素，與 append 的操作配對。",
+    "misconception": "clear() 會刪掉整條路徑，破壞上層已選的元素。",
+    "language": "python",
+    "code_with_blank": "path.append(nums[i])\ndfs(i + 1)\npath.___()"
+  },
+  {
+    "id": "backtrack-reuse",
+    "type": "choice",
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "content_ids": [
+      "template-backtracking"
+    ],
+    "prompt": "每個元素最多選一次的子集遞迴，選了索引 i 後，下層起點應是？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "i + 1"
+      },
+      {
+        "id": "option-1",
+        "text": "i"
+      },
+      {
+        "id": "option-2",
+        "text": "0"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "從下一個索引開始可避免重複選同一個位置，也避免列舉相同集合的不同順序。",
+    "misconception": "可重複選取的組合問題可能傳 i，兩種限制不能混用。"
+  },
+  {
+    "id": "dp-state",
+    "type": "choice",
+    "pattern_ids": [
+      "dp"
+    ],
+    "content_ids": [
+      "template-dp"
+    ],
+    "prompt": "設 dp[i] 為前 i 間房屋的最大收益，House Robber 的正確轉移是？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "max(dp[i-1], dp[i-2] + nums[i-1])"
+      },
+      {
+        "id": "option-1",
+        "text": "dp[i-1] + nums[i-1]"
+      },
+      {
+        "id": "option-2",
+        "text": "max(nums)"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "不偷第 i 間沿用 dp[i-1]；偷第 i 間只能加前 i-2 間的最佳解。",
+    "misconception": "狀態索引與 nums 的索引相差一，並且相鄰房屋不能同時偷。"
+  },
+  {
+    "id": "dp-memo",
+    "type": "text-fill",
+    "pattern_ids": [
+      "dp"
+    ],
+    "content_ids": [
+      "template-dp"
+    ],
+    "prompt": "Top-down DP 把已計算子問題的結果保存起來，這個技巧叫什麼？",
+    "accepted_answers": [
+      "記憶化",
+      "memoization"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": false
+    },
+    "explanation": "以狀態為鍵快取結果，使相同子問題只計算一次。",
+    "misconception": "只有遞迴而沒有快取，不一定避免重複計算。"
+  },
+  {
+    "id": "dp-knapsack",
+    "type": "code-fill",
+    "pattern_ids": [
+      "dp"
+    ],
+    "content_ids": [
+      "template-dp"
+    ],
+    "prompt": "0/1 背包壓成一維時，容量由大到小更新；填入 range 的步長。",
+    "accepted_answers": [
+      "-1"
+    ],
+    "normalization": {
+      "trim": true,
+      "collapse_whitespace": true,
+      "case_sensitive": true
+    },
+    "explanation": "由大到小使 dp[cap-weight] 還是上一輪物品的結果，避免同一物品重複取用。",
+    "misconception": "正向更新可能變成允許同一物品重複選取。",
+    "language": "python",
+    "code_with_blank": "for cap in range(capacity, weight - 1, ___):\n    dp[cap] = max(dp[cap], dp[cap - weight] + value)"
+  },
+  {
+    "id": "dp-complexity",
+    "type": "choice",
+    "pattern_ids": [
+      "dp"
+    ],
+    "content_ids": [
+      "template-dp"
+    ],
+    "prompt": "DP 有 n 個狀態，每個狀態檢查至多 k 種轉移，總時間上界通常如何估計？",
+    "options": [
+      {
+        "id": "option-0",
+        "text": "O(nk)"
+      },
+      {
+        "id": "option-1",
+        "text": "O(n+k)"
+      },
+      {
+        "id": "option-2",
+        "text": "一律 O(n)"
+      }
+    ],
+    "answer_option_id": "option-0",
+    "explanation": "把每個狀態的轉移工作加總，得到至多 n × k。",
+    "misconception": "空間取決於保留的狀態數，不能直接由時間複雜度推出。"
   }
 ]

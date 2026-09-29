@@ -16,8 +16,8 @@
     "id": "data-structures",
     "route": "/data-structures",
     "title": "資料結構索引",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/index.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -28,8 +28,8 @@
     "id": "ds-array",
     "route": "/data-structures/array",
     "title": "array",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/array.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -44,8 +44,8 @@
     "id": "ds-string",
     "route": "/data-structures/string",
     "title": "string",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/string.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -60,8 +60,8 @@
     "id": "ds-hashmap-set",
     "route": "/data-structures/hashmap-set",
     "title": "hashmap-set",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/hashmap-set.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -76,8 +76,8 @@
     "id": "ds-linked-list",
     "route": "/data-structures/linked-list",
     "title": "linked-list",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/linked-list.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -92,8 +92,8 @@
     "id": "ds-stack",
     "route": "/data-structures/stack",
     "title": "stack",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/stack.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -108,8 +108,8 @@
     "id": "ds-queue",
     "route": "/data-structures/queue",
     "title": "queue",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/queue.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -124,8 +124,8 @@
     "id": "ds-heap",
     "route": "/data-structures/heap",
     "title": "heap",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/heap.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -140,8 +140,8 @@
     "id": "ds-tree",
     "route": "/data-structures/tree",
     "title": "tree",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/tree.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -156,8 +156,8 @@
     "id": "ds-graph",
     "route": "/data-structures/graph",
     "title": "graph",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/graph.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -172,8 +172,8 @@
     "id": "ds-union-find",
     "route": "/data-structures/union-find",
     "title": "union-find",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/data-structures/union-find.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -188,8 +188,8 @@
     "id": "languages",
     "route": "/languages",
     "title": "語言對照",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/languages.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -207,8 +207,8 @@
     "id": "templates",
     "route": "/templates",
     "title": "模板索引",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/templates/index.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -359,8 +359,8 @@
     "id": "guided-learning",
     "route": "/guided-learning",
     "title": "引導教學索引",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/index.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -371,12 +371,14 @@
     "id": "guide-sliding-window",
     "route": "/guided-learning/sliding-window",
     "title": "sliding-window 代表題",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/sliding-window.md",
     "pattern_ids": [
       "sliding-window"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-209"
+    ],
     "sections": [
       "辨識",
       "暴力解",
@@ -389,12 +391,14 @@
     "id": "guide-binary-search",
     "route": "/guided-learning/binary-search",
     "title": "binary-search 代表題",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/binary-search.md",
     "pattern_ids": [
       "binary-search"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-875"
+    ],
     "sections": [
       "辨識",
       "暴力解",
@@ -407,12 +411,14 @@
     "id": "guide-two-pointers",
     "route": "/guided-learning/two-pointers",
     "title": "two-pointers 代表題",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/two-pointers.md",
     "pattern_ids": [
       "two-pointers"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-11"
+    ],
     "sections": [
       "辨識",
       "暴力解",
@@ -425,12 +431,14 @@
     "id": "guide-bfs-dfs",
     "route": "/guided-learning/bfs-dfs",
     "title": "bfs-dfs 代表題",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/bfs-dfs.md",
     "pattern_ids": [
       "bfs-dfs"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-200"
+    ],
     "sections": [
       "辨識",
       "暴力解",
@@ -443,12 +451,14 @@
     "id": "guide-backtracking",
     "route": "/guided-learning/backtracking",
     "title": "backtracking 代表題",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/backtracking.md",
     "pattern_ids": [
       "backtracking"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-78"
+    ],
     "sections": [
       "辨識",
       "暴力解",
@@ -461,12 +471,14 @@
     "id": "guide-dp",
     "route": "/guided-learning/dp",
     "title": "dp 代表題",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/guided-learning/dp.md",
     "pattern_ids": [
       "dp"
     ],
-    "problem_ids": [],
+    "problem_ids": [
+      "leetcode-198"
+    ],
     "sections": [
       "辨識",
       "暴力解",
@@ -479,10 +491,32 @@
     "id": "roadmap",
     "route": "/roadmap",
     "title": "學習路徑",
-    "status": "planned",
-    "markdown_path": null,
-    "pattern_ids": [],
-    "problem_ids": [],
+    "status": "ready",
+    "markdown_path": "content/articles/roadmap.md",
+    "pattern_ids": [
+      "two-pointers",
+      "sliding-window",
+      "binary-search",
+      "bfs-dfs",
+      "backtracking",
+      "dp"
+    ],
+    "problem_ids": [
+      "leetcode-167",
+      "leetcode-11",
+      "leetcode-15",
+      "leetcode-643",
+      "leetcode-209",
+      "leetcode-3",
+      "leetcode-76",
+      "leetcode-704",
+      "leetcode-33",
+      "leetcode-875",
+      "leetcode-200",
+      "leetcode-78",
+      "leetcode-39",
+      "leetcode-198"
+    ],
     "sections": [
       "雙指針",
       "Sliding Window",
@@ -496,8 +530,8 @@
     "id": "quiz",
     "route": "/quiz",
     "title": "概念測驗",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/quiz.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
@@ -541,8 +575,8 @@
     "id": "big-o",
     "route": "/big-o",
     "title": "Big O",
-    "status": "planned",
-    "markdown_path": null,
+    "status": "ready",
+    "markdown_path": "content/articles/big-o.md",
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [

@@ -95,7 +95,31 @@ export async function validateContent(data, base = root) {
       const path = resolve(base, page.markdown_path);
       const rel = relative(resolve(base, 'content/articles'), path);
       if (rel.startsWith('..') || isAbsolute(rel)) errors.push(`${page.id}: markdown path escapes content/articles`);
-      else { try { await access(path); } catch { errors.push(`${page.id}: missing markdown ${page.markdown_path}`); } }
+      else {
+        try {
+          const article = await readFile(path, 'utf8');
+          checkEncoding(article, page.markdown_path);
+          if (!article.trim()) errors.push(`${page.id}: empty markdown`);
+          for (const match of article.matchAll(/(!?)\[[^\]]*\]\((\/[^\s)]*)\)/g)) {
+            const [, image, target] = match;
+            const [route, hash] = target.split('#');
+            if (image) {
+              const asset = resolve(base, 'public', route.slice(1));
+              const assetRel = relative(resolve(base, 'public'), asset);
+              if (assetRel.startsWith('..') || isAbsolute(assetRel)) errors.push(`${page.id}: invalid image path ${target}`);
+              else try { await access(asset); } catch { errors.push(`${page.id}: missing image ${target}`); }
+            } else {
+              const linked = data.content.find(p => p.route === route);
+              if (!linked) errors.push(`${page.id}: unknown article route ${route}`);
+              if (hash && route.startsWith('/templates/')) {
+                const pattern = data.patterns.find(p => `/templates/${p.id}` === route);
+                const ids = pattern ? [...pattern.standard_templates.map(l => `standard-${l.id}`), ...pattern.variations.map(l => `variation-${l.id}`)] : [];
+                if (!ids.includes(hash)) errors.push(`${page.id}: unknown template anchor ${target}`);
+              }
+            }
+          }
+        } catch { errors.push(`${page.id}: missing markdown ${page.markdown_path}`); }
+      }
     }
   }
   for (const q of data.quizzes) {

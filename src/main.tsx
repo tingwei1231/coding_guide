@@ -1,11 +1,12 @@
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
-import Markdown from 'react-markdown';
+import { Article } from './Article';
 import { articleFor, pages, patternIndex, titleFor, type Page } from './content';
 import './styles.css';
 import { PatternPage } from './PatternPage';
 import { PatternSearch } from './PatternSearch';
+import { QuizPage } from './QuizPage';
 
 const sections = [
   { name: '建立基礎', ids: ['roadmap', 'data-structures', 'big-o', 'languages'] },
@@ -27,12 +28,13 @@ function ContentPage({ page }: { page: Page }) {
       <p className="lead">{page.id === 'home' ? '從讀懂題目開始，辨識模式、理解模板，再帶著思路練習。' : '把概念拆開理解，為下一次練習建立清楚的思路。'}</p>
     </header>
     {(page.id === 'templates' || pattern) && <PatternSearch />}
-    {article && <article className="prose"><Markdown components={{ a: ({ href, children }) => href?.startsWith('/') ? <Link to={href}>{children}</Link> : <a href={href}>{children}</a> }}>{article}</Markdown></article>}
+    {article && <Article key={page.id} text={article} parallel={page.id === 'languages'} />}
     {page.id === 'home' && <><div className="hero-path"><span>01 理解基礎</span><b aria-hidden="true">→</b><span>02 辨識模式</span><b aria-hidden="true">→</b><span>03 動手練習</span></div>
       <div className="section-heading"><h2>找到你的起點</h2><span>循序前進，自主探索</span></div>
       <Cards items={['roadmap', 'data-structures', 'templates', 'guided-learning'].map(id => pages.find(p => p.id === id)!)} /></>}
     {children.length > 0 && page.id !== 'templates' && <Cards items={children} />}
     {pattern && <PatternPage key={pattern.id} pattern={pattern} />}
+    {page.id === 'quiz' && <QuizPage />}
     {!article && !pattern && page.id !== 'templates' && <section className="outline"><span className="badge">教材準備中</span><h2>這個章節將帶你理解</h2>
       <ul>{page.sections.map(s => <li key={s}>{s}</li>)}</ul><p>完整內容尚未開放，可以先閱讀 <Link to="/templates/sliding-window">Sliding Window 範例</Link>。</p></section>}
   </>;

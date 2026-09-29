@@ -23,7 +23,9 @@
       "sliding-window"
     ],
     "source_id": "leetcode-3-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
   },
   {
     "id": "leetcode-209",
@@ -49,7 +51,9 @@
       "sliding-window"
     ],
     "source_id": "leetcode-76-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
   },
   {
     "id": "leetcode-567",
@@ -114,7 +118,9 @@
       "binary-search"
     ],
     "source_id": "leetcode-33-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
   },
   {
     "id": "leetcode-875",
@@ -166,7 +172,9 @@
       "two-pointers"
     ],
     "source_id": "leetcode-11-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
   },
   {
     "id": "leetcode-141",
@@ -179,7 +187,9 @@
       "two-pointers"
     ],
     "source_id": "leetcode-141-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
   },
   {
     "id": "leetcode-876",
@@ -205,7 +215,9 @@
       "two-pointers"
     ],
     "source_id": "leetcode-15-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
   },
   {
     "id": "leetcode-283",
@@ -257,6 +269,38 @@
       "dp"
     ],
     "source_id": "leetcode-198-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "blind-75"
+    ]
+  },
+  {
+    "id": "leetcode-200",
+    "platform": "leetcode",
+    "number": 200,
+    "name": "Number of Islands",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/number-of-islands/",
+    "pattern_ids": [
+      "bfs-dfs"
+    ],
+    "source_id": "leetcode-200-source",
+    "collection_source_ids": [
+      "blind-75"
+    ]
+  },
+  {
+    "id": "leetcode-39",
+    "platform": "leetcode",
+    "number": 39,
+    "name": "Combination Sum",
+    "difficulty": "medium",
+    "url": "https://leetcode.com/problems/combination-sum/",
+    "pattern_ids": [
+      "backtracking"
+    ],
+    "source_id": "leetcode-39-source",
+    "collection_source_ids": [
+      "blind-75"
+    ]
   }
 ]

@@ -8,6 +8,10 @@ LeetCode 新手引導手冊，純靜態 React 網站。目前包含資料契約�
 
 ## 文件
 
+第 6 步概念測驗已完成：前往 `/quiz` 可綜合抽 6 題或指定模式練 4 題，支援三種題型、評分解說、重做及重新抽題。題庫共 24 題，作答不保存；目前共 29/32 頁 ready。`npm test` 驗證答案正規化與抽題規則，`npm run test:e2e` 驗證實際作答與手機鍵盤操作。
+
+第 5 步已交付 10 頁資料結構、8 組三語言對照、6 篇引導教學、Big O 六案例及六階段 Roadmap，目前 28/32 頁 ready、22 道練習題。Blind 75 已核對本庫中的 9 題；Top Interview 150 歸屬尚待核對，詳見內容清單。
+
 - [規格 v4](docs/spec.md)
 - [實作計畫](docs/plan.md)
 - [資料契約](docs/data-contracts.md)
@@ -50,5 +54,7 @@ npm run preview
 實作參考：[Vite](https://vite.dev/guide/)、[React Router](https://reactrouter.com/start/declarative/installation)、[react-markdown](https://github.com/remarkjs/react-markdown)。
 
 ## 新增內容
+
+教材程式驗證：`python tests/verify_articles.py`，使用與模板測試相同的 Python、Java、C++ 工具鏈，驗證島嶼教學每語言 64 組案例及 8 組語言對照。`npm test` 另檢查五篇沿用模板的教學程式保持一致。Markdown 的 Python／Java／C++ 連續程式區塊會顯示語言切換；語言對照頁改為並排顯示。新增或修改文章後需重新執行建置以更新語法上色。
 
 先依 `schemas/` 與資料契約建立 JSON。每種模式一檔，題目以 ID 共用引用；完整教材放在 `content/articles/` 並更新 catalog。執行上述兩個檢查後再審查教學正確性。通過契約驗證不代表教材數量達標或網站已可發布。
