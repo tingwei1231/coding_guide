@@ -30,7 +30,7 @@ export const labels: Record<string, string> = {
   'guided-learning': '引導教學', roadmap: '學習路徑', quiz: '概念測驗',
   'mock-interview': '模擬面試', 'career-prep': '求職準備', 'big-o': 'Big O',
   'ds-array': 'Array 陣列', 'ds-string': 'String 字串', 'ds-hashmap-set': 'HashMap / Set',
-  'ds-linked-list': 'Linked List 鏈結串列', 'ds-stack': 'Stack 堆疊', 'ds-queue': 'Queue 佇列',
+  'ds-linked-list': 'Linked List 鏈結串列', 'ds-stack': 'Stack', 'ds-queue': 'Queue',
   'ds-heap': 'Heap 堆積', 'ds-tree': 'Tree 樹、BST 與 Trie', 'ds-graph': 'Graph 圖', 'ds-union-find': 'Union-Find 並查集',
 };
 export const patternNames: Record<string, string> = {

@@ -17,7 +17,7 @@ LeetCode 新手引導手冊，純靜態 React 網站。目前 32 個頁面皆已
 - [規格 v4](docs/spec.md)
 - [實作計畫](docs/plan.md)
 - [資料契約](docs/data-contracts.md)
-- [內容清單及来源](docs/content-inventory.md)
+- [內容清單及來源](docs/content-inventory.md)
 - [部署與發布驗收](docs/deployment.md)
 
 ## 本機驗證
@@ -57,6 +57,8 @@ npm run preview
 實作參考：[Vite](https://vite.dev/guide/)、[React Router](https://reactrouter.com/start/declarative/installation)、[react-markdown](https://github.com/remarkjs/react-markdown)。
 
 ## 新增內容
+
+文字請遵循[教材用語規範](docs/writing-style.md)：繁體中文敘述搭配常見英文程式術語，並同步維護題庫及搜尋用語。
 
 教材程式驗證：`python tests/verify_articles.py`，使用與模板測試相同的 Python、Java、C++ 工具鏈，驗證島嶼教學每語言 64 組案例及 8 組語言對照。`npm test` 另檢查五篇沿用模板的教學程式保持一致。Markdown 的 Python／Java／C++ 連續程式區塊會顯示語言切換；語言對照頁改為並排顯示。新增或修改文章後需重新執行建置以更新語法上色。
 

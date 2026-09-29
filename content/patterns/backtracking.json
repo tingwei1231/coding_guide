@@ -4,14 +4,14 @@
   "keywords": [
     "回溯",
     "backtracking",
-    "枚舉",
+    "enumerate",
     "所有組合",
     "子集合"
   ],
   "standard_templates": [
     {
       "id": "subsets",
-      "name": "回溯：枚舉所有子集合",
+      "name": "回溯：enumerate 所有子集合",
       "trigger_signal": "列出所有選擇組合，順序無關，元素不可重複使用。",
       "keywords": [
         "回溯",
@@ -29,11 +29,11 @@
           "reason": "會產生重複的值集合；含重複值需先排序並加入同層跳過規則。"
         }
       ],
-      "explanation": "每次遞迴先保存目前路徑的複本，再枚舉 start 之後的元素。加入一個選擇、遞迴 i+1、撤銷選擇；i+1 確保同一路徑不重用元素。保存複本避免所有答案都指向同一個可變陣列。",
+      "explanation": "每次遞迴先保存目前路徑的複本，再 enumerate start 之後的元素。加入一個選擇、遞迴 i+1、撤銷選擇；i+1 確保同一路徑不重用元素。保存複本避免所有答案都指向同一個可變陣列。",
       "complexity": {
         "time": "O(n·2^n)",
         "space": "O(n)，另計輸出 O(n·2^n)",
-        "reason": "共 2^n 個子集合，複製輸出總量為 O(n·2^n)；路徑與遞迴堆疊深度 O(n)。"
+        "reason": "共 2^n 個子集合，複製輸出總量為 O(n·2^n)；路徑與 recursion stack 深度 O(n)。"
       },
       "code": {
         "python": {

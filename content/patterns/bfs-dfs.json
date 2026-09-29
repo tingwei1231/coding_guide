@@ -13,7 +13,7 @@
   "standard_templates": [
     {
       "id": "bfs",
-      "name": "BFS：以佇列逐層走訪",
+      "name": "BFS：以 queue 逐層走訪",
       "trigger_signal": "無權圖的層級、最少邊數、由近到遠探索。",
       "keywords": [
         "bfs",
@@ -35,7 +35,7 @@
       "complexity": {
         "time": "O(V+E)",
         "space": "O(V)",
-        "reason": "V、E 為整張圖的節點與邊數。visited 初始化 O(V)，可達邊各查看一次，佇列與輸出至多 O(V)。"
+        "reason": "V、E 為整張圖的節點與邊數。visited 初始化 O(V)，可達邊各查看一次，queue 與輸出至多 O(V)。"
       },
       "code": {
         "python": {
@@ -125,7 +125,7 @@
       "prerequisites": [
         "graph 為鄰接表，所有節點編號在 [0,n)；start 為有效節點。",
         "只走訪 start 可達的節點；鄰居依輸入順序處理，有向／無向皆可。",
-        "遞迴深度受語言執行環境限制；長鏈圖應改用顯式堆疊，本教學採小圖。"
+        "遞迴深度受語言執行環境限制；長鏈圖應改用顯式 stack，本教學採小圖。"
       ],
       "counterexamples": [
         {

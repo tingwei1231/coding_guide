@@ -38,7 +38,7 @@ test('hash opens variation after reload; tabs and accordion work with keyboard o
   await expect(page.getByRole('tab', { name: 'C++', exact: true })).toBeFocused();
   await target.locator('h3 button').focus(); await page.keyboard.press('Enter');
   await expect(target.getByRole('region')).toBeHidden();
-  await page.getByRole('navigation', { name: '變形快速導覽' }).getByRole('link', { name: '窗口＋單調隊列：每個窗口的最大值' }).click();
+  await page.getByRole('navigation', { name: '變形快速導覽' }).getByRole('link', { name: 'window＋monotonic deque：每個 window 的最大值' }).click();
   await expect(page.locator('#variation-monotonic-deque').getByRole('region')).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.screenshot({ path: 'test-results/sliding-window-mobile.png', fullPage: true });

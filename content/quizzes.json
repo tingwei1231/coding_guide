@@ -3,14 +3,14 @@
     "pattern_ids": [
       "sliding-window"
     ],
-    "explanation": "固定窗口每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
-    "misconception": "固定窗口不要求所有元素非負。",
+    "explanation": "fixed-size window 每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
+    "misconception": "fixed-size window 不要求所有元素非負。",
     "content_ids": [
       "template-sliding-window"
     ],
     "id": "fixed-window-choice",
     "type": "choice",
-    "prompt": "長度固定 k 的窗口向右移動時要做什麼？",
+    "prompt": "長度固定 k 的 window 向右移動時要做什麼？",
     "options": [
       {
         "id": "both",
@@ -27,16 +27,16 @@
     "pattern_ids": [
       "sliding-window"
     ],
-    "explanation": "固定窗口每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
-    "misconception": "固定窗口不要求所有元素非負。",
+    "explanation": "fixed-size window 每次移動加入右端並移除離開的左端，不需依總和 while 收縮。",
+    "misconception": "fixed-size window 不要求所有元素非負。",
     "content_ids": [
       "template-sliding-window"
     ],
     "id": "fixed-window-text",
     "type": "text-fill",
-    "prompt": "長度恰好 k 的連續區間優先考慮哪種窗口？",
+    "prompt": "長度恰好 k 的連續區間優先考慮哪種 window？",
     "accepted_answers": [
-      "固定窗口",
+      "fixed-size window",
       "fixed window"
     ],
     "normalization": {
@@ -49,14 +49,14 @@
     "pattern_ids": [
       "sliding-window"
     ],
-    "explanation": "右端 right 進入長度 k 的窗口時，舊左端 right - k 必須移除，使總和仍只包含 k 個元素。",
-    "misconception": "right - k + 1 是新窗口的左端，移除它會刪錯元素。",
+    "explanation": "右端 right 進入長度 k 的 window 時，舊左端 right - k 必須移除，使總和仍只包含 k 個元素。",
+    "misconception": "right - k + 1 是新 window 的左端，移除它會刪錯元素。",
     "content_ids": [
       "template-sliding-window"
     ],
     "id": "fixed-window-code",
     "type": "code-fill",
-    "prompt": "已初始化前 k 個元素總和，right ≥ k 時填入離開固定窗口的索引。",
+    "prompt": "已初始化前 k 個元素總和，right ≥ k 時填入離開 fixed-size window 的索引。",
     "language": "python",
     "code_with_blank": "total += nums[right] - nums[___]",
     "accepted_answers": [
@@ -78,7 +78,7 @@
     "content_ids": [
       "template-sliding-window"
     ],
-    "prompt": "用總和超過上限就收縮的窗口時，為何通常要求元素非負？",
+    "prompt": "用總和超過上限就收縮的 window 時，為何通常要求元素非負？",
     "options": [
       {
         "id": "option-0",
@@ -90,12 +90,12 @@
       },
       {
         "id": "option-2",
-        "text": "所有固定窗口都不允許負數"
+        "text": "所有 fixed-size window 都不允許負數"
       }
     ],
     "answer_option_id": "option-0",
     "explanation": "非負數使擴張不減少總和、收縮不增加總和，才能判斷哪些左端可以捨棄。",
-    "misconception": "固定長度窗口可包含負數；限制取決於維護條件。"
+    "misconception": "固定長度 window 可包含負數；限制取決於維護條件。"
   },
   {
     "id": "binary-cost",
@@ -213,15 +213,15 @@
     "options": [
       {
         "id": "option-0",
-        "text": "左指針右移"
+        "text": "左指標右移"
       },
       {
         "id": "option-1",
-        "text": "右指針左移"
+        "text": "右指標左移"
       },
       {
         "id": "option-2",
-        "text": "兩指針同時外移"
+        "text": "兩指標同時外移"
       }
     ],
     "answer_option_id": "option-0",
@@ -237,9 +237,8 @@
     "content_ids": [
       "template-two-pointers"
     ],
-    "prompt": "鏈結串列判斷是否有環，常用哪種指針技巧？",
+    "prompt": "鏈結串列判斷是否有環，常用哪種指標技巧？",
     "accepted_answers": [
-      "快慢指針",
       "快慢指標",
       "fast and slow pointers"
     ],
@@ -248,7 +247,7 @@
       "collapse_whitespace": true,
       "case_sensitive": false
     },
-    "explanation": "慢指針一次一步、快指針一次兩步，有環時相對距離會循環並相遇。",
+    "explanation": "慢指標一次一步、快指標一次兩步，有環時相對距離會循環並相遇。",
     "misconception": "相遇應比較節點身分，不能只比較節點值。"
   },
   {
@@ -327,7 +326,7 @@
       }
     ],
     "answer_option_id": "option-0",
-    "explanation": "FIFO 佇列使距離較小的節點先展開，首次到達即為最少邊數。",
+    "explanation": "FIFO queue 使距離較小的節點先展開，首次到達即為最少邊數。",
     "misconception": "一般帶權圖的最小權重路徑不能直接套用普通 BFS。"
   },
   {
@@ -341,8 +340,6 @@
     ],
     "prompt": "BFS 維護待探索節點時，使用哪種先進先出的資料結構？",
     "accepted_answers": [
-      "佇列",
-      "隊列",
       "queue"
     ],
     "normalization": {
@@ -350,8 +347,8 @@
       "collapse_whitespace": true,
       "case_sensitive": false
     },
-    "explanation": "佇列從尾端加入、前端取出，維持逐層探索次序。",
-    "misconception": "堆疊後進先出，對應的探索順序更接近 DFS。"
+    "explanation": "queue 從尾端加入、前端取出，維持逐層探索次序。",
+    "misconception": "stack 後進先出，對應的探索順序更接近 DFS。"
   },
   {
     "id": "bfs-visited",
@@ -371,8 +368,8 @@
       "collapse_whitespace": true,
       "case_sensitive": true
     },
-    "explanation": "發現新節點時立即標記，再加入佇列，避免其他父節點重複加入。",
-    "misconception": "等到取出時才標記可能使佇列包含大量重複節點。",
+    "explanation": "發現新節點時立即標記，再加入 queue，避免其他父節點重複加入。",
+    "misconception": "等到取出時才標記可能使 queue 包含大量重複節點。",
     "language": "python",
     "code_with_blank": "if not visited[v]:\n    visited[v] = ___\n    queue.append(v)"
   },
@@ -385,7 +382,7 @@
     "content_ids": [
       "template-bfs-dfs"
     ],
-    "prompt": "DFS 在一條 n 個節點的鏈狀圖上，遞迴呼叫堆疊最壞空間是？",
+    "prompt": "DFS 在一條 n 個節點的鏈狀圖上，遞迴 call stack 最壞空間是？",
     "options": [
       {
         "id": "option-0",
@@ -425,7 +422,7 @@
       },
       {
         "id": "option-2",
-        "text": "讓枚舉變成 O(n)"
+        "text": "讓 enumerate 變成 O(n)"
       }
     ],
     "answer_option_id": "option-0",
@@ -441,7 +438,7 @@
     "content_ids": [
       "template-backtracking"
     ],
-    "prompt": "做完選擇並遞迴返回後，為繼續探索其他分支要做什麼？",
+    "prompt": "做完選擇並遞迴回傳後，為繼續探索其他分支要做什麼？",
     "accepted_answers": [
       "撤銷選擇",
       "還原狀態",
@@ -454,7 +451,7 @@
       "case_sensitive": false
     },
     "explanation": "回到分支前的狀態，使下一個分支不受上一個分支影響。",
-    "misconception": "共用可變路徑不會在函式返回後自動復原。"
+    "misconception": "共用可變路徑不會在函式回傳後自動復原。"
   },
   {
     "id": "backtrack-pop",
@@ -546,7 +543,6 @@
     ],
     "prompt": "Top-down DP 把已計算子問題的結果保存起來，這個技巧叫什麼？",
     "accepted_answers": [
-      "記憶化",
       "memoization"
     ],
     "normalization": {

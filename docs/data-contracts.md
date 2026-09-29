@@ -26,7 +26,7 @@
 - `base_template_id`：同模式下存在的標準模板 ID。
 - `diff_from_standard`：語意變化與修改原因。
 - `removed_code_notes`：刪除邏輯的說明，沒有刪除可留空陣列。
-- `highlight_lines`：三語言各自的行號陣列，從 **1** 起算，對應該變形完整程式碼；不得重複或超界，可為空（僅刪除等情境）。並非自動產生的 Git diff。
+- `highlight_lines`：三語言各自的行號陣列，從 1 起算，對應該變形完整程式碼；不得重複或超界，可為空（僅刪除等情境）。並非自動產生的 Git diff。
 
 模板 ID 在各模式的 standard_templates 內唯一；變形 ID 在各模式的 variations 內唯一，兩者為不同命名空間。變形深連結規約為 `/templates/<pattern>#variation-<id>`。
 

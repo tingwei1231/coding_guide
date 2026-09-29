@@ -2,7 +2,7 @@
 
 ## 0. 專案定位
 
-**這是一本「上場前的教練手冊」，不是「訓練場」。**
+這是一本「上場前的教練手冊」，不是「訓練場」。
 
 - 目標使用者：應屆畢業生、轉職者、準備技術面試的新手
 - 核心價值：在打開 LeetCode / HackerRank 之前，先建立「看到題目 → 辨識模式 → 套用模板 → 判斷變形」的完整思考框架
@@ -29,9 +29,9 @@
 
 ### 1.2 多語言對照 (`/languages`)
 
-- 模板與教學提供 **C++ / Python / Java** 三語言 tab；本語言對照頁採並排比較，手機版堆疊呈現。
+- 模板與教學提供 C++ / Python / Java 三語言 tab；本語言對照頁採並排比較，手機版垂直排列呈現。
 - 「語言差異對照表」：如 Python `heapq` vs Java `PriorityQueue` vs C++ `priority_queue`
-- 明確聲明：**此區只用於「讀懂寫法」，不內建線上編譯執行器**
+- 明確聲明：此區只用於「讀懂寫法」，不內建線上編譯執行器
 
 ### 1.3 引導式教學 (`/guided-learning`)
 
@@ -47,13 +47,13 @@
 
 ### 1.4 資料結構 / 模式模板庫 (`/templates`)
 
-首版標準模板：Binary Search、BFS/DFS、雙指針、Sliding Window、Backtracking、DP。BFS 與 DFS 分開呈現，DP 包含 top-down 與 bottom-up；每種模式可有多個 standard_templates。首版完整變形只交付 Sliding Window 5 種、Binary Search 4 種、Two Pointers 4 種；其餘變形留待後續，不呈現空卡片。
+首版標準模板：Binary Search、BFS/DFS、雙指標、Sliding Window、Backtracking、DP。BFS 與 DFS 分開呈現，DP 包含 top-down 與 bottom-up；每種模式可有多個 standard_templates。首版完整變形只交付 Sliding Window 5 種、Binary Search 4 種、Two Pointers 4 種；其餘變形留待後續，不呈現空卡片。
 
 每個模板包含：
 - 三語言版本 + 逐行註解
 - 「看到題目長怎樣該想到這個模板」辨識說明
 - 對應 Blind 75 / LC150 題號清單（純文字 + 外部連結，不收錄題目內容）
-- **見第 2 節：模式變形系統**（本次新增的核心功能）
+- 見第 2 節：模式變形系統（本次新增的核心功能）
 
 ---
 
@@ -78,11 +78,11 @@
 
 | 變形 | 辨識訊號 | 跟標準模板差在哪 | 對應題目 |
 |---|---|---|---|
-| 固定窗口 | 「長度為 k 的子陣列」 | 窗口大小固定，滑動時同時加入右邊、移除左邊 | Maximum Average Subarray I |
-| 可變窗口（找最長） | 「最長且滿足某條件的子字串」 | 右指針持續擴張，條件破壞才收縮左指針 | Longest Substring Without Repeating Characters |
-| 可變窗口（找最短） | 「最短且滿足某條件的子陣列」 | 條件一滿足就開始收縮左指針，過程中取最小值 | Minimum Size Subarray Sum |
-| 窗口+頻率計數 | 「包含所有字元/異位詞」 | 額外維護 HashMap 記錄窗口內元素頻率 | Minimum Window Substring、Permutation in String |
-| 窗口+單調隊列 | 「窗口內最大/最小值」 | 用 Deque 維護遞減/遞增序列，避免重新掃描窗口 | Sliding Window Maximum |
+| fixed-size window | 「長度為 k 的子陣列」 | window 大小固定，滑動時同時加入右邊、移除左邊 | Maximum Average Subarray I |
+| 可變 window（找最長） | 「最長且滿足某條件的子字串」 | 右指標持續擴張，條件破壞才收縮左指標 | Longest Substring Without Repeating Characters |
+| 可變 window（找最短） | 「最短且滿足某條件的子陣列」 | 條件一滿足就開始收縮左指標，過程中取最小值 | Minimum Size Subarray Sum |
+| window+頻率計數 | 「包含所有字元/異位詞」 | 額外維護 HashMap 記錄 window 內元素頻率 | Minimum Window Substring、Permutation in String |
+| window+monotonic deque | 「window 內最大/最小值」 | 用 Deque 維護遞減/遞增序列，避免重新掃描 window | Sliding Window Maximum |
 
 #### B. Binary Search
 
@@ -99,10 +99,10 @@
 
 | 變形 | 辨識訊號 | 跟標準模板差在哪 | 對應題目 |
 |---|---|---|---|
-| 對撞指針 | 排序陣列找兩數關係；或可證明兩端淘汰規則 | Two Sum II 利用排序；Container With Most Water 利用短邊限制，並不要求排序 | Two Sum II、Container With Most Water |
-| 快慢指針 | 鏈結串列、找環、找中點 | 兩指針同起點不同速度 | Linked List Cycle、Middle of Linked List |
-| 三指針/多指針 | 「三數之和」類題目 | 固定外層指針 + 內層對撞指針 | 3Sum |
-| 原地分割 | 「移除元素」、「移動零」 | 一個指針負責寫入位置，一個指針負責掃描 | Move Zeroes、Remove Duplicates |
+| 對撞指標 | 排序陣列找兩數關係；或可證明兩端淘汰規則 | Two Sum II 利用排序；Container With Most Water 利用短邊限制，並不要求排序 | Two Sum II、Container With Most Water |
+| 快慢指標 | 鏈結串列、找環、找中點 | 兩指標同起點不同速度 | Linked List Cycle、Middle of Linked List |
+| 三指標/多指標 | 「三數之和」類題目 | 固定外層指標 + 內層對撞指標 | 3Sum |
+| 原地分割 | 「移除元素」、「移動零」 | 一個指標負責寫入位置，一個指標負責掃描 | Move Zeroes、Remove Duplicates |
 
 #### D. BFS / DFS（未來可擴充，建議收錄方向）
 
@@ -139,7 +139,7 @@
 - 每個變形指定同模式內的基礎模板 ID，提供完整程式碼與各語言從 1 起算的高亮行號；刪除內容以文字補充。
 - 題目、來源、教材與測驗均有穩定 ID。題目索引包含題號、難度、模式及已核對的題單歸屬；各頁引用 ID。
 - JSON Schema 驗證型別與必填欄位；驗證程式檢查重複 ID、跨檔引用、高亮行號範圍及教材檔案。
-- 辨識訊號只是線索，教學必須證明適用前提：滑動窗口的增減性與負數反例；二分答案的搜尋範圍及可行性單調性；雙指針的淘汰依據；DP 是否可重複選取。
+- 辨識訊號只是線索，教學必須證明適用前提：sliding window 的增減性與負數反例；二分答案的搜尋範圍及可行性單調性；雙指標的淘汰依據；DP 是否可重複選取。
 
 ### 2.4 頁面呈現規則
 
@@ -156,16 +156,16 @@
 
 ### 3.1 學習路徑地圖 (`/roadmap`)
 - 純內容導覽，無帳號/進度追蹤
-- 依主題分類呈現建議學習順序（Array/雙指針 → Sliding Window → BFS/DFS → Backtracking → DP...）
+- 依主題分類呈現建議學習順序（Array/雙指標 → Sliding Window → BFS/DFS → Backtracking → DP...）
 - 每分類列出 Blind 75 / LC150 對應題目「清單」（題名 + 難度 + 所屬 pattern + 外部連結）
 
 ### 3.2 概念驗證測驗 (`/quiz`)（取代原每日/每週挑戰）
 - 形式：填空題 + 選擇題，測「概念理解」而非「解題能力」
 - 範例：
-  - 填空：「排序陣列中找兩數之和 target，優先考慮 ___ 模式」→ 雙指針
+  - 填空：「排序陣列中找兩數之和 target，優先考慮 ___ 模式」→ 雙指標
   - 選擇：「以下哪個時間複雜度最適合描述 Binary Search？」
   - 挖空模板：給一段 BFS 模板程式碼，挖空關鍵行讓使用者填入
-- 技術需求：純前端 JS 邏輯，題庫存於本地 JSON，作答狀態存在記憶體（reload 即重置），**不儲存作答紀錄**
+- 技術需求：純前端 JS 邏輯，題庫存於本地 JSON，作答狀態存在記憶體（reload 即重置），不儲存作答紀錄
 - 題庫可隨機抽題組合，模擬「每日一練」體感但無需後端
 
 ### 3.3 模擬面試「思路」練習 (`/mock-interview`)
@@ -218,7 +218,7 @@
 | 測驗功能 | 純前端 JS 邏輯，狀態存於 React state / Vue reactive，無資料庫 |
 | 部署 | 首選 Vercel 靜態託管，設定子路由 fallback；直接開啟及重新整理須正常 |
 
-**明確排除**：使用者登入系統、資料庫、線上編譯執行器（如 Judge0）、進度追蹤後端、社群討論區、公司標籤系統。
+明確排除：使用者登入系統、資料庫、線上編譯執行器（如 Judge0）、進度追蹤後端、社群討論區、公司標籤系統。
 
 ---
 

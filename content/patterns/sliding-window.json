@@ -5,13 +5,13 @@
     "連續",
     "子陣列",
     "子字串",
-    "窗口",
+    "window",
     "sliding window"
   ],
   "standard_templates": [
     {
       "id": "longest-valid",
-      "name": "可變窗口：非負數總和不超過上限",
+      "name": "可變 window：非負數總和不超過上限",
       "trigger_signal": "找總和不超過 budget 的最長連續子陣列，且元素非負。",
       "keywords": [
         "最長",
@@ -25,7 +25,7 @@
       "counterexamples": [
         {
           "scenario": "nums=[2,-1], budget=1",
-          "reason": "若先移除 2，便錯過長度 2 的合法窗口；負數破壞擴張不減、收縮不增的性質。"
+          "reason": "若先移除 2，便錯過長度 2 的合法 window；負數破壞擴張不減、收縮不增的性質。"
         }
       ],
       "explanation": "右端逐步擴張，超過預算才移動左端；非負性保證被淘汰的左端不會因後續擴張重新成為更長的合法答案。空陣列回傳 0。",
@@ -56,7 +56,7 @@
             "        long total = 0;",
             "        for (int right = 0; right < nums.length; right++) {",
             "            total += nums[right]; // 擴張",
-            "            while (total > budget) { // 恢復合法窗口",
+            "            while (total > budget) { // 恢復合法 window",
             "                total -= nums[left++];",
             "            }",
             "            best = Math.max(best, right - left + 1);",
@@ -75,7 +75,7 @@
             "    long long total = 0;",
             "    for (int right = 0; right < static_cast<int>(nums.size()); ++right) {",
             "        total += nums[right]; // 擴張",
-            "        while (total > budget) { // 恢復合法窗口",
+            "        while (total > budget) { // 恢復合法 window",
             "            total -= nums[left++];",
             "        }",
             "        best = std::max(best, right - left + 1);",
@@ -94,12 +94,12 @@
   "variations": [
     {
       "id": "fixed-size",
-      "name": "固定窗口：最大平均",
+      "name": "fixed-size window：最大平均",
       "base_template_id": "longest-valid",
       "trigger_signal": "明確指定長度 k，找連續 k 個元素的最大平均。",
       "keywords": [
         "長度 k",
-        "固定窗口",
+        "fixed-size window",
         "最大平均"
       ],
       "prerequisites": [
@@ -109,14 +109,14 @@
       "counterexamples": [
         {
           "scenario": "要求長度至少 k，而非恰好 k。",
-          "reason": "只枚舉固定長度會漏掉更長候選，不能直接沿用此模板。"
+          "reason": "只 enumerate 固定長度會漏掉更長候選，不能直接沿用此模板。"
         }
       ],
-      "explanation": "先算首個完整窗口，再每次加入右端、移除 right-k。以首個窗口總和初始化答案以支援全負數。",
+      "explanation": "先算首個完整 window，再每次加入右端、移除 right-k。以首個 window 總和初始化答案以支援全負數。",
       "complexity": {
         "time": "O(n)",
         "space": "O(1)",
-        "reason": "先建立首個長度 k 的窗口，再增量更新；Python 使用生成器而非切片，因此三語言皆只需 O(1) 額外空間，總時間為 O(k + n - k) = O(n)。"
+        "reason": "先建立首個長度 k 的 window，再增量更新；Python 使用生成器而非切片，因此三語言皆只需 O(1) 額外空間，總時間為 O(k + n - k) = O(n)。"
       },
       "code": {
         "python": {
@@ -169,9 +169,9 @@
       "content_ids": [
         "template-sliding-window"
       ],
-      "diff_from_standard": "改用固定長度約束；不再使用總和超限的 while。先建立 k 個元素的窗口，答案由最長長度改為最大總和除以 k。",
+      "diff_from_standard": "改用固定長度約束；不再使用總和超限的 while。先建立 k 個元素的 window，答案由最長長度改為最大總和除以 k。",
       "removed_code_notes": [
-        "移除 budget 參數、left 狀態及 while 超限收縮；固定窗口允許負數。"
+        "移除 budget 參數、left 狀態及 while 超限收縮；fixed-size window 允許負數。"
       ],
       "highlight_lines": {
         "python": [
@@ -203,7 +203,7 @@
     },
     {
       "id": "longest-unique",
-      "name": "可變窗口：找最長不重複子字串",
+      "name": "可變 window：找最長不重複子字串",
       "keywords": [
         "最長",
         "不重複",
@@ -217,20 +217,20 @@
       "counterexamples": [
         {
           "scenario": "子序列可以跳過中間字元。",
-          "reason": "窗口只能表示連續區間，不能直接求最長不重複子序列。"
+          "reason": "window 只能表示連續區間，不能直接求最長不重複子序列。"
         }
       ],
-      "explanation": "維護目前窗口字元集合。新字元重複時，先移除左端直到不重複，再加入新字元並更新最長長度。例 abba 在第二個 b 時需移除 a、b，答案仍是 2。",
+      "explanation": "維護目前 window 字元集合。新字元重複時，先移除左端直到不重複，再加入新字元並更新最長長度。例 abba 在第二個 b 時需移除 a、b，答案仍是 2。",
       "complexity": {
         "time": "O(n)（雜湊操作平均 O(1)）",
         "space": "O(min(n, Σ))",
-        "reason": "兩端各走至多 n 次，集合只保留窗口內相異字元；Σ 為字元集大小。"
+        "reason": "兩端各走至多 n 次，集合只保留 window 內相異字元；Σ 為字元集大小。"
       },
       "code": {
         "python": {
           "lines": [
             "def length_of_longest_substring(s):",
-            "    seen = set()  # 保存目前窗口字元",
+            "    seen = set()  # 保存目前 window 字元",
             "    left = best = 0",
             "    for right, char in enumerate(s):",
             "        while char in seen:  # 重複才收縮",
@@ -246,7 +246,7 @@
             "import java.util.HashSet;",
             "class Solution {",
             "    public int lengthOfLongestSubstring(String s) {",
-            "        HashSet<Character> seen = new HashSet<>(); // 窗口內字元",
+            "        HashSet<Character> seen = new HashSet<>(); // window 內字元",
             "        int left = 0, best = 0;",
             "        for (int right = 0; right < s.length(); right++) {",
             "            char ch = s.charAt(right);",
@@ -267,7 +267,7 @@
             "#include <unordered_set>",
             "#include <algorithm>",
             "int lengthOfLongestSubstring(const std::string& s) {",
-            "    std::unordered_set<char> seen; // 窗口內字元",
+            "    std::unordered_set<char> seen; // window 內字元",
             "    int left = 0, best = 0;",
             "    for (int right = 0; right < static_cast<int>(s.size()); ++right) {",
             "        char ch = s[right];",
@@ -285,7 +285,7 @@
       "problem_ids": [
         "leetcode-3"
       ],
-      "diff_from_standard": "總和狀態換為集合；以新字元是否重複判斷收縮，仍在窗口恢復合法後更新最長答案。",
+      "diff_from_standard": "總和狀態換為集合；以新字元是否重複判斷收縮，仍在 window 恢復合法後更新最長答案。",
       "removed_code_notes": [
         "移除 budget 與 total。"
       ],
@@ -320,7 +320,7 @@
     },
     {
       "id": "shrink-to-min",
-      "name": "可變窗口：找最短總和達標子陣列",
+      "name": "可變 window：找最短總和達標子陣列",
       "keywords": [
         "最短",
         "總和至少",
@@ -334,7 +334,7 @@
       "counterexamples": [
         {
           "scenario": "nums=[1,-1,5], target=5",
-          "reason": "簡單窗口會得到長度 3，漏掉 [5]；負數令移除左端後總和可能增加。"
+          "reason": "簡單 window 會得到長度 3，漏掉 [5]；負數令移除左端後總和可能增加。"
         }
       ],
       "explanation": "每次加入右端後，只要總和達標，就先記錄長度再移除左端。與找最長相反：合法時主動收縮，直到不合法才重新擴張。例 target=7、[2,3,1,2,4,3] 得到 [4,3]，長度 2。",
@@ -429,20 +429,20 @@
     },
     {
       "id": "frequency-count",
-      "name": "窗口＋頻率計數：最小覆蓋子字串",
+      "name": "window＋頻率計數：最小覆蓋子字串",
       "keywords": [
         "包含所有字元",
         "頻率",
         "異位詞"
       ],
-      "trigger_signal": "包含目標所有字元且重複次數足夠，找最短窗口；異位詞則再限制長度。",
+      "trigger_signal": "包含目標所有字元且重複次數足夠，找最短 window；異位詞則再限制長度。",
       "prerequisites": [
         "三語言以 ASCII 為字元範圍；字元計數包含重複次數。",
         "t 為空或無解時回傳空字串。"
       ],
       "counterexamples": [
         {
-          "scenario": "t=AAB，窗口 AB",
+          "scenario": "t=AAB，window AB",
           "reason": "集合包含 A、B 仍不足，必須計算 A 的兩次需求；不能只比較相異字元種類。"
         }
       ],
@@ -596,28 +596,28 @@
     },
     {
       "id": "monotonic-deque",
-      "name": "窗口＋單調隊列：每個窗口的最大值",
+      "name": "window＋monotonic deque：每個 window 的最大值",
       "keywords": [
-        "窗口最大值",
-        "窗口最小值",
-        "單調隊列"
+        "window 最大值",
+        "window 最小值",
+        "monotonic deque"
       ],
-      "trigger_signal": "固定長度 k，需取得每個連續窗口的最大值或最小值。",
+      "trigger_signal": "固定長度 k，需取得每個連續 window 的最大值或最小值。",
       "prerequisites": [
         "1 <= k <= nums.length；可包含負數或重複值。",
-        "隊列保存索引以判斷過期；此程式求最大值。"
+        "queue 保存索引以判斷過期；此程式求最大值。"
       ],
       "counterexamples": [
         {
-          "scenario": "只保存目前最大值，但它滑出窗口。",
-          "reason": "無法知道下一個最大值；單調隊列保留仍可能成為答案的候選。求中位數也不能只用此隊列。"
+          "scenario": "只保存目前最大值，但它滑出 window。",
+          "reason": "無法知道下一個最大值；monotonic deque 保留仍可能成為答案的候選。求中位數也不能只用此 queue。"
         }
       ],
-      "explanation": "先移除隊首過期索引，再由隊尾移除不大於新值的候選，新值至少一樣大且更晚過期，因此它們不可能再成為必需答案。加入新索引後，完整窗口的最大值在隊首。相等時保留較新的索引。求最小值時反轉隊尾比較方向。",
+      "explanation": "先移除隊首過期索引，再由隊尾移除不大於新值的候選，新值至少一樣大且更晚過期，因此它們不可能再成為必需答案。加入新索引後，完整 window 的最大值在隊首。相等時保留較新的索引。求最小值時反轉隊尾比較方向。",
       "complexity": {
         "time": "O(n)",
         "space": "O(k)，另計輸出 O(n-k+1)",
-        "reason": "每索引只入隊一次、出隊至多一次；兩個 while 是攤銷線性而非逐窗口重掃。"
+        "reason": "每索引只入隊一次、出隊至多一次；兩個 while 是攤銷線性而非逐 window 重掃。"
       },
       "code": {
         "python": {
@@ -632,7 +632,7 @@
             "        while candidates and nums[candidates[-1]] <= value:",
             "            candidates.pop()  # 新值更大且更晚過期，舊值不再有用",
             "        candidates.append(right)",
-            "        if right >= k - 1:  # 窗口完整後才輸出",
+            "        if right >= k - 1:  # window 完整後才輸出",
             "            result.append(nums[candidates[0]])",
             "    return result"
           ]
@@ -664,7 +664,7 @@
             "#include <vector>",
             "#include <deque>",
             "std::vector<int> maxSlidingWindow(const std::vector<int>& nums, int k) {",
-            "    std::deque<int> candidates; // 值遞減的索引隊列",
+            "    std::deque<int> candidates; // 值遞減的索引 queue",
             "    std::vector<int> result;",
             "    for (int right = 0; right < static_cast<int>(nums.size()); ++right) {",
             "        while (!candidates.empty() && candidates.front() <= right - k) {",
@@ -684,9 +684,9 @@
       "problem_ids": [
         "leetcode-239"
       ],
-      "diff_from_standard": "窗口長度固定；不維護總和，改維護索引候選隊列。過期檢查與隊尾淘汰是不同用途的 while。",
+      "diff_from_standard": "window 長度固定；不維護總和，改維護索引候選 queue。過期檢查與隊尾淘汰是不同用途的 while。",
       "removed_code_notes": [
-        "移除 total、budget 與最長長度答案，改輸出每個完整窗口的極值。"
+        "移除 total、budget 與最長長度答案，改輸出每個完整 window 的極值。"
       ],
       "highlight_lines": {
         "python": [

@@ -195,11 +195,11 @@
     "sections": [
       "陣列",
       "字串",
-      "雜湊表",
+      "hash map",
       "集合",
-      "堆疊",
-      "佇列",
-      "優先佇列",
+      "stack",
+      "queue",
+      "priority queue",
       "排序"
     ]
   },
@@ -518,7 +518,7 @@
       "leetcode-198"
     ],
     "sections": [
-      "雙指針",
+      "雙指標",
       "Sliding Window",
       "Binary Search",
       "BFS/DFS",

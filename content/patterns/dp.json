@@ -5,36 +5,36 @@
     "dp",
     "動態規劃",
     "最佳值",
-    "記憶化",
+    "memoization",
     "背包"
   ],
   "standard_templates": [
     {
       "id": "top-down",
-      "name": "DP top-down：記憶化選或不選",
+      "name": "DP top-down：memoization 選或不選",
       "trigger_signal": "最佳值問題存在重疊子問題，可由位置 i 定義剩餘最佳值。",
       "keywords": [
         "dp",
-        "記憶化",
+        "memoization",
         "top-down",
         "重疊子問題"
       ],
       "prerequisites": [
         "nums 為非負整數，選取的兩個位置不可相鄰；每個位置至多取一次。",
         "空陣列回傳 0；Java/C++ 的最大總和需在 64 位有號整數範圍內。",
-        "本遞迴示範採 n<=100，較長輸入使用 bottom-up 避免堆疊限制。"
+        "本遞迴示範採 n<=100，較長輸入使用 bottom-up 避免 stack 限制。"
       ],
       "counterexamples": [
         {
           "scenario": "每次都重新求解 i+1 與 i+2，未快取。",
-          "reason": "重疊子問題導致指數級重算；記憶化後每個狀態只計算一次。"
+          "reason": "重疊子問題導致指數級重算；memoization 後每個狀態只計算一次。"
         }
       ],
       "explanation": "solve(i) 表示從 i 開始可取得的最大總額；跳過 i 得 solve(i+1)，選 i 得 nums[i]+solve(i+2)。越界為 0，快取兩種選擇的最大值。狀態表示不可相鄰選取，不是一般背包容量狀態。",
       "complexity": {
         "time": "O(n)",
         "space": "O(n)",
-        "reason": "n 個狀態各常數次轉移，記憶表與遞迴堆疊皆為 O(n)。"
+        "reason": "n 個狀態各常數次轉移，記憶表與 recursion stack 皆為 O(n)。"
       },
       "code": {
         "python": {

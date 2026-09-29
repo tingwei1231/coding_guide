@@ -2,7 +2,7 @@
   "id": "two-pointers",
   "name": "Two Pointers",
   "keywords": [
-    "雙指針",
+    "雙指標",
     "two pointers",
     "兩個位置",
     "排序"
@@ -15,7 +15,7 @@
       "keywords": [
         "兩數之和",
         "排序",
-        "對撞指針"
+        "對撞指標"
       ],
       "prerequisites": [
         "nums 已非遞減排序；回傳一組 1-based 索引，無解回傳空陣列。",
@@ -92,7 +92,7 @@
   "variations": [
     {
       "id": "opposite-ends",
-      "name": "對撞指針：容器最大面積",
+      "name": "對撞指標：容器最大面積",
       "trigger_signal": "兩端位置形成容器，最大化寬度乘以較短高度。",
       "keywords": [
         "對撞",
@@ -106,7 +106,7 @@
       ],
       "counterexamples": [
         {
-          "scenario": "為了套用雙指針而先排序 height。",
+          "scenario": "為了套用雙指標而先排序 height。",
           "reason": "容器寬度來自原始位置；排序改變位置關係，答案會改變。"
         }
       ],
@@ -203,10 +203,10 @@
     },
     {
       "id": "fast-slow",
-      "name": "快慢指針：鏈結串列找環",
+      "name": "快慢指標：鏈結串列找環",
       "trigger_signal": "鏈結串列是否有環；延伸可找中點。",
       "keywords": [
-        "快慢指針",
+        "快慢指標",
         "找環",
         "鏈結串列",
         "中點"
@@ -218,7 +218,7 @@
       "counterexamples": [
         {
           "scenario": "兩個不同節點的 val 都是 1。",
-          "reason": "值相等不代表指針相遇；必須比較是否指向同一節點。"
+          "reason": "值相等不代表指標相遇；必須比較是否指向同一節點。"
         }
       ],
       "explanation": "slow 每次走一步，fast 走兩步。有環時相對距離每次改變一步，最終相遇；無環時 fast 到達結尾。若改求中點，保留相同步幅但回傳 slow，偶數長度得到第二個中點；不可把此判環回傳值當中點。",
@@ -292,7 +292,7 @@
         "template-two-pointers"
       ],
       "base_template_id": "sorted-pair",
-      "diff_from_standard": "由陣列兩端改為同起點的節點指針，以不同速度移動並比較身分。",
+      "diff_from_standard": "由陣列兩端改為同起點的節點指標，以不同速度移動並比較身分。",
       "removed_code_notes": [
         "不依賴排序、不比較總和，也沒有索引邊界。"
       ],
@@ -341,12 +341,12 @@
     },
     {
       "id": "three-sum",
-      "name": "多指針：三數之和",
+      "name": "多指標：三數之和",
       "trigger_signal": "找所有不重複的三個值組合，總和為 0。",
       "keywords": [
         "三數之和",
         "3sum",
-        "多指針",
+        "多指標",
         "去重"
       ],
       "prerequisites": [
@@ -363,7 +363,7 @@
       "complexity": {
         "time": "O(n²)",
         "space": "O(n)，另計輸出 O(r)",
-        "reason": "排序 O(n log n)，每個 i 的雙指針 O(n)；複製資料與排序暫存最多線性，r 為輸出三元組數。"
+        "reason": "排序 O(n log n)，每個 i 的雙指標 O(n)；複製資料與排序暫存最多線性，r 為輸出三元組數。"
       },
       "code": {
         "python": {
@@ -455,7 +455,7 @@
         "template-two-pointers"
       ],
       "base_template_id": "sorted-pair",
-      "diff_from_standard": "先排序複本，外層固定第一個數，內層使用對撞指針；加入兩個層級的去重並收集全部答案。",
+      "diff_from_standard": "先排序複本，外層固定第一個數，內層使用對撞指標；加入兩個層級的去重並收集全部答案。",
       "removed_code_notes": [
         "不再找到一組就結束。"
       ],
@@ -521,10 +521,10 @@
         "原地",
         "移動零",
         "移除元素",
-        "寫入指針"
+        "寫入指標"
       ],
       "prerequisites": [
-        "允許修改輸入，不排序；讀指針永遠不落後於寫指針。",
+        "允許修改輸入，不排序；讀指標永遠不落後於寫指標。",
         "範例回傳 void/None，結果位於原陣列。"
       ],
       "counterexamples": [
@@ -592,7 +592,7 @@
         "template-two-pointers"
       ],
       "base_template_id": "sorted-pair",
-      "diff_from_standard": "指針改為同向的讀與寫；保留符合條件的值，最後補齊尾段。",
+      "diff_from_standard": "指標改為同向的讀與寫；保留符合條件的值，最後補齊尾段。",
       "removed_code_notes": [
         "移除 right、target 與兩端總和；不回傳索引對。"
       ],

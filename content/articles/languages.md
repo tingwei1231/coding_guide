@@ -47,7 +47,7 @@ s += 'b';
 char first = s[0];
 ```
 
-## 3. 雜湊表與頻率
+## 3. hash map 與頻率
 
 預設值的寫法不同。C++ map[key] 會插入缺少的鍵；若只是查詢，應用 find。三段都讓 A 的次數增加一。
 
@@ -90,7 +90,7 @@ seen.insert(7);
 bool exists = seen.count(7) != 0;
 ```
 
-## 5. 堆疊：後進先出
+## 5. stack：後進先出
 
 Java 使用 ArrayDeque；C++ top 與 pop 分開，pop 不回傳元素。取出前需確認非空。三段都取出最後加入的 7。
 
@@ -114,7 +114,7 @@ int value = stack.top();
 stack.pop();
 ```
 
-## 6. 佇列：先進先出
+## 6. queue：先進先出
 
 Python 用 deque.popleft，避免 list.pop(0) 的位移；Java 明確指定 addLast/removeFirst，C++ 用 queue。
 
@@ -140,7 +140,7 @@ int value = queue.front();
 queue.pop();
 ```
 
-## 7. 優先佇列：最小堆
+## 7. priority queue：最小堆
 
 Python heapq 與 Java PriorityQueue 預設最小堆；C++ priority_queue 預設最大堆，要加 greater<int>。三段取出最小值 2，走訪容器不代表排序。
 
