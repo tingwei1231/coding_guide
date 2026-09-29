@@ -1,5 +1,18 @@
 # 靜態部署與發布驗收
 
+## GitHub Pages（目前使用方式）
+
+已新增 `.github/workflows/pages.yml`，推送 main 或手動執行 `Deploy GitHub Pages` 時建置、測試並發布。
+
+1. 開啟儲存庫 Settings → Pages，在 Build and deployment 的 Source 選 GitHub Actions。
+2. 將本次新增的 Pages 設定 commit 並 push 至 main。
+3. 在 Actions 選 Deploy GitHub Pages，等 build 與 deploy 成功；必要時按 Run workflow 手動執行。
+4. 開啟 https://tingwei1231.github.io/coding_guide/ 。若儲存庫名稱改變，同步修改 vite.config.ts 的 pages base 與 Pages 測試路徑。
+
+Pages 建置指令為 `npm run build:pages`，使用 `/coding_guide/` base，為 catalog 每個路由產生 index.html，並輸出 404.html。一般 `npm run build` 保留根路徑部署設定。`npm run test:pages` 使用 Python 靜態伺服器檢查 32 個子目錄入口、圖檔、重新整理及互動，不依賴 Vite 的 SPA fallback。
+
+部署成功與否請以遠端 Actions 結果及實際網址為準。Pages 設定操作依據：[GitHub 官方說明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)。
+
 ## 部署設定
 
 專案輸出為 `dist/`，無伺服器或資料庫需求。根目錄 `vercel.json` 已指定 Vite、`npm ci`、`npm run build` 及 SPA rewrite。部署平台先提供存在的靜態檔案，其餘路徑回到 `index.html`，由 React Router 顯示教材或 404 畫面。設定依據：[Vercel 靜態設定](https://vercel.com/docs/project-configuration/vercel-json)。

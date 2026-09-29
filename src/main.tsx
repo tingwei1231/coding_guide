@@ -46,7 +46,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const main = useRef<HTMLElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
-  const current = pages.find(p => p.route === location.pathname);
+  const current = pages.find(p => p.route === (location.pathname.replace(/\/+$/, '') || '/'));
   useEffect(() => {
     document.title = `${current ? titleFor(current) : '找不到頁面'}｜Coding Guide`;
     setMenuOpen(false);
@@ -68,4 +68,4 @@ function App() {
         </Routes><footer>CODING GUIDE <span>一步一步，把解題思路練清楚。</span></footer>
       </main></div></>;
 }
-createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><App /></BrowserRouter></StrictMode>);
+createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter basename={import.meta.env.BASE_URL}><App /></BrowserRouter></StrictMode>);

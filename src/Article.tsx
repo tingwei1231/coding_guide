@@ -35,6 +35,7 @@ export function Article({ text, parallel = false }: { text: string; parallel?: b
   parts.push({ text: text.slice(start) });
   return <article className={`prose ${parallel ? 'parallel-article' : ''}`}>{parts.map((part, i) => 'snippets' in part ? <Examples key={i} snippets={part.snippets} parallel={parallel} /> : <Markdown key={i} remarkPlugins={[remarkGfm]} components={{
     a: ({ href, children }) => href?.startsWith('/') ? <Link to={href}>{children}</Link> : <a href={href} target="_blank" rel="noreferrer">{children}</a>,
+    img: ({ src, alt }) => <img src={src?.startsWith('/') ? `${import.meta.env.BASE_URL}${src.slice(1)}` : src} alt={alt} />,
     table: ({ children }) => <div className="table-scroll" tabIndex={0} role="region" aria-label="資料比較表"><table>{children}</table></div>,
     pre: ({ children }) => <pre tabIndex={0}>{children}</pre>,
   }}>{part.text}</Markdown>)}</article>;

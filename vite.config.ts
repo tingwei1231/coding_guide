@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === 'pages' ? '/coding_guide/' : '/',
   build: {
     rolldownOptions: {
       output: {
@@ -13,4 +14,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
