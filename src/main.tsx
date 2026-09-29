@@ -31,7 +31,9 @@ function ContentPage({ page }: { page: Page }) {
     {article && <Article key={page.id} text={article} parallel={page.id === 'languages'} />}
     {page.id === 'home' && <><div className="hero-path"><span>01 理解基礎</span><b aria-hidden="true">→</b><span>02 辨識模式</span><b aria-hidden="true">→</b><span>03 動手練習</span></div>
       <div className="section-heading"><h2>找到你的起點</h2><span>循序前進，自主探索</span></div>
-      <Cards items={['roadmap', 'data-structures', 'templates', 'guided-learning'].map(id => pages.find(p => p.id === id)!)} /></>}
+      <Cards items={['roadmap', 'data-structures', 'templates', 'guided-learning'].map(id => pages.find(p => p.id === id)!)} />
+      <div className="section-heading"><h2>把理解帶進面試</h2><span>驗證概念，練習表達</span></div>
+      <Cards items={['quiz', 'mock-interview', 'career-prep'].map(id => pages.find(p => p.id === id)!)} /></>}
     {children.length > 0 && page.id !== 'templates' && <Cards items={children} />}
     {pattern && <PatternPage key={pattern.id} pattern={pattern} />}
     {page.id === 'quiz' && <QuizPage />}

@@ -1,5 +1,7 @@
 .prose h2 { scroll-margin-top: 20px; border-bottom: 1px solid #dce2d8; padding-bottom: 12px; }
 .prose h3 { margin-top: 28px; }
+.prose h4 { margin: 22px 0 6px; font-size: 1rem; font-weight: 700; line-height: 1.5; color: #244d3e; }
+.prose h4 + p { margin-top: 0; }
 .prose img { width: 100%; display: block; border-radius: 10px; }
 .table-scroll { overflow-x: auto; width: 100%; margin: 20px 0; }
 .prose table { border-collapse: collapse; width: 100%; min-width: 430px; font-size: 14px; }
