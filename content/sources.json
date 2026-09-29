@@ -19,12 +19,12 @@
   },
   {
     "id": "top-interview-150",
-    "title": "LeetCode Top Interview 150",
-    "url": "https://leetcode.com/studyplan/top-interview-150/",
+    "title": "LeetCode 150 題（使用者指定 wq1supld）",
+    "url": "https://leetcode.com/problem-list/wq1supld/",
     "kind": "collection",
-    "status": "pending",
+    "status": "verified",
     "checked_on": "2026-09-29",
-    "notes": "已比對使用者提供的 leetcodetop150.md：149 筆不重複主題號，51 另註或 52，尚非明確完整清單。本庫出現在清單的 13 題（3、209、76、34、33、167、11、141、15、26、198、200、39）名稱與難度一致；此為本機清單比對，非獨立官方歸屬驗證。官方頁仍只取得摘要，保留 pending，不新增 collection_source_ids。詳見 docs/top150-audit.md。"
+    "notes": "依使用者指定 https://leetcode.com/problem-list/wq1supld/，以使用者貼入 leetcodetop150.md 的完整內容作為 2026-09-29 核對快照：150 個不重複題號。本庫歸屬 15 題：3、76、567、239、704、33、875、167、11、141、15、78、198、200、39；名稱與難度皆一致。此 verified 表示已核對使用者提供的指定題單快照，不代表本工具直接取得線上清單，也不宣稱與官方 Top Interview 150 studyplan 相同。保留舊內部 ID 相容引用。"
   },
   {
     "id": "leetcode-3-source",

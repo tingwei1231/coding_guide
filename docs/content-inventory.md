@@ -38,12 +38,12 @@
 
 機器可讀來源保存在 [sources.json](../content/sources.json)。
 
-使用者提供的 [leetcodetop150.md](../leetcodetop150.md) 已完成本機比對；149 筆主題號與 51／52 替代註記的檢查結果，以及本庫對照表，記錄於 [Top 150 核對紀錄](top150-audit.md)。此比對未取代官方歸屬驗證。
+LC150 以使用者指定的 [wq1supld 題單](https://leetcode.com/problem-list/wq1supld/) 為準，已依新版 [150 題快照](../leetcodetop150.md) 核對本庫 15 題歸屬，詳見 [核對紀錄](top150-audit.md)。
 
 | 來源 | 本次核對範圍 | 狀態 |
 |---|---|---|
 | [LeetCode 643](https://leetcode.com/problems/maximum-average-subarray-i/) | 題號 643、Maximum Average Subarray I、Easy、固定 k 的最大平均 | verified |
 | [Blind 75 原始題單轉載](https://leetcode.com/discuss/post/460599/blind-75-leetcode-questions-by-krishnade-9xev/) | 經作者說明連至原始題單，已確認本庫 3、76、33、11、141、15、198、200、39 共 9 題歸屬 | verified |
-| [Top Interview 150](https://leetcode.com/studyplan/top-interview-150/) | 確定 LC150 指此官方題單 | pending：未逐題核對 |
+| [LC150 指定題單](https://leetcode.com/problem-list/wq1supld/) | 使用者提供的 150 題快照；本庫 15 題名稱、難度及歸屬一致 | verified |
 
-後續每新增題目先查官方題目頁，再查題單；在來源 notes 記錄實際核對的 ID，確認後才新增 collection_source_ids。最低 20 題與六篇代表教學、路徑教材已達標。Top Interview 150 官方頁面目前只能取得頁面資訊或驗證頁，未取得完整清單；此題單保持 pending，未宣稱任何未核對歸屬。這是第 5 步尚未結案的來源驗收項目。
+後續每新增題目先查官方題目頁，再查題單；在來源 notes 記錄實際核對的 ID，確認後才新增 collection_source_ids。最低 20 題與六篇代表教學、路徑教材已達標。指定題單 wq1supld 已依使用者提供的完整 150 題快照核對，本庫 15 題已標記歸屬，第 5 步來源驗收完成。

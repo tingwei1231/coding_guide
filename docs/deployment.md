@@ -42,7 +42,7 @@ Remove-Item Env:PLAYWRIGHT_BASE_URL
 - 模板程式每語言通過 371 + 601 組參考案例；文章島嶼範例每語言 64 組，另驗證 8 組語言對照。
 - JavaScript 分檔約為主程式 179 kB、語法資料 298 kB、套件 413 kB（壓縮前），已移除單檔超過 500 kB 的警告。這是拆分快取邊界，並未改為按需載入，首次總下載量沒有因此大幅降低。分檔依據：[Vite 建置指南](https://vite.dev/guide/build)、[Rolldown codeSplitting](https://rolldown.rs/reference/OutputOptions.codeSplitting)。
 - React Router 的 `use client` 建置提示仍存在；本專案為客戶端 SPA，本次瀏覽器測試未出現執行錯誤。
-- Top Interview 150 清單仍有 149 筆主題號及 51／52 替代註記，官方歸屬驗證待補，見 [來源核對](top150-audit.md)。
+- LC150 已依使用者指定 wq1supld 的完整 150 題快照核對，本庫 15 題歸屬確認，第 5 步完成，見 [來源核對](top150-audit.md)。
 - 實際 Preview／Production 部署與遠端 CI 尚未驗收，第 8 步維持「本機驗收及發布準備完成，遠端驗收待補」。
 
-正式發布前應補完題單來源核對、確認 CI 成功及部署網址測試成功，再將通過驗收的版本發布至 Production。若發生問題，回復到上一個已驗收部署，並用對應提交重新建立預覽；不要直接在生成的 dist 內手動修補。
+正式發布前應確認 CI 成功及部署網址測試成功，再將通過驗收的版本發布至 Production。若發生問題，回復到上一個已驗收部署，並用對應提交重新建立預覽；不要直接在生成的 dist 內手動修補。

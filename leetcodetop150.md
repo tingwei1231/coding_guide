@@ -1,196 +1,600 @@
-# LeetCode Top Interview 150 題型清單
 
-## 1. Array / String (陣列與字串)
-- [ ] 88. Merge Sorted Array (簡單)
-- [ ] 27. Remove Element (簡單)
-- [ ] 26. Remove Duplicates from Sorted Array (簡單)
-- [ ] 80. Remove Duplicates from Sorted Array II (中等)
-- [ ] 169. Majority Element (簡單)
-- [ ] 189. Rotate Array (中等)
-- [ ] 121. Best Time to Buy and Sell Stock (簡單)
-- [ ] 122. Best Time to Buy and Sell Stock II (中等)
-- [ ] 55. Jump Game (中等)
-- [ ] 45. Jump Game II (中等)
-- [ ] 274. H-Index (中等)
-- [ ] 380. Insert Delete GetRandom O(1) (中等)
-- [ ] 238. Product of Array Except Self (中等)
-- [ ] 134. Gas Station (中等)
-- [ ] 135. Candy (困難)
-- [ ] 42. Trapping Rain Water (困難)
-- [ ] 13. Roman to Integer (簡單)
-- [ ] 12. Integer to Roman (中等)
-- [ ] 58. Length of Last Word (簡單)
-- [ ] 14. Longest Common Prefix (簡單)
-- [ ] 151. Reverse Words in a String (中等)
-- [ ] 6. Zigzag Conversion (中等)
-- [ ] 28. Find the Index of the First Occurrence in a String (簡單)
-- [ ] 68. Text Justification (困難)
+1. Two Sum
+57.9%
+Easy
 
-## 2. Two Pointers (雙指標)
-- [ ] 125. Valid Palindrome (簡單)
-- [ ] 392. Is Subsequence (簡單)
-- [ ] 167. Two Sum II - Input Array Is Sorted (中等)
-- [ ] 11. Container With Most Water (中等)
-- [ ] 15. 3Sum (中等)
+2. Add Two Numbers
+49.4%
+Med.
 
-## 3. Sliding Window (滑動視窗)
-- [ ] 209. Minimum Size Subarray Sum (中等)
-- [ ] 3. Longest Substring Without Repeating Characters (中等)
-- [ ] 30. Substring with Concatenation of All Words (困難)
-- [ ] 76. Minimum Window Substring (困難)
+3. Longest Substring Without Repeating Characters
+39.9%
+Med.
 
-## 4. Matrix (矩陣)
-- [ ] 36. Valid Sudoku (中等)
-- [ ] 54. Spiral Matrix (中等)
-- [ ] 48. Rotate Image (中等)
-- [ ] 73. Set Matrix Zeroes (中等)
-- [ ] 289. Game of Life (中等)
+4. Median of Two Sorted Arrays
+47.7%
+Hard
 
-## 5. Hashmap (雜湊表)
-- [ ] 383. Ransom Note (簡單)
-- [ ] 205. Isomorphic Strings (簡單)
-- [ ] 290. Word Pattern (簡單)
-- [ ] 242. Valid Anagram (簡單)
-- [ ] 49. Group Anagrams (中等)
-- [ ] 1. Two Sum (簡單)
-- [ ] 202. Happy Number (簡單)
-- [ ] 219. Contains Duplicate II (簡單)
-- [ ] 128. Longest Consecutive Sequence (中等)
+5. Longest Palindromic Substring
+38.8%
+Med.
 
-## 6. Stack (堆疊)
-- [ ] 20. Valid Parentheses (簡單)
-- [ ] 71. Simplify Path (中等)
-- [ ] 155. Min Stack (中等)
-- [ ] 150. Evaluate Reverse Polish Notation (中等)
-- [ ] 224. Basic Calculator (困難)
+518. Coin Change II
+59.1%
+Med.
 
-## 7. Linked List (連結串列)
-- [ ] 141. Linked List Cycle (簡單)
-- [ ] 2. Add Two Numbers (中等)
-- [ ] 21. Merge Two Sorted Lists (簡單)
-- [ ] 19. Remove Nth Node From End of List (中等)
-- [ ] 82. Remove Duplicates from Sorted List II (中等)
-- [ ] 61. Rotate List (中等)
-- [ ] 24. Swap Nodes in Pairs (中等)
-- [ ] 25. Reverse Nodes in k-Group (困難)
-- [ ] 138. Copy List with Random Pointer (中等)
-- [ ] 92. Reverse Linked List II (中等)
-- [ ] 142. Linked List Cycle II (中等)
-- [ ] 146. LRU Cache (中等)
+7. Reverse Integer
+32.6%
+Med.
 
-## 8. Binary Tree General (二元樹 - 一般)
-- [ ] 104. Maximum Depth of Binary Tree (簡單)
-- [ ] 100. Same Tree (簡單)
-- [ ] 226. Invert Binary Tree (簡單)
-- [ ] 101. Symmetric Tree (簡單)
-- [ ] 105. Construct Binary Tree from Preorder and Inorder Traversal (中等)
-- [ ] 106. Construct Binary Tree from Inorder and Postorder Traversal (中等)
-- [ ] 117. Populating Next Right Pointers in Each Node II (中等)
-- [ ] 114. Flatten Binary Tree to Linked List (中等)
-- [ ] 112. Path Sum (簡單)
-- [ ] 129. Sum Root to Leaf Numbers (中等)
-- [ ] 124. Binary Tree Maximum Path Sum (困難)
-- [ ] 173. Binary Search Tree Iterator (中等)
+1448. Count Good Nodes in Binary Tree
+74.0%
+Med.
 
-## 9. Binary Tree BFS (二元樹層序遍歷)
-- [ ] 199. Binary Tree Right Side View (中等)
-- [ ] 637. Average of Levels in Binary Tree (簡單)
-- [ ] 102. Binary Tree Level Order Traversal (中等)
-- [ ] 103. Binary Tree Zigzag Level Order Traversal (中等)
+10. Regular Expression Matching
+31.9%
+Hard
 
-## 10. Binary Search Tree (二元搜尋樹)
-- [ ] 530. Minimum Absolute Difference in BST (簡單)
-- [ ] 230. Kth Smallest Element in a BST (中等)
-- [ ] 98. Validate Binary Search Tree (中等)
+11. Container With Most Water
+60.9%
+Med.
 
-## 11. Graph General (圖論 - 一般)
-- [ ] 200. Number of Islands (中等)
-- [ ] 130. Surrounded Regions (中等)
-- [ ] 133. Clone Graph (中等)
-- [ ] 399. Evaluate Division (中等)
-- [ ] 207. Course Schedule (中等)
-- [ ] 210. Course Schedule II (中等)
+994. Rotting Oranges
+59.5%
+Med.
 
-## 12. Graph BFS (圖論寬度優先搜尋)
-- [ ] 909. Snakes and Ladders (中等)
-- [ ] 433. Minimum Genetic Mutation (中等)
-- [ ] 127. Word Ladder (困難)
+15. 3Sum
+40.0%
+Med.
 
-## 13. Trie (字首樹 / 字典樹)
-- [ ] 208. Implement Trie (Prefix Tree) (中等)
-- [ ] 211. Design Add and Search Words Data Structure (中等)
-- [ ] 212. Word Search II (困難)
+17. Letter Combinations of a Phone Number
+66.9%
+Med.
 
-## 14. Backtracking (回溯法)
-- [ ] 17. Letter Combinations of a Phone Number (中等)
-- [ ] 77. Combinations (中等)
-- [ ] 46. Permutations (中等)
-- [ ] 39. Combination Sum (中等)
-- [ ] 51. N-Queens (困難) [或 52. N-Queens II]
-- [ ] 22. Generate Parentheses (中等)
-- [ ] 79. Word Search (中等)
+19. Remove Nth Node From End of List
+52.8%
+Med.
 
-## 15. Divide & Conquer (分治法)
-- [ ] 108. Convert Sorted Array to Binary Search Tree (簡單)
-- [ ] 148. Sort List (中等)
-- [ ] 427. Construct Quad Tree (中等)
-- [ ] 23. Merge k Sorted Lists (困難)
+20. Valid Parentheses
+45.0%
+Easy
 
-## 16. Kadane's Algorithm (卡丹演算法)
-- [ ] 53. Maximum Subarray (中等)
-- [ ] 918. Maximum Sum Circular Subarray (中等)
+21. Merge Two Sorted Lists
+68.9%
+Easy
 
-## 17. Binary Search (二分搜尋)
-- [ ] 35. Search Insert Position (簡單)
-- [ ] 74. Search a 2D Matrix (中等)
-- [ ] 162. Find Peak Element (中等)
-- [ ] 33. Search in Rotated Sorted Array (中等)
-- [ ] 34. Find First and Last Position of Element in Sorted Array (中等)
-- [ ] 153. Find Minimum in Rotated Sorted Array (中等)
-- [ ] 4. Median of Two Sorted Arrays (困難)
+22. Generate Parentheses
+79.2%
+Med.
 
-## 18. Heap (堆積 / 優先佇列)
-- [ ] 215. Kth Largest Element in an Array (中等)
-- [ ] 502. IPO (困難)
-- [ ] 373. Find K Pairs with Smallest Sums (中等)
-- [ ] 295. Find Median from Data Stream (困難)
+23. Merge k Sorted Lists
+60.6%
+Hard
 
-## 19. Bit Manipulation (位元運算)
-- [ ] 67. Add Binary (簡單)
-- [ ] 190. Reverse Bits (簡單)
-- [ ] 191. Number of 1 Bits (簡單)
-- [ ] 136. Single Number (簡單)
-- [ ] 137. Single Number II (中等)
-- [ ] 201. Bitwise AND of Numbers Range (中等)
+25. Reverse Nodes in k-Group
+67.4%
+Hard
 
-## 20. Math (數學)
-- [ ] 9. Palindrome Number (簡單)
-- [ ] 66. Plus One (簡單)
-- [ ] 172. Factorial Trailing Zeroes (中等)
-- [ ] 69. Sqrt(x) (簡單)
-- [ ] 50. Pow(x, n) (中等)
-- [ ] 149. Max Points on a Line (困難)
+543. Diameter of Binary Tree
+66.3%
+Easy
 
-## 21. 1D Dynamic Programming (一維動態規劃)
-- [ ] 70. Climbing Stairs (簡單)
-- [ ] 198. House Robber (中等)
-- [ ] 139. Word Break (中等)
-- [ ] 322. Coin Change (中等)
-- [ ] 300. Longest Increasing Subsequence (中等)
+33. Search in Rotated Sorted Array
+45.7%
+Med.
 
-## 22. Multidimensional Dynamic Programming (多維動態規劃)
-- [ ] 120. Triangle (中等)
-- [ ] 64. Minimum Path Sum (中等)
-- [ ] 62. Unique Paths (中等)
-- [ ] 5. Longest Palindromic Substring (中等)
-- [ ] 97. Interleaving String (中等)
-- [ ] 72. Edit Distance (中等)
-- [ ] 123. Best Time to Buy and Sell Stock III (困難)
-- [ ] 188. Best Time to Buy and Sell Stock IV (困難)
-- [ ] 221. Maximal Square (中等)
+36. Valid Sudoku
+65.2%
+Med.
 
-## 23. Intervals (區間)
-- [ ] 228. Summary Ranges (簡單)
-- [ ] 56. Merge Intervals (中等)
-- [ ] 57. Insert Interval (中等)
-- [ ] 452. Minimum Number of Arrows to Burst Balloons (中等)
+39. Combination Sum
+77.2%
+Med.
+
+40. Combination Sum II
+60.2%
+Med.
+
+42. Trapping Rain Water
+68.3%
+Hard
+
+43. Multiply Strings
+44.8%
+Med.
+
+45. Jump Game II
+43.6%
+Med.
+
+46. Permutations
+82.4%
+Med.
+
+48. Rotate Image
+80.8%
+Med.
+
+49. Group Anagrams
+73.4%
+Med.
+
+50. Pow(x, n)
+39.4%
+Med.
+
+51. N-Queens
+76.6%
+Hard
+
+53. Maximum Subarray
+53.9%
+Med.
+
+54. Spiral Matrix
+58.0%
+Med.
+
+55. Jump Game
+41.6%
+Med.
+
+56. Merge Intervals
+52.9%
+Med.
+
+57. Insert Interval
+46.1%
+Med.
+
+567. Permutation in String
+49.8%
+Med.
+
+572. Subtree of Another Tree
+52.3%
+Easy
+
+62. Unique Paths
+67.3%
+Med.
+
+66. Plus One
+50.7%
+Easy
+
+70. Climbing Stairs
+54.4%
+Easy
+
+72. Edit Distance
+61.4%
+Med.
+
+73. Set Matrix Zeroes
+63.7%
+Med.
+
+74. Search a 2D Matrix
+54.3%
+Med.
+
+76. Minimum Window Substring
+48.6%
+Hard
+
+78. Subsets
+82.9%
+Med.
+
+79. Word Search
+48.2%
+Med.
+
+84. Largest Rectangle in Histogram
+50.9%
+Hard
+
+90. Subsets II
+62.0%
+Med.
+
+91. Decode Ways
+38.7%
+Med.
+
+2013. Detect Squares
+53.0%
+Med.
+
+97. Interleaving String
+44.9%
+Med.
+
+98. Validate Binary Search Tree
+36.4%
+Med.
+
+100. Same Tree
+68.1%
+Easy
+
+102. Binary Tree Level Order Traversal
+73.6%
+Med.
+
+1046. Last Stone Weight
+66.8%
+Easy
+
+104. Maximum Depth of Binary Tree
+78.7%
+Easy
+
+105. Construct Binary Tree from Preorder and Inorder Traversal
+69.6%
+Med.
+
+621. Task Scheduler
+63.9%
+Med.
+
+110. Balanced Binary Tree
+59.3%
+Easy
+
+115. Distinct Subsequences
+54.3%
+Hard
+
+121. Best Time to Buy and Sell Stock
+57.4%
+Easy
+
+124. Binary Tree Maximum Path Sum
+42.8%
+Hard
+
+125. Valid Palindrome
+54.4%
+Easy
+
+127. Word Ladder
+46.7%
+Hard
+
+128. Longest Consecutive Sequence
+47.3%
+Med.
+
+130. Surrounded Regions
+46.4%
+Med.
+
+131. Palindrome Partitioning
+74.7%
+Med.
+
+133. Clone Graph
+66.3%
+Med.
+
+134. Gas Station
+48.8%
+Med.
+
+647. Palindromic Substrings
+73.3%
+Med.
+
+136. Single Number
+78.4%
+Easy
+
+138. Copy List with Random Pointer
+63.8%
+Med.
+
+139. Word Break
+49.9%
+Med.
+
+141. Linked List Cycle
+55.2%
+Easy
+
+143. Reorder List
+66.4%
+Med.
+
+146. LRU Cache
+48.1%
+Med.
+
+150. Evaluate Reverse Polish Notation
+58.8%
+Med.
+
+152. Maximum Product Subarray
+37.1%
+Med.
+
+153. Find Minimum in Rotated Sorted Array
+55.4%
+Med.
+
+155. Min Stack
+58.7%
+Med.
+
+678. Valid Parenthesis String
+40.6%
+Med.
+
+167. Two Sum II - Input Array Is Sorted
+65.9%
+Med.
+
+1584. Min Cost to Connect All Points
+71.8%
+Med.
+
+684. Redundant Connection
+68.3%
+Med.
+
+695. Max Area of Island
+74.3%
+Med.
+
+190. Reverse Bits
+69.5%
+Easy
+
+191. Number of 1 Bits
+77.6%
+Easy
+
+198. House Robber
+53.6%
+Med.
+
+199. Binary Tree Right Side View
+71.3%
+Med.
+
+200. Number of Islands
+65.2%
+Med.
+
+202. Happy Number
+60.3%
+Easy
+
+206. Reverse Linked List
+81.1%
+Easy
+
+207. Course Schedule
+52.3%
+Med.
+
+208. Implement Trie (Prefix Tree)
+70.1%
+Med.
+
+210. Course Schedule II
+56.3%
+Med.
+
+211. Design Add and Search Words Data Structure
+49.1%
+Med.
+
+212. Word Search II
+39.0%
+Hard
+
+213. House Robber II
+45.6%
+Med.
+
+215. Kth Largest Element in an Array
+69.4%
+Med.
+
+217. Contains Duplicate
+64.7%
+Easy
+
+226. Invert Binary Tree
+80.5%
+Easy
+
+739. Daily Temperatures
+69.2%
+Med.
+
+1143. Longest Common Subsequence
+59.6%
+Med.
+
+230. Kth Smallest Element in a BST
+77.4%
+Med.
+
+743. Network Delay Time
+61.7%
+Med.
+
+235. Lowest Common Ancestor of a Binary Search Tree
+71.4%
+Med.
+
+746. Min Cost Climbing Stairs
+68.8%
+Easy
+
+238. Product of Array Except Self
+69.3%
+Med.
+
+239. Sliding Window Maximum
+49.3%
+Hard
+
+242. Valid Anagram
+68.7%
+Easy
+
+252. Meeting Rooms
+59.6%
+Easy
+
+253. Meeting Rooms II
+52.8%
+Med.
+
+763. Partition Labels
+82.1%
+Med.
+
+261. Graph Valid Tree
+50.2%
+Med.
+
+268. Missing Number
+72.7%
+Easy
+
+269. Alien Dictionary
+37.3%
+Hard
+
+271. Encode and Decode Strings
+52.0%
+Med.
+
+703. Kth Largest Element in a Stream
+61.6%
+Easy
+
+704. Binary Search
+61.4%
+Easy
+
+778. Swim in Rising Water
+68.3%
+Hard
+
+286. Walls and Gates
+64.2%
+Med.
+
+287. Find the Duplicate Number
+64.9%
+Med.
+
+787. Cheapest Flights Within K Stops
+42.6%
+Med.
+
+295. Find Median from Data Stream
+55.1%
+Hard
+
+297. Serialize and Deserialize Binary Tree
+61.2%
+Hard
+
+300. Longest Increasing Subsequence
+60.0%
+Med.
+
+309. Best Time to Buy and Sell Stock with Cooldown
+62.8%
+Med.
+
+312. Burst Balloons
+64.5%
+Hard
+
+322. Coin Change
+49.2%
+Med.
+
+323. Number of Connected Components in an Undirected Graph
+65.2%
+Med.
+
+329. Longest Increasing Path in a Matrix
+57.1%
+Hard
+
+332. Reconstruct Itinerary
+45.1%
+Hard
+
+338. Counting Bits
+80.8%
+Easy
+
+347. Top K Frequent Elements
+67.5%
+Med.
+
+355. Design Twitter
+45.6%
+Med.
+
+846. Hand of Straights
+58.4%
+Med.
+
+371. Sum of Two Integers
+55.8%
+Med.
+
+853. Car Fleet
+55.7%
+Med.
+
+875. Koko Eating Bananas
+50.6%
+Med.
+
+416. Partition Equal Subset Sum
+50.0%
+Med.
+
+417. Pacific Atlantic Water Flow
+61.5%
+Med.
+
+424. Longest Repeating Character Replacement
+60.7%
+Med.
+
+435. Non-overlapping Intervals
+57.8%
+Med.
+
+1851. Minimum Interval to Include Each Query
+55.3%
+Hard
+
+1899. Merge Triplets to Form Target Triplet
+69.5%
+Med.
+
+494. Target Sum
+52.9%
+Med.
+
+973. K Closest Points to Origin
+69.4%
+Med.
+
+981. Time Based Key-Value Store
+50.2%
+Med.

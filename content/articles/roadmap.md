@@ -2,7 +2,7 @@
 
 這是一份教材導覽，不儲存學習進度。每階段先補先備知識，再讀引導教學、比較模板，最後到外部平台練習。速度依自己的理解程度調整，無須一天完成一階段。
 
-表中的 Blind 75 歸屬已依[作者連結的題單](https://leetcode.com/discuss/post/460599/blind-75-leetcode-questions-by-krishnade-9xev/)核對。「補充練習」只表示本站未聲明題單歸屬。Top Interview 150 的逐題歸屬仍待官方可讀清單確認，目前不顯示未核實標籤。
+表中的 Blind 75 歸屬已依[作者連結的題單](https://leetcode.com/discuss/post/460599/blind-75-leetcode-questions-by-krishnade-9xev/)核對。「補充練習」只表示本站未聲明題單歸屬。LC150 以[指定題單](https://leetcode.com/problem-list/wq1supld/)為準，已依 2026-09-29 使用者提供的完整 150 題快照核對；此處的 LC150 不指先前的 Top Interview 150 studyplan。
 
 ## 1. Array 與雙指針
 
@@ -14,9 +14,9 @@
 
 | 題目 | 難度 | 模式 | 題單 |
 |---|---|---|---|
-| [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | medium | Array 與雙指針 | 補充練習 |
-| [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/) | medium | Array 與雙指針 | Blind 75 |
-| [15. 3Sum](https://leetcode.com/problems/3sum/) | medium | Array 與雙指針 | Blind 75 |
+| [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) | medium | Array 與雙指針 | LC150（指定題單） |
+| [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/) | medium | Array 與雙指針 | Blind 75、LC150（指定題單） |
+| [15. 3Sum](https://leetcode.com/problems/3sum/) | medium | Array 與雙指針 | Blind 75、LC150（指定題單） |
 
 **完成檢查：**不看程式，用一個小例子追蹤狀態，再說明時間、額外空間與不適用的反例。
 
@@ -32,8 +32,8 @@
 |---|---|---|---|
 | [643. Maximum Average Subarray I](https://leetcode.com/problems/maximum-average-subarray-i/) | easy | Sliding Window | 補充練習 |
 | [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/) | medium | Sliding Window | 補充練習 |
-| [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | medium | Sliding Window | Blind 75 |
-| [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) | hard | Sliding Window | Blind 75 |
+| [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | medium | Sliding Window | Blind 75、LC150（指定題單） |
+| [76. Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) | hard | Sliding Window | Blind 75、LC150（指定題單） |
 
 **完成檢查：**不看程式，用一個小例子追蹤狀態，再說明時間、額外空間與不適用的反例。
 
@@ -47,9 +47,9 @@
 
 | 題目 | 難度 | 模式 | 題單 |
 |---|---|---|---|
-| [704. Binary Search](https://leetcode.com/problems/binary-search/) | easy | Binary Search | 補充練習 |
-| [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | medium | Binary Search | Blind 75 |
-| [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | medium | Binary Search | 補充練習 |
+| [704. Binary Search](https://leetcode.com/problems/binary-search/) | easy | Binary Search | LC150（指定題單） |
+| [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | medium | Binary Search | Blind 75、LC150（指定題單） |
+| [875. Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | medium | Binary Search | LC150（指定題單） |
 
 **完成檢查：**不看程式，用一個小例子追蹤狀態，再說明時間、額外空間與不適用的反例。
 
@@ -63,7 +63,7 @@
 
 | 題目 | 難度 | 模式 | 題單 |
 |---|---|---|---|
-| [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) | medium | BFS / DFS | Blind 75 |
+| [200. Number of Islands](https://leetcode.com/problems/number-of-islands/) | medium | BFS / DFS | Blind 75、LC150（指定題單） |
 
 **完成檢查：**不看程式，用一個小例子追蹤狀態，再說明時間、額外空間與不適用的反例。
 
@@ -77,8 +77,8 @@
 
 | 題目 | 難度 | 模式 | 題單 |
 |---|---|---|---|
-| [78. Subsets](https://leetcode.com/problems/subsets/) | medium | Backtracking | 補充練習 |
-| [39. Combination Sum](https://leetcode.com/problems/combination-sum/) | medium | Backtracking | Blind 75 |
+| [78. Subsets](https://leetcode.com/problems/subsets/) | medium | Backtracking | LC150（指定題單） |
+| [39. Combination Sum](https://leetcode.com/problems/combination-sum/) | medium | Backtracking | Blind 75、LC150（指定題單） |
 
 **完成檢查：**不看程式，用一個小例子追蹤狀態，再說明時間、額外空間與不適用的反例。
 
@@ -92,7 +92,7 @@
 
 | 題目 | 難度 | 模式 | 題單 |
 |---|---|---|---|
-| [198. House Robber](https://leetcode.com/problems/house-robber/) | medium | Dynamic Programming | Blind 75 |
+| [198. House Robber](https://leetcode.com/problems/house-robber/) | medium | Dynamic Programming | Blind 75、LC150（指定題單） |
 
 **完成檢查：**不看程式，用一個小例子追蹤狀態，再說明時間、額外空間與不適用的反例。
 

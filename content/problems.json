@@ -24,7 +24,8 @@
     ],
     "source_id": "leetcode-3-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -52,7 +53,8 @@
     ],
     "source_id": "leetcode-76-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -66,7 +68,9 @@
       "sliding-window"
     ],
     "source_id": "leetcode-567-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "top-interview-150"
+    ]
   },
   {
     "id": "leetcode-239",
@@ -79,7 +83,9 @@
       "sliding-window"
     ],
     "source_id": "leetcode-239-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "top-interview-150"
+    ]
   },
   {
     "id": "leetcode-704",
@@ -92,7 +98,9 @@
       "binary-search"
     ],
     "source_id": "leetcode-704-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "top-interview-150"
+    ]
   },
   {
     "id": "leetcode-34",
@@ -119,7 +127,8 @@
     ],
     "source_id": "leetcode-33-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -133,7 +142,9 @@
       "binary-search"
     ],
     "source_id": "leetcode-875-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "top-interview-150"
+    ]
   },
   {
     "id": "leetcode-1011",
@@ -159,7 +170,9 @@
       "two-pointers"
     ],
     "source_id": "leetcode-167-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "top-interview-150"
+    ]
   },
   {
     "id": "leetcode-11",
@@ -173,7 +186,8 @@
     ],
     "source_id": "leetcode-11-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -188,7 +202,8 @@
     ],
     "source_id": "leetcode-141-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -216,7 +231,8 @@
     ],
     "source_id": "leetcode-15-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -256,7 +272,9 @@
       "backtracking"
     ],
     "source_id": "leetcode-78-source",
-    "collection_source_ids": []
+    "collection_source_ids": [
+      "top-interview-150"
+    ]
   },
   {
     "id": "leetcode-198",
@@ -270,7 +288,8 @@
     ],
     "source_id": "leetcode-198-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -285,7 +304,8 @@
     ],
     "source_id": "leetcode-200-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   },
   {
@@ -300,7 +320,8 @@
     ],
     "source_id": "leetcode-39-source",
     "collection_source_ids": [
-      "blind-75"
+      "blind-75",
+      "top-interview-150"
     ]
   }
 ]
