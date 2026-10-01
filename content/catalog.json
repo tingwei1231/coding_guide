@@ -574,7 +574,7 @@
   {
     "id": "big-o",
     "route": "/big-o",
-    "title": "Big O",
+    "title": "時間複雜度",
     "status": "ready",
     "markdown_path": "content/articles/big-o.md",
     "pattern_ids": [],

@@ -21,7 +21,8 @@ test('Markdown links navigate, deep routes survive reload, and unknown routes sh
   await page.locator('article').getByRole('link', { name: 'Sliding Window', exact: true }).click();
   await expect(page).toHaveURL(/templates\/sliding-window$/);
   await page.reload();
-  await expect(page.locator('pre').first()).toContainText('def longest_within_budget');
+  await expect(page.getByRole('tab', { name: 'C++', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.locator('pre').first()).toContainText('std::vector');
   await page.getByRole('tab', { name: 'Java', exact: true }).click();
   await expect(page.locator('pre').first()).toContainText('class Solution');
   await page.goto('/not-a-page');

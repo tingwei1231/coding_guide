@@ -8,7 +8,8 @@ test('structure diagrams and tables render and guide code switches languages', a
   expect(await diagram.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   await page.goto('/guided-learning/bfs-dfs');
   await expect(page.locator('article h2')).toHaveCount(5);
-  await expect(page.getByRole('tabpanel')).toContainText('def num_islands');
+  await expect(page.getByRole('tab', { name: 'C++', exact: true })).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tabpanel')).toContainText('std::vector');
   await page.getByRole('tab', { name: 'Python', exact: true }).focus();
   await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('tabpanel')).toContainText('public int numIslands');
@@ -20,6 +21,7 @@ test('eight language comparisons stack on mobile; roadmap reaches guide and temp
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/languages');
   await expect(page.locator('.language-comparison')).toHaveCount(8);
+  await expect(page.locator('.language-comparison').first().locator('h3').first()).toHaveText('C++');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.goto('/roadmap');
   await expect(page.getByRole('table')).toHaveCount(6);

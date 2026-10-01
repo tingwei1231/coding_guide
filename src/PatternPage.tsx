@@ -5,7 +5,7 @@ import './pattern.css';
 import { problemIndex, type Language, type Lesson, type Pattern, type Variation } from './content';
 
 const languageNames: Record<Language, string> = { python: 'Python', java: 'Java', cpp: 'C++' };
-const languages: Language[] = ['python', 'java', 'cpp'];
+const languages: Language[] = ['cpp', 'python', 'java'];
 const tokenIndex = generated as Record<string, { content: string; color?: string }[][]>;
 
 function CodeView({ patternId, lesson, language, variation }: { patternId: string; lesson: Lesson; language: Language; variation?: Variation }) {
@@ -66,7 +66,7 @@ function VariationCard({ pattern, variation, language, targeted }: { pattern: Pa
   </section>;
 }
 export function PatternPage({ pattern }: { pattern: Pattern }) {
-  const [language, setLanguage] = useState<Language>('python');
+  const [language, setLanguage] = useState<Language>('cpp');
   const { hash } = useLocation();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   return <div className="pattern-page">

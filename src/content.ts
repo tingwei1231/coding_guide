@@ -28,7 +28,7 @@ export function articleFor(page: Page) { return page.markdown_path ? articles[`.
 export const labels: Record<string, string> = {
   'data-structures': '資料結構', languages: '語言對照', templates: '模式模板',
   'guided-learning': '引導教學', roadmap: '學習路徑', quiz: '概念測驗',
-  'mock-interview': '模擬面試', 'career-prep': '求職準備', 'big-o': 'Big O',
+  'mock-interview': '模擬面試', 'career-prep': '求職準備', 'big-o': '時間複雜度',
   'ds-array': 'Array 陣列', 'ds-string': 'String 字串', 'ds-hashmap-set': 'HashMap / Set',
   'ds-linked-list': 'Linked List 鏈結串列', 'ds-stack': 'Stack', 'ds-queue': 'Queue',
   'ds-heap': 'Heap 堆積', 'ds-tree': 'Tree 樹、BST 與 Trie', 'ds-graph': 'Graph 圖', 'ds-union-find': 'Union-Find 並查集',

@@ -29,7 +29,7 @@ export function Article({ text, parallel = false }: { text: string; parallel?: b
   let start = 0;
   for (const match of text.matchAll(regex)) {
     parts.push({ text: text.slice(start, match.index) });
-    parts.push({ snippets: ['python', 'java', 'cpp'].map((language, i) => ({ language, code: match[i + 1] })) });
+    parts.push({ snippets: [{ language: 'cpp', code: match[3] }, { language: 'python', code: match[1] }, { language: 'java', code: match[2] }] });
     start = match.index! + match[0].length;
   }
   parts.push({ text: text.slice(start) });

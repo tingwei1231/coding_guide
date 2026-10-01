@@ -35,6 +35,8 @@ test('hash opens variation after reload; tabs and accordion work with keyboard o
   await python.focus(); await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('tab', { name: 'Java', exact: true })).toHaveAttribute('aria-selected', 'true');
   await page.keyboard.press('End');
+  await expect(page.getByRole('tab', { name: 'Java', exact: true })).toBeFocused();
+  await page.keyboard.press('Home');
   await expect(page.getByRole('tab', { name: 'C++', exact: true })).toBeFocused();
   await target.locator('h3 button').focus(); await page.keyboard.press('Enter');
   await expect(target.getByRole('region')).toBeHidden();

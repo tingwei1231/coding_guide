@@ -194,4 +194,4 @@ std::sort(a.begin(), a.end());
 
 操作語意可查 [Python 資料結構文件](https://docs.python.org/3/tutorial/datastructures.html) 與 [Java PriorityQueue 文件](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/PriorityQueue.html)。實際解題時另檢查整數範圍、字元集與複製成本。
 
-前往[模式模板庫](/templates)比較完整函式，或閱讀 [Big O](/big-o)練習成本推導。
+前往[模式模板庫](/templates)比較完整函式，或閱讀 [時間複雜度](/big-o)練習成本推導。

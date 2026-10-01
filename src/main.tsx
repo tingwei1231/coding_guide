@@ -66,6 +66,12 @@ function App() {
         <Routes>{pages.map(p => <Route key={p.id} path={p.route} element={<ContentPage page={p} />} />)}
           <Route path="*" element={<section className="not-found"><p className="eyebrow">404 / PAGE NOT FOUND</p><h1>這一頁還不在手冊裡。</h1><p>請確認網址，或回到首頁選擇章節。</p><Link className="button-link" to="/">回到手冊首頁 →</Link></section>} />
         </Routes><footer>CODING GUIDE <span>一步一步，把解題思路練清楚。</span></footer>
-      </main></div></>;
+      </main></div>
+    <button className="back-to-top" type="button" onClick={() => {
+      setMenuOpen(false);
+      main.current?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }}><span aria-hidden="true">↑ </span>回到頂端</button>
+  </>;
 }
 createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter basename={import.meta.env.BASE_URL}><App /></BrowserRouter></StrictMode>);
