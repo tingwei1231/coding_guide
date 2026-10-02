@@ -587,5 +587,38 @@
       "O(n²)",
       "遞迴時間與空間"
     ]
+  },
+  {
+    "id": "practice-order",
+    "route": "/practice-order",
+    "title": "刷題順序",
+    "status": "ready",
+    "markdown_path": "content/articles/practice-order.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "Tier 優先順序",
+      "14 天計畫",
+      "每日流程",
+      "錯題複習"
+    ]
+  },
+  {
+    "id": "template-cpp-review",
+    "route": "/templates/cpp-review",
+    "title": "C++ 高頻模板複習",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/cpp-review.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "HashMap / HashSet",
+      "Stack",
+      "Linked List",
+      "Prefix Sum",
+      "Sorting",
+      "Heap",
+      "Topological Sort"
+    ]
   }
 ]

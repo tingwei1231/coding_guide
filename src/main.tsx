@@ -10,7 +10,7 @@ import { QuizPage } from './QuizPage';
 
 const sections = [
   { name: '建立基礎', ids: ['roadmap', 'data-structures', 'big-o', 'languages'] },
-  { name: '辨識與練習', ids: ['templates', 'guided-learning', 'quiz'] },
+  { name: '辨識與練習', ids: ['practice-order', 'templates', 'guided-learning', 'quiz'] },
   { name: '走向面試', ids: ['mock-interview', 'career-prep'] },
 ];
 function Cards({ items }: { items: Page[] }) {
