@@ -1,5 +1,7 @@
 ## 高頻模板練習題
 
+Pattern 的辨識與不變量以 [LeetCode 150 總覽](/templates/pattern-notes)為準；本頁保留具體練習題。單調 Stack 的基礎方向採總覽的「遞增、找右側更小」，Daily Temperatures 則是「遞減、找右側更大」變形。
+
 配合[14 天刷題順序](/practice-order)，先不看答案寫出模板，再修改成題目需要的狀態。以 C++17 模板為基準，提供 Python、Java 對照。C++ 函式放在平台要求的 `Solution` 類別內，Java 先匯入 `java.util.*`；鏈結串列使用平台提供的 `ListNode`。每組預設顯示 C++，可切換語言。
 
 ```python

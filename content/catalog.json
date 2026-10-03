@@ -620,5 +620,15 @@
       "Heap",
       "Topological Sort"
     ]
+  },
+  {
+    "id": "template-pattern-notes",
+    "route": "/templates/pattern-notes",
+    "title": "LeetCode 150 Pattern 重點與模板",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/pattern-notes.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": ["25 種 Pattern", "不變量", "三語言補充模板", "Pattern 組合", "優先級"]
   }
 ]
