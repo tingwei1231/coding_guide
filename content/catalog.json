@@ -606,7 +606,7 @@
   {
     "id": "template-cpp-review",
     "route": "/templates/cpp-review",
-    "title": "C++ 高頻模板複習",
+    "title": "高頻模板練習題",
     "status": "ready",
     "markdown_path": "content/articles/templates/cpp-review.md",
     "pattern_ids": [],
