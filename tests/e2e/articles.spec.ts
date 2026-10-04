@@ -17,10 +17,10 @@ test('structure diagrams and tables render and guide code switches languages', a
   await expect(page.getByRole('tabpanel')).toContainText('std::vector');
   await expect(page.getByRole('link', { name: '前往 LeetCode 練這題' })).toHaveAttribute('href', 'https://leetcode.com/problems/number-of-islands/');
 });
-test('eight language comparisons stack on mobile; roadmap reaches guide and template', async ({ page }) => {
+test('twenty language comparisons stack on mobile; roadmap reaches guide and template', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/languages');
-  await expect(page.locator('.language-comparison')).toHaveCount(8);
+  await expect(page.locator('.language-comparison')).toHaveCount(20);
   await expect(page.locator('.language-comparison').first().locator('h3').first()).toHaveText('C++');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.goto('/roadmap');

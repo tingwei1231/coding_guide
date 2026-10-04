@@ -43,7 +43,8 @@ test('copied reference code stays synchronized with the already verified templat
 test('language comparisons, six complexity cases, and roadmap cover planned scope', async () => {
   const languages = await text('content/articles/languages.md');
   assert.equal((languages.match(/^## [1-8]\./gm) ?? []).length, 8);
-  for (const lang of ['python','java','cpp']) assert.equal((languages.match(new RegExp('```'+lang,'g')) ?? []).length, 8);
+  assert.equal((languages.match(/^## \d+\./gm) ?? []).length, 20);
+  for (const lang of ['python','java','cpp']) assert.equal((languages.match(new RegExp('```'+lang,'g')) ?? []).length, 20);
   assert.equal(((await text('content/articles/big-o.md')).match(/^## [1-6]\./gm) ?? []).length, 6);
   const roadmap = await text('content/articles/roadmap.md');
   assert.equal((roadmap.match(/^## [1-6]\./gm) ?? []).length, 6);
