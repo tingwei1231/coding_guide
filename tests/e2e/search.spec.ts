@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('search opens a specific variation with reasons, preserves query on reload, and handles no results', async ({ page }) => {
   await page.goto('/templates');
-  await expect(page.locator('.pattern-categories a')).toHaveCount(6);
+  await expect(page.locator('.pattern-categories a')).toHaveCount(19);
   const input = page.getByRole('searchbox', { name: '題目關鍵字' });
   await input.fill('二分答案');
   const result = page.locator('.search-results > li').filter({ hasText: '最小可行速度' });
@@ -22,7 +22,7 @@ test('search opens a specific variation with reasons, preserves query on reload,
   await page.getByRole('button', { name: 'dp', exact: true }).click();
   await expect(page.locator('.search-results')).toContainText('Dynamic Programming');
   await page.getByRole('button', { name: '清除' }).click();
-  await expect(page.locator('.pattern-categories a')).toHaveCount(6);
+  await expect(page.locator('.pattern-categories a')).toHaveCount(19);
 });
 
 test('all added templates have three languages and only planned variations are visible', async ({ page }) => {
@@ -31,7 +31,7 @@ test('all added templates have three languages and only planned variations are v
     await expect(page.locator('.sample')).toHaveCount(standards);
     await expect(page.locator('.variation-card')).toHaveCount(variations);
     for (const language of ['Python', 'Java', 'C++']) {
-      await page.getByRole('tab', { name: language, exact: true }).click();
+      await page.locator('.pattern-page').getByRole('tab', { name: language, exact: true }).click();
       expect((await page.locator('.sample pre').first().getAttribute('aria-label'))?.startsWith(`${language} `)).toBe(true);
       await expect(page.locator('.sample .counterexamples')).toHaveCount(standards);
     }

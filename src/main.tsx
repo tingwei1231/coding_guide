@@ -1,6 +1,6 @@
 import { StrictMode, useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Link, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Link, Navigate, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { Article } from './Article';
 import { articleFor, pages, patternIndex, titleFor, type Page } from './content';
 import './styles.css';
@@ -27,8 +27,8 @@ function ContentPage({ page }: { page: Page }) {
     <header className="page-heading"><p className="eyebrow">CODING GUIDE / LEARN</p><h1>{titleFor(page)}</h1>
       <p className="lead">{page.id === 'home' ? '從讀懂題目開始，辨識模式、理解模板，再帶著思路練習。' : '把概念拆開理解，為下一次練習建立清楚的思路。'}</p>
     </header>
-    {(page.id === 'templates' || pattern) && <PatternSearch />}
-    {article && <Article key={page.id} text={article} parallel={page.id === 'languages'} />}
+    {(page.id === 'templates' || pattern || page.route.startsWith('/templates/')) && <PatternSearch />}
+    {article && <Article key={page.id} text={article} parallel={page.id === 'languages' || page.id.startsWith('ds-')} />}
     {page.id === 'home' && <><div className="hero-path"><span>01 理解基礎</span><b aria-hidden="true">→</b><span>02 辨識模式</span><b aria-hidden="true">→</b><span>03 動手練習</span></div>
       <div className="section-heading"><h2>找到你的起點</h2><span>循序前進，自主探索</span></div>
       <Cards items={['roadmap', 'data-structures', 'templates', 'guided-learning'].map(id => pages.find(p => p.id === id)!)} />
@@ -63,7 +63,7 @@ function App() {
         const p = pages.find(p => p.id === id)!; return <NavLink key={id} to={p.route}>{titleFor(p)}</NavLink>;
       })}</section>)}</nav><div className="sidebar-note">先建立思路，<br />再前往 LeetCode 練習。</div></aside>
       <main id="main" ref={main} tabIndex={-1}><div className="breadcrumb"><Link to="/">手冊</Link><span aria-hidden="true"> / </span>{current && current.id !== 'home' ? titleFor(current) : current ? '開始學習' : '404'}</div>
-        <Routes>{pages.map(p => <Route key={p.id} path={p.route} element={<ContentPage page={p} />} />)}
+        <Routes>{pages.map(p => <Route key={p.id} path={p.route} element={p.id === 'template-cpp-review' ? <Navigate to="/templates/hashmap-set" replace /> : <ContentPage page={p} />} />)}
           <Route path="*" element={<section className="not-found"><p className="eyebrow">404 / PAGE NOT FOUND</p><h1>這一頁還不在手冊裡。</h1><p>請確認網址，或回到首頁選擇章節。</p><Link className="button-link" to="/">回到手冊首頁 →</Link></section>} />
         </Routes><footer>CODING GUIDE <span>一步一步，把解題思路練清楚。</span></footer>
       </main></div>

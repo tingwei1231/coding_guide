@@ -37,18 +37,18 @@ Tier 決定投入比重；下表是每日練習安排，會穿插 A Tier。
 
 | 主題 | 模板入口 | 要記住的重點 |
 |---|---|---|
-| HashMap / HashSet | [高頻模板練習題](/templates/cpp-review) | 查補數再存位置；存在、次數、位置分別存什麼 |
+| HashMap / HashSet | [HashMap / Set 模板](/templates/hashmap-set) | 查補數再存位置；存在、次數、位置分別存什麼 |
 | Two Pointers | [雙指標模板](/templates/two-pointers) | 哪個指標移動、何時去重 |
 | Sliding Window | [滑動視窗模板](/templates/sliding-window) | 加入 → 縮窗 → 更新答案；負數累加和不能直接套 |
-| Stack / Monotonic Stack | [高頻模板練習題](/templates/cpp-review) | 存值或索引；彈出條件；先確認非空 |
+| Stack / Monotonic Stack | [Stack](/templates/stack) / [Monotonic Stack](/templates/monotonic-stack) | 存值或索引；彈出條件；先確認非空 |
 | Binary Search | [二分搜尋模板](/templates/binary-search) | 區間邊界與單調判斷 |
-| Linked List | [高頻模板練習題](/templates/cpp-review) | 先保留 next 再修改鏈結 |
+| Linked List | [Linked List 模板](/templates/linked-list) | 先保留 next 再修改鏈結 |
 | Tree / Graph DFS、BFS | [走訪模板](/templates/bfs-dfs) | 空 root、邊界與 visited；BFS 入列時標記 |
-| Heap | [高頻模板練習題](/templates/cpp-review) | 第 k 大用容量 k 的 min heap |
+| Heap | [Heap / Priority Queue 模板](/templates/heap) | 第 k 大用容量 k 的 min heap |
 | Backtracking | [回溯模板](/templates/backtracking) | choose → recurse → undo |
-| Prefix Sum / Sorting | [高頻模板練習題](/templates/cpp-review) | 先查 prefix 再計數；區間排序後合併 |
+| Prefix Sum / Sorting | [Prefix Sum](/templates/prefix-sum) / [Intervals](/templates/intervals) | 先查 prefix 再計數；區間排序後合併 |
 | Basic DP | [動態規劃模板](/templates/dp) | 狀態、轉移、初始值與遍歷順序 |
-| Topological Sort | [高頻模板練習題](/templates/cpp-review) | 入度 0 入列；完成數不足代表有環 |
+| Topological Sort | [Topological Sort 模板](/templates/topological-sort) | 入度 0 入列；完成數不足代表有環 |
 
 ## 練習與複習
 

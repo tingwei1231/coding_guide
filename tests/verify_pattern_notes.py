@@ -5,9 +5,8 @@ import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-article = (ROOT / 'content/articles/templates/pattern-notes.md').read_text(encoding='utf-8')
-snippets = {lang: re.findall(r'```' + lang + r'\n(.*?)\n```', article, re.S)
-            for lang in ['python', 'java', 'cpp']}
+from content_snippets import note_blocks
+snippets = note_blocks()
 assert all(len(code) == 15 for code in snippets.values())
 
 class Node:

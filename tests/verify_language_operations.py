@@ -5,9 +5,8 @@ import subprocess
 import tempfile
 
 root = Path(__file__).resolve().parents[1]
-body = (root / 'content/articles/languages.md').read_text(encoding='utf-8')
-code = {lang: re.findall(r'```' + lang + r'\n(.*?)\n```', body, re.S)[8:]
-        for lang in ['python', 'java', 'cpp']}
+from content_snippets import operation_blocks
+code = {lang: blocks[8:] for lang, blocks in operation_blocks().items()}
 assert all(len(blocks) == 12 for blocks in code.values())
 python_checks = [
     'exists and size == 2 and empty and seen == set()',

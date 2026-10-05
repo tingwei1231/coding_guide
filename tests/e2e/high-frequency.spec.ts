@@ -2,13 +2,14 @@ import { test, expect } from '@playwright/test';
 
 test('high frequency templates default to C++ and switch all translated groups', async ({ page }) => {
   await page.goto('/templates/cpp-review');
-  await expect(page.locator('h1')).toHaveText('高頻模板練習題');
+  await expect(page).toHaveURL(/templates\/hashmap-set$/);
+  await expect(page.locator('h1')).toHaveText('HashMap / Set');
   const groups = page.locator('.article-examples');
-  await expect(groups).toHaveCount(8);
-  const hash = groups.nth(1);
+  await expect(groups).toHaveCount(1);
+  const hash = groups.nth(0);
   await expect(hash.locator('pre')).toContainText('return {seen[need], i};');
   await expect(hash.locator('pre')).toContainText('seen[nums[i]]++;');
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < 1; i++) {
     const group = groups.nth(i);
     await expect(group.getByRole('tab', { name: 'C++', exact: true })).toHaveAttribute('aria-selected', 'true');
     for (const language of ['Python', 'Java', 'C++']) {

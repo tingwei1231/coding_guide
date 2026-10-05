@@ -56,7 +56,8 @@ def native_check(java,cpp,expected):
         assert [json.loads(line) for line in run(command).splitlines()]==expected
 native_check(java,cpp,answers)
 
-examples=code_blocks('content/articles/languages.md')
+from content_snippets import operation_blocks
+examples=operation_blocks()
 checks=[('first',4),('first','a'),('counts',{'A':1}),('exists',True),('value',7),('value',4),('smallest',2),('a',[2,7])]
 for source,(name,expected) in zip(examples['python'],checks):
     scope={};exec(source,scope);assert scope[name]==expected

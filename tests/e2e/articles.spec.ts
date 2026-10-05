@@ -17,11 +17,15 @@ test('structure diagrams and tables render and guide code switches languages', a
   await expect(page.getByRole('tabpanel')).toContainText('std::vector');
   await expect(page.getByRole('link', { name: '前往 LeetCode 練這題' })).toHaveAttribute('href', 'https://leetcode.com/problems/number-of-islands/');
 });
-test('twenty language comparisons stack on mobile; roadmap reaches guide and template', async ({ page }) => {
+test('generic comparisons and structure operations stack on mobile; roadmap reaches guide and template', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
   await page.goto('/languages');
-  await expect(page.locator('.language-comparison')).toHaveCount(20);
+  await expect(page.locator('.language-comparison')).toHaveCount(3);
   await expect(page.locator('.language-comparison').first().locator('h3').first()).toHaveText('C++');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.goto('/data-structures/hashmap-set');
+  await expect(page.locator('.language-comparison')).toHaveCount(6);
+  await expect(page.getByRole('heading', { name: 'HashSet：新增、刪除、清空' })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await page.goto('/roadmap');
   await expect(page.getByRole('table')).toHaveCount(6);

@@ -31,3 +31,63 @@ Java char 是 UTF-16 code unit，C++ char 不是完整 Unicode 字元。不同�
 試著用自己的話回答：「這個結構保證哪些操作便宜？我是否把搜尋位置、複製或擴容的成本漏算了？」
 
 前往[相關教材](/templates/sliding-window)，或回到[資料結構索引](/data-structures)。
+
+## 三語言常用操作
+
+### 字串與拼接
+
+Python str 與 Java String 不可變；C++ string 可變。下例建立 ab。索引單位不同：Python 以 code point，Java char 以 UTF-16 code unit，C++ string 以位元組；此處僅比較 ASCII。
+
+```python
+s = ''.join(['a', 'b'])
+first = s[0]
+```
+
+```java
+String s = new StringBuilder().append('a').append('b').toString();
+char first = s.charAt(0);
+```
+
+```cpp
+#include <string>
+std::string s = "a";
+s += 'b';
+char first = s[0];
+```
+
+### 字串：擷取、搜尋、反轉與數值轉換
+
+以下限 ASCII。Python／Java 擷取使用 [start,end)，C++ substr 第二參數是長度。搜尋失敗：Python／Java 為 −1，C++ 為 string::npos。數值轉換可能失敗或超出範圍；擷取與反轉通常需 O(k) 工作。
+
+```python
+text = "abcd"
+part = text[1:3]
+position = text.find("bc")
+missing = text.find("z") == -1
+reversed_text = text[::-1]
+number = int("123")
+digits = str(123)
+```
+
+```java
+String text = "abcd";
+String part = text.substring(1, 3);
+int position = text.indexOf("bc");
+boolean missing = text.indexOf("z") == -1;
+String reversedText = new StringBuilder(text).reverse().toString();
+int number = Integer.parseInt("123");
+String digits = String.valueOf(123);
+```
+
+```cpp
+#include <string>
+#include <algorithm>
+std::string text = "abcd";
+std::string part = text.substr(1, 2);
+std::size_t position = text.find("bc");
+bool missing = text.find("z") == std::string::npos;
+std::string reversedText = text;
+std::reverse(reversedText.begin(), reversedText.end());
+int number = std::stoi("123");
+std::string digits = std::to_string(123);
+```

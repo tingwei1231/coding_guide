@@ -31,3 +31,35 @@ A 連到 B、C，B 又連 C。若入隊前不檢查 visited，C 可能被兩個�
 試著用自己的話回答：「這個結構保證哪些操作便宜？我是否把搜尋位置、複製或擴容的成本漏算了？」
 
 前往[相關教材](/guided-learning/bfs-dfs)，或回到[資料結構索引](/data-structures)。
+
+## 三語言常用操作
+
+### 二維陣列與 Graph 鄰接表初始化
+
+Grid visited、2D DP、Graph 常用。Python 必須逐列建立，不能用 [[False] * cols] * rows，否則各列共用同一份 list。Java int[][]／boolean[][] 自動為 0／false；C++ 明確填入初值。
+
+```python
+rows, cols, n = 2, 3, 3
+visited = [[False] * cols for _ in range(rows)]
+visited[0][0] = True
+graph = [[] for _ in range(n)]
+graph[0].append(1)
+```
+
+```java
+int rows = 2, cols = 3, n = 3;
+boolean[][] visited = new boolean[rows][cols];
+visited[0][0] = true;
+java.util.List<java.util.List<Integer>> graph = new java.util.ArrayList<>();
+for (int i = 0; i < n; i++) graph.add(new java.util.ArrayList<>());
+graph.get(0).add(1);
+```
+
+```cpp
+#include <vector>
+int rows = 2, cols = 3, n = 3;
+std::vector<std::vector<bool>> visited(rows, std::vector<bool>(cols, false));
+visited[0][0] = true;
+std::vector<std::vector<int>> graph(n);
+graph[0].push_back(1);
+```

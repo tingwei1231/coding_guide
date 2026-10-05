@@ -31,3 +31,64 @@
 試著用自己的話回答：「這個結構保證哪些操作便宜？我是否把搜尋位置、複製或擴容的成本漏算了？」
 
 前往[相關教材](/templates/two-pointers)，或回到[資料結構索引](/data-structures)。
+
+## 三語言常用操作
+
+### 陣列與索引
+
+三者都以 0 起算。Python list、Java ArrayList、C++ vector 可增長；Java int[] 固定長度。下例以可增長容器建立 [4,7]，讀取首項。
+
+```python
+a = [4]
+a.append(7)
+first = a[0]
+```
+
+```java
+java.util.List<Integer> a = new java.util.ArrayList<>();
+a.add(4);
+a.add(7);
+int first = a.get(0);
+```
+
+```cpp
+#include <vector>
+std::vector<int> a{4};
+a.push_back(7);
+int first = a[0];
+```
+
+### 動態陣列：尾端操作、刪除與複製
+
+Backtracking 用尾端新增／刪除；刪除中間元素通常需 O(n) 位移。Java remove(1) 是刪索引，remove(Integer.valueOf(1)) 才是刪值。三者的複製都是淺複製；巢狀可變元素仍需另外複製。
+
+```python
+path = [1, 2, 3]
+last = path[-1]
+path.pop()
+del path[0]
+copy = path.copy()
+path.append(9)
+size = len(path)
+```
+
+```java
+java.util.List<Integer> path = new java.util.ArrayList<>(java.util.Arrays.asList(1, 2, 3));
+int last = path.get(path.size() - 1);
+path.remove(path.size() - 1);
+path.remove(0);
+java.util.List<Integer> copy = new java.util.ArrayList<>(path);
+path.add(9);
+int size = path.size();
+```
+
+```cpp
+#include <vector>
+std::vector<int> path{1, 2, 3};
+int last = path.back();
+path.pop_back();
+path.erase(path.begin());
+std::vector<int> copy = path;
+path.push_back(9);
+std::size_t size = path.size();
+```

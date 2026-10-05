@@ -193,14 +193,10 @@
     "pattern_ids": [],
     "problem_ids": [],
     "sections": [
-      "陣列",
-      "字串",
-      "hash map",
-      "集合",
-      "stack",
-      "queue",
-      "priority queue",
-      "排序"
+      "資料結構操作入口",
+      "排序",
+      "比較器",
+      "二分邊界"
     ]
   },
   {
@@ -629,6 +625,193 @@
     "markdown_path": "content/articles/templates/pattern-notes.md",
     "pattern_ids": [],
     "problem_ids": [],
-    "sections": ["25 種 Pattern", "不變量", "三語言補充模板", "Pattern 組合", "優先級"]
+    "sections": [
+      "25 種 Pattern",
+      "不變量",
+      "Pattern 組合",
+      "優先級"
+    ]
+  },
+  {
+    "id": "template-hashmap-set",
+    "route": "/templates/hashmap-set",
+    "title": "HashMap / Set",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/hashmap-set.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-stack",
+    "route": "/templates/stack",
+    "title": "Stack",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/stack.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-monotonic-stack",
+    "route": "/templates/monotonic-stack",
+    "title": "Monotonic Stack",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/monotonic-stack.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-linked-list",
+    "route": "/templates/linked-list",
+    "title": "Linked List",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/linked-list.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-prefix-sum",
+    "route": "/templates/prefix-sum",
+    "title": "Prefix Sum",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/prefix-sum.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-intervals",
+    "route": "/templates/intervals",
+    "title": "Intervals",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/intervals.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-heap",
+    "route": "/templates/heap",
+    "title": "Heap / Priority Queue",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/heap.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-topological-sort",
+    "route": "/templates/topological-sort",
+    "title": "Topological Sort",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/topological-sort.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-bst",
+    "route": "/templates/bst",
+    "title": "BST",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/bst.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-trie",
+    "route": "/templates/trie",
+    "title": "Trie",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/trie.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-greedy",
+    "route": "/templates/greedy",
+    "title": "Greedy",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/greedy.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-bit-manipulation",
+    "route": "/templates/bit-manipulation",
+    "title": "Bit Manipulation",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/bit-manipulation.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
+  },
+  {
+    "id": "template-matrix-simulation",
+    "route": "/templates/matrix-simulation",
+    "title": "Matrix Simulation",
+    "status": "ready",
+    "markdown_path": "content/articles/templates/matrix-simulation.md",
+    "pattern_ids": [],
+    "problem_ids": [],
+    "sections": [
+      "辨識與不變量",
+      "三語言模板",
+      "邊界與複雜度"
+    ]
   }
 ]

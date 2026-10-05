@@ -30,3 +30,29 @@ pop 前確認非空。單調 stack 只保留特定候選，和一般 stack 不�
 試著用自己的話回答：「這個結構保證哪些操作便宜？我是否把搜尋位置、複製或擴容的成本漏算了？」
 
 前往[相關教材](/templates/bfs-dfs)，或回到[資料結構索引](/data-structures)。
+
+## 三語言常用操作
+
+### stack：後進先出
+
+Java 使用 ArrayDeque；C++ top 與 pop 分開，pop 不回傳元素。取出前需確認非空。三段都取出最後加入的 7。
+
+```python
+stack = []
+stack.append(7)
+value = stack.pop()
+```
+
+```java
+java.util.ArrayDeque<Integer> stack = new java.util.ArrayDeque<>();
+stack.push(7);
+int value = stack.pop();
+```
+
+```cpp
+#include <stack>
+std::stack<int> stack;
+stack.push(7);
+int value = stack.top();
+stack.pop();
+```
